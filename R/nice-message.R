@@ -1,0 +1,29 @@
+#' Adds a nice message to the start
+#'
+#' @param x A vector of integers to select from.  If the package isn't available
+#'   another random message is generated -- or not
+#'
+#' @export
+.NiceMessage <- function(x = 1:2) {
+  if (length(x) == 0L) return(invisible())
+  x <- as.integer(x)
+
+  switch(
+    sample(x, 1),
+    `1` = cat_praise(),
+    `2` = cat_fortune()
+  )
+}
+
+cat_praise <- function() {
+  jordan::require_namespace("praise")
+  cat(crayon::yellow(praise::praise()), "\n")
+}
+
+cat_fortune <- function() {
+  jordan::require_namespace("fortunes")
+  # setting width high as it is adjusted later
+  x <- paste(utils::capture.output(fortunes::fortune(width = 1000)))
+  x <- x[seq_along(x[-1])[-1]]
+  cat(crayon::yellow(x), sep = "\n")
+}

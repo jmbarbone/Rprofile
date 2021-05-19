@@ -1,0 +1,46 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Rprofile
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of Rprofile is to provide simple, non-intrusive functions for development that are not intended to be used in final packages.
+These function to assist during the developmet process.
+
+## Installation
+
+You can install the developmental version of Rprofile with:
+
+``` r
+remotes::install_github("jmbarbone/Rprofile")
+```
+
+## Example
+
+```{r example}
+library(Rprofile)
+.NiceMessage()
+.CharacterIndex("your string here")
+```
+
+```r
+.LoadPipe()     # loads magrittr::pipe()
+.RemoveAll()    # to remove all objects
+.Reload()       # to remove objects and restart Rstudio session
+.ResetOptions() # to reset options
+```
+
