@@ -18,7 +18,7 @@ ls_all <- function() {
 }
 
 get_rprofile <- function() {
-  get("rprofile_env", envir = globalenv(), mode = "environment")
+  get0("rprofile_env", envir = globalenv(), mode = "environment")
 }
 
 assign_rprofile <- function(x) {
