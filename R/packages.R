@@ -48,7 +48,7 @@
   for (a in attached) {
     tryCatch({
       unloadNamespace(a)
-      detach(a, character.only = TRUE, unload = TRUE)
+      detach(a, character.only = TRUE, force = TRUE)
     },
       error = function(e) {
         warning("`", a, "` was not found in `detach()`")
