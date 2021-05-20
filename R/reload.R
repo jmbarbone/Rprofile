@@ -44,8 +44,7 @@
   }
 
   assign_rprofile(x)
-  on.exit(options(x$op), add = TRUE)
-  invisible(NULL)
+  options(x$op)
 }
 
 #' Remove all objects
