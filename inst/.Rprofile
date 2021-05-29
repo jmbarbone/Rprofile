@@ -3,7 +3,7 @@
 # Jordan's personal .Rprofile
 # file.copy(system.file(".Rprofile", package = "Rprofile"), "~/.Rprofile")
 
-if (TRUE) {
+if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
   while ("package:Rprofile" %in% search()) {
     detach("package:Rprofile")
   }
