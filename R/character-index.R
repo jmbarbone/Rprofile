@@ -14,7 +14,7 @@
 #' @export
 .CharacterIndex <- function(x = NULL) {
   if (is.null(x)) {
-    x <- jordan::read_clipboard()
+    x <- mark::read_clipboard()
   }
 
   lapply(x, function(x) {
@@ -22,7 +22,7 @@
       return(NA_real_)
     }
 
-    nm <- jordan::chr_split(x)
-    jordan::set_names0(seq_along(nm), nm)
+    nm <- mark::chr_split(x)
+    mark::set_names0(seq_along(nm), nm)
   })
 }

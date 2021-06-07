@@ -17,11 +17,11 @@ RoxygenNote: 7.1.1
 Imports: 
     crayon,
     fortunes,
-    jordan,
+    mark,
     magrittr,
     praise,
     prompt,
     rstudioapi,
     utils
 Remotes:
-    jmbarbone/jordan
+    jmbarbone/mark

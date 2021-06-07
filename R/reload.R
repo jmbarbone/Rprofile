@@ -14,7 +14,7 @@
   if (remove_objects) {
     if (loud & length(objs) > 0L) {
       message("Removing all objects in the Global Environment:\n",
-        jordan::collapse0(objs, sep = " ... "))
+        mark::collapse0(objs, sep = " ... "))
     }
     rm(list = objs, envir = .GlobalEnv)
   }
@@ -27,7 +27,7 @@
 #' @export
 #' @rdname Reload
 .Restart <- function() {
-  jordan::require_namespace("rstudioapi")
+  mark::require_namespace("rstudioapi")
   .RemoveAll()
   rstudioapi::restartSession()
 }
@@ -91,7 +91,7 @@ remove_tag_and_save <- function(file, tag, warn = TRUE) {
 
   # Remove line of tag and next line
   out <- x[-c(line, line + 1L)]
-  out <- jordan::collapse0(out, sep = "\n")
+  out <- mark::collapse0(out, sep = "\n")
   out <- gsub("\n?$", "\n", out)
   writeLines(out, file)
 }

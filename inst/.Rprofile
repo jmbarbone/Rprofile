@@ -16,7 +16,7 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
     devtools.name = "Jordan Mark Barbone",
     testthat.progress.max_fails = 100,
 
-    # For jordan::use_author()
+    # For mark::use_author()
     jordan.author = list(
       given = "Jordan Mark",
       family = "Barbone",

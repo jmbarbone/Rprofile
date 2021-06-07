@@ -16,12 +16,12 @@
 }
 
 cat_praise <- function() {
-  jordan::require_namespace("praise")
+  mark::require_namespace("praise")
   cat(crayon::yellow(praise::praise()), "\n")
 }
 
 cat_fortune <- function() {
-  jordan::require_namespace("fortunes")
+  mark::require_namespace("fortunes")
   # setting width high as it is adjusted later
   x <- paste(utils::capture.output(fortunes::fortune(width = 1000)))
   x <- x[seq_along(x[-1])[-1]]

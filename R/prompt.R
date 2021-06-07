@@ -4,7 +4,7 @@
 #'
 #' @export
 .GitBranchPrompt <- function() {
-  jordan::require_namespace("prompt")
+  mark::require_namespace("prompt")
   branch <- prompt::prompt_git()
 
   if (branch != getOption("prompt", "> ") & branch != "> ") {
