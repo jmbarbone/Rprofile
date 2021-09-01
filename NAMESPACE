@@ -2,6 +2,7 @@
 
 export(.AddRprofileOptions)
 export(.CharacterIndex)
+export(.Fixmes)
 export(.GitBranchPrompt)
 export(.LoadPipe)
 export(.NiceMessage)
@@ -11,3 +12,4 @@ export(.RemoveAttachedPackages)
 export(.ResetOptions)
 export(.Restart)
 export(.SendAttachedPackagesToREnviron)
+export(.Todos)

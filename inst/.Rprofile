@@ -11,7 +11,7 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
   library(Rprofile)
 
   .AddRprofileOptions(
-    crayon.enabled = interactive(),
+    # crayon.enabled = interactive(),
     tidyverse.quiet = TRUE,
     devtools.name = "Jordan Mark Barbone",
     testthat.progress.max_fails = 100,
@@ -37,7 +37,11 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
   .GitBranchPrompt()
 
   if (interactive()) {
+    .AddRprofileOptions(crayon.enabled = interactive())
     cat(crayon::cyan("Sourcing Rprofile/.Rprofile...\n"))
     .NiceMessage()
+    .AddRprofileOptions(crayon.enabled = NULL)
+    cat("\n")
+    .Todos()
   }
 }
