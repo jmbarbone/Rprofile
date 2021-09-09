@@ -9,7 +9,7 @@
 #' @name Reload
 .Reload <- function(remove_objects = TRUE, loud = FALSE) {
   cat(crayon::cyan("Preparing Restart ...\n"))
-  objs <- setdiff(ls_all(), "rprofile_env")
+  objs <- setdiff(ls_global_all(), "rprofile_env")
 
   if (remove_objects) {
     if (loud & length(objs) > 0L) {
@@ -53,7 +53,7 @@
 #'
 #' @export
 .RemoveAll <- function() {
-  remove(list = ls_all(), envir = globalenv())
+  remove(list = ls_global_all(), envir = globalenv())
 }
 
 

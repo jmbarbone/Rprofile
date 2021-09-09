@@ -12,3 +12,6 @@ assign_rprofile <- function(x) {
   assign("rprofile_env", x, envir = globalenv())
 }
 
+ls_global_all <- function() {
+  ls(all.names = TRUE, envir = globalenv(), sorted = FALSE)
+}
