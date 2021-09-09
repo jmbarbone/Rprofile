@@ -3,14 +3,11 @@
 #' Get a list of TODOs and FIXMEs
 #'
 #' @export
+#' @inheritParams mark::todos
 #' @return See [mark::todos]
 #' @name todos
-.Todos <- function() {
-  mark::todos()
-}
+.Todos <- mark::todos
 
 #' @rdname todos
 #' @export
-.Fixmes <- function() {
-  mark::fixmes()
-}
+.Fixmes <- mark::fixmes

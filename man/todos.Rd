@@ -6,9 +6,18 @@
 \alias{.Fixmes}
 \title{TODOs and FIXMEs}
 \usage{
-.Todos()
+.Todos(pattern = NULL, path = ".", ...)
 
-.Fixmes()
+.Fixmes(pattern = NULL, path = ".", ...)
+}
+\arguments{
+\item{pattern}{A character string containing a regular expression to filter
+for comments after tags; default \code{NULL} does not filter}
+
+\item{path}{The file directory to search for the tags}
+
+\item{...}{Additional parameters passed to \code{grep} (Except for \code{pattern}, \code{x},
+and \code{value})}
 }
 \value{
 See \link[mark:todos]{mark::todos}
