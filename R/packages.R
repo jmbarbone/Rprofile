@@ -9,8 +9,8 @@
 .SendAttachedPackagesToREnviron <- function() {
   x <- get_rprofile()
   attached <- grep("^package[:]", search(), value = TRUE)
-  attached2 <- rev(gsub("^package[:]", "", attached))
-  attached2 <- setdiff(attached2, .default_packages)
+  attached <- rev(gsub("^package[:]", "", attached))
+  attached <- setdiff(attached, .default_packages)
 
   file <- ".Renviron"
   tag <- jtag()
@@ -22,7 +22,7 @@
     remove_tag_and_save(file, tag, warn = FALSE)
   }
 
-  defaults <- c(.default_packages, attached2)
+  defaults <- c(.default_packages, attached)
   x$op$defaultPackages <- defaults
   pkgs <- mark::collapse0(defaults, sep = ",")
   line <- sprintf("%s\nR_DEFAULT_PACKAGES='%s'\n", tag, pkgs)

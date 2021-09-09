@@ -1,7 +1,8 @@
 
-# Rstudio/.Rprofile -------------------------------------------------------------
+
+# Rstudio/.Rprofile -------------------------------------------------------
 # Jordan's personal .Rprofile
-# file.copy(system.file(".Rprofile", package = "Rprofile"), "~/.Rprofile")
+# file.copy(system.file(".Rprofile", package = "Rprofile", mustWork = TRUE), "~/.Rprofile")
 
 if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
   while ("package:Rprofile" %in% search()) {
@@ -10,6 +11,10 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
 
   library(Rprofile)
 
+  # I prefer having these loaded initially
+  library(devtools)
+  library(usethis)
+
   .AddRprofileOptions(
     # crayon.enabled = interactive(),
     tidyverse.quiet = TRUE,
@@ -17,7 +22,7 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
     testthat.progress.max_fails = 100,
 
     # For mark::use_author()
-    jordan.author = list(
+    mark.author = list(
       given = "Jordan Mark",
       family = "Barbone",
       role = c("aut", "cph", "cre"),
