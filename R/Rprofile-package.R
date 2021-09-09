@@ -1,3 +1,4 @@
+#' @importFrom mark %colons%
 #' @keywords internal
 "_PACKAGE"
 

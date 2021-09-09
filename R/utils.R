@@ -4,19 +4,6 @@ check_rprofile <- function() {
   }
 }
 
-`%colons%` <- function(package, name) {
-  tryCatch(
-    get(name, envir = asNamespace(package)),
-    error = function(e) {
-      stop(sprintf("`%s` not found in package `%s`", name, package), call. = FALSE)
-    }
-  )
-}
-
-ls_all <- function() {
-  ls(all.names = TRUE, envir = globalenv(), sorted = FALSE)
-}
-
 get_rprofile <- function() {
   get0("rprofile_env", envir = globalenv(), mode = "environment")
 }
