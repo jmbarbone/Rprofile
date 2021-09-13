@@ -4,12 +4,16 @@ check_rprofile <- function() {
   }
 }
 
+assign_ <- function(...) {
+  ("base" %colons% "assign")(...)
+}
+
 get_rprofile <- function() {
   get0("rprofile_env", envir = globalenv(), mode = "environment")
 }
 
 assign_rprofile <- function(x) {
-  assign("rprofile_env", x, envir = globalenv())
+  try(assign_("rprofile_env", x, envir = globalenv()))
 }
 
 ls_global_all <- function() {
