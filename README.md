@@ -32,7 +32,6 @@ library(Rprofile)
 ```
 
 ``` r
-.LoadPipe()     # loads magrittr::pipe()
 .RemoveAll()    # to remove all objects
 .Reload()       # to remove objects and restart Rstudio session
 .ResetOptions() # to reset options
