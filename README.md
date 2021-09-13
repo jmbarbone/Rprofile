@@ -8,7 +8,7 @@
 
 The goal of Rprofile is to provide simple, non-intrusive functions for
 development that are not intended to be used in final packages. These
-function to assist during the developmet process.
+function to assist during the development process.
 
 ## Installation
 
@@ -23,8 +23,7 @@ remotes::install_github("jmbarbone/Rprofile")
 ``` r
 library(Rprofile)
 .NiceMessage()
-#> 
-#>  You are beautiful!
+#> You are ultimate!
 .CharacterIndex("your string here")
 #> [[1]]
 #>  y  o  u  r     s  t  r  i  n  g     h  e  r  e 
@@ -32,7 +31,9 @@ library(Rprofile)
 ```
 
 ``` r
-.RemoveAll()    # to remove all objects
-.Reload()       # to remove objects and restart Rstudio session
-.ResetOptions() # to reset options
+.RemoveAll()        # removes all objects
+.Reload()           # removes objects and restart Rstudio session
+.ResetOptions()     # resets options
+.GitBranchPrompt()  # shows git branch
+.Todos(), .Fixmes() # shows comments marked as TODO or FIXME
 ```
