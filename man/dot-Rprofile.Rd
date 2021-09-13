@@ -4,12 +4,14 @@
 \alias{.Rprofile}
 \title{Get .Rprofile}
 \usage{
-.Rprofile(update = FALSE, overwrite = FALSE)
+.Rprofile(update = overwrite, overwrite = FALSE)
 }
 \arguments{
-\item{update}{If \code{TRUE} will copy the .Rprofile from the Rprofile package}
+\item{update}{If \code{TRUE} will copy the .Rprofile from the Rprofile package
+(defaults to the value of \code{overwrite})}
 
-\item{overwrite}{if attempting to update, also overwrite}
+\item{overwrite}{If \code{TRUE} and \code{update = TRUE} will overwrite .Rprofile if it
+exists; ignored if \code{update} is not \code{TRUE}}
 }
 \description{
 Get .Rprofile

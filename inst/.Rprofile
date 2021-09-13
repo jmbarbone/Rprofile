@@ -2,7 +2,7 @@
 
 # Rstudio/.Rprofile -------------------------------------------------------
 # Jordan's personal .Rprofile
-# file.copy(system.file(".Rprofile", package = "Rprofile", mustWork = TRUE), "~/.Rprofile")
+# Rprofile::.Rprofile(update = TRUE)
 
 if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
   while ("package:Rprofile" %in% search()) {
@@ -11,9 +11,8 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
 
   library(Rprofile)
 
-  # I prefer having these loaded initially
-  library(devtools)
-  library(usethis)
+  # Loads devtools and usethis
+  suppressPackageStartupMessages(library(devtools))
 
   .AddRprofileOptions(
     # crayon.enabled = interactive(),

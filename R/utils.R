@@ -15,3 +15,7 @@ assign_rprofile <- function(x) {
 ls_global_all <- function() {
   ls(all.names = TRUE, envir = globalenv(), sorted = FALSE)
 }
+
+sysfile <- function(..., check = FALSE) {
+  system.file(..., package = "Rprofile", mustWork = check)
+}
