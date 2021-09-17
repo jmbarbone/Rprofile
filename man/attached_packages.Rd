@@ -4,11 +4,14 @@
 \alias{attached_packages}
 \alias{.SendAttachedPackagesToREnviron}
 \alias{.RemoveAttachedPackages}
+\alias{.AddAttachedPackagesToDefaultPackages}
 \title{Manage attached packages}
 \usage{
 .SendAttachedPackagesToREnviron()
 
 .RemoveAttachedPackages(attached = NULL)
+
+.AddAttachedPackagesToDefaultPackages()
 }
 \arguments{
 \item{attached}{A character vector of packages - if NULL will find packages}

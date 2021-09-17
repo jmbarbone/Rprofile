@@ -7,13 +7,9 @@
 #' @export
 .AddRprofileOptions <- function(...) {
   x <- get_rprofile()
-  ls <- list(...)
-  nm <- names(ls)
-
-  for (i in seq_along(ls)) {
-    x$op[[nm[i]]] <- ls[[i]]
-  }
-
+  new <- c(x$op, list(...))
+  # unique() drops names
+  x$op <-  new[!duplicated(new, fromLast = TRUE)]
   options(x$op)
   assign_rprofile(x)
   invisible(NULL)

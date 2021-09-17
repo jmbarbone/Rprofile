@@ -2,8 +2,6 @@
 #'
 #' Clears out attached packages and properly loads
 #'
-#' @param attached A character vector of packages - if NULL will find packages
-#'
 #' @export
 #' @name attached_packages
 .SendAttachedPackagesToREnviron <- function() {
@@ -22,7 +20,7 @@
     remove_tag_and_save(file, tag, warn = FALSE)
   }
 
-  defaults <- c(.default_packages, attached)
+  defaults <- c(default_packages(), attached)
   x$op$defaultPackages <- defaults
   pkgs <- mark::collapse0(defaults, sep = ",")
   line <- sprintf("%s\nR_DEFAULT_PACKAGES='%s'\n", tag, pkgs)
@@ -34,6 +32,7 @@
 
 #' @export
 #' @rdname attached_packages
+#' @param attached A character vector of packages - if NULL will find packages
 .RemoveAttachedPackages <- function(attached = NULL) {
   if (is.null(attached)) {
     attached <- grep("^package[:]", search(), value = TRUE)
@@ -42,8 +41,8 @@
     attached[bad] <- paste0("package:", attached[bad])
   }
 
-  fine <- c("package:Rprofile", rev(names(.default_packages)))
-  attached <- setdiff(attached, fine)
+  fine <- default_packages()
+  attached <- setdiff(attached, names(fine))
 
   for (a in attached) {
     tryCatch({
@@ -55,4 +54,16 @@
       }
     )
   }
+}
+
+#' @export
+#' @rdname attached_packages
+.AddAttachedPackagesToDefaultPackages <- function() {
+  attached <- grep("^package[:]", search(), value = TRUE)
+  e <- get_rprofile()
+  names(attached) <- attached
+  attached <- sub("^package[:]", "", attached)
+  new <- unique(c(attached, e$op$defaultPackages, "base"), fromLast = TRUE)
+  e$op$defaultPackages <- new
+  assign_rprofile(e)
 }

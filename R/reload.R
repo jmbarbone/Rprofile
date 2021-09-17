@@ -59,6 +59,17 @@
 
 # helpers -----------------------------------------------------------------
 
+default_packages <- function() {
+  op <- options()$defaultPackages
+
+  if (is.null(op)) {
+    op <- .default_packages
+  }
+
+  op <- unique(c(op, "base"), fromLast = TRUE)
+  names(op) <- paste0("package:", op)
+  op
+}
 
 .default_packages <- c("base", "datasets", "utils", "grDevices", "graphics", "stats", "methods")
 names(.default_packages) <- paste0("package:", .default_packages)
