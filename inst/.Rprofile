@@ -37,14 +37,15 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
     )
   )
 
+  .AddAttachedPackagesToDefaultPackages()
   .GitBranchPrompt()
 
   if (interactive()) {
-    .AddRprofileOptions(crayon.enabled = interactive())
+    .AddRprofileOptions(crayon.enabled = TRUE)
     cat(crayon::cyan("Sourcing Rprofile/.Rprofile...\n"))
     .NiceMessage()
-    .AddRprofileOptions(crayon.enabled = NULL)
     cat("\n")
-    .Todos()
+    print(.Todos())
+    .AddRprofileOptions(crayon.enabled = NULL)
   }
 }
