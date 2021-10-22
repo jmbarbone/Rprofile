@@ -11,11 +11,7 @@
   }
 
   if (is.null(email)) {
-    authors <- utils::packageDescription(basename(normalizePath(".")))
-    authors <- authors[["Authors@R"]]
-    authors <- eval(parse(text = trimws(authors)))
-    authors <- unclass(authors)
-    email <- sapply(authors, `[[`, "email")
+   email <- get_description_emails()
   }
 
   for (e in email) {
@@ -26,4 +22,17 @@
   }
 
   stop("Failed to find cran status for:\n", paste0(email, collapse = "\n  "))
+}
+
+get_description_emails <- function() {
+  authors <- utils::packageDescription(basename(normalizePath(".")))
+  authors <- authors[["Authors@R"]]
+
+  if (any(grepl("person", authors))) {
+    require("utils", quietly = TRUE)
+  }
+
+  authors <- eval(parse(text = trimws(authors)))
+  authors <- unclass(authors)
+  unlist(lapply(authors, `[[`, "email"), use.names = FALSE)
 }
