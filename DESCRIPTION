@@ -25,5 +25,7 @@ Imports:
     prompt,
     rstudioapi,
     utils
+Suggests:
+    dang
 Remotes:
     jmbarbone/mark

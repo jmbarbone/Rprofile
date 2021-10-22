@@ -3,7 +3,7 @@
 #' A wrapper
 #'
 #' @param email The email address to query CRAN
-#' @seealso [dang::checkCranStatus]
+#' @seealso [dang::checkCRANStatus]
 #' @export
 .CheckCranStatus <- function(email = NULL) {
   if (!mark::package_available("dang")) {
