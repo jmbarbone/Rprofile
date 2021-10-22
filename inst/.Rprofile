@@ -47,5 +47,6 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
     cat("\n")
     print(.Todos())
     .AddRprofileOptions(crayon.enabled = NULL)
+    .CheckCranStatus(getOption("mark.author")[[1]][["email"]])
   }
 }
