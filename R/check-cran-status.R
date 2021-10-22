@@ -11,7 +11,8 @@
   }
 
   if (is.null(email)) {
-    authors <- packageDescription(basename(normalizePath(".")))[["Authors@R"]]
+    authors <- utils::packageDescription(basename(normalizePath(".")))
+    authors <- authors[["Authors@R"]]
     authors <- eval(parse(text = trimws(authors)))
     authors <- unclass(authors)
     email <- sapply(authors, `[[`, "email")
@@ -24,5 +25,5 @@
     }
   }
 
-  stop("Failed to find cran status for:\n", paste0(emails, collapse = "\n  "))
+  stop("Failed to find cran status for:\n", paste0(email, collapse = "\n  "))
 }
