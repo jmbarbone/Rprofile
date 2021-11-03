@@ -12,6 +12,8 @@
     rfile <- sf(".Rprofile", check = TRUE)
     file.copy(rfile, file, overwrite = overwrite, copy.date = TRUE)
   } else {
-    shell.exec(normalizePath(file, mustWork = TRUE))
+    file <- normalizePath(file, mustWork = TRUE)
+    cat("Opening", file, "\n")
+    shell.exec(file)
   }
 }
