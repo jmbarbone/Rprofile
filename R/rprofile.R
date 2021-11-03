@@ -9,7 +9,7 @@
   file <- "~/.Rprofile"
   if (update) {
     on.exit(try(Sys.chmod(file, "200"), silent = TRUE), add = TRUE)
-    rfile <- sysfile(".Rprofile", check = TRUE)
+    rfile <- sf(".Rprofile", check = TRUE)
     file.copy(rfile, file, overwrite = overwrite, copy.date = TRUE)
   } else {
     shell.exec(normalizePath(file, mustWork = TRUE))
