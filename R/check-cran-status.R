@@ -42,6 +42,7 @@ get_description_emails <- function() {
   authors <- authors$Authors # partial matching for Authors@R
 
   if (any(grepl("person", authors))) {
+    authors <- gsub("(?<!utils::)person", "utils::person", authors, perl = TRUE)
     requireNamespace("utils", quietly = TRUE)
   }
 
