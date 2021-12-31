@@ -45,9 +45,8 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
     cat(crayon::cyan("Sourcing Rprofile/.Rprofile...\n"))
     .NiceMessage()
     cat("\n")
-    print(.Todos())
+    .Todos(.quiet = FALSE, .space = TRUE)
     .AddRprofileOptions(crayon.enabled = NULL)
-    cat("\n")
     .CheckCranStatus()
   }
 }
