@@ -4,11 +4,13 @@
 \alias{.NiceMessage}
 \title{Adds a nice message to the start}
 \usage{
-.NiceMessage(x = 1:2)
+.NiceMessage(x = 1:2, space = TRUE)
 }
 \arguments{
 \item{x}{A vector of integers to select from.  If the package isn't available
 another random message is generated -- or not}
+
+\item{space}{if \code{TRUE} adds another \code{"\\n"} to the output}
 }
 \description{
 Adds a nice message to the start

@@ -2,9 +2,11 @@
 #'
 #' @param x A vector of integers to select from.  If the package isn't available
 #'   another random message is generated -- or not
+#' @param space if `TRUE` adds another `"\n"` to the output
 #'
 #' @export
-.NiceMessage <- function(x = 1:2) {
+.NiceMessage <- function(x = 1:2, space = TRUE) {
+  on.exit(if (space) cat("\n"))
   if (length(x) == 0L) return(invisible())
   x <- as.integer(x)
 
