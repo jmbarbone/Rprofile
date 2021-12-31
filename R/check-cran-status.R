@@ -6,16 +6,22 @@
 #' @seealso [dang::checkCRANStatus]
 #' @export
 .CheckCranStatus <- function(email = NULL) {
+  op <- options(warn = -1) # get rid of warnings for now
+  on.exit(options(op))
+
   if (!mark::package_available("dang")) {
     return(invisible())
   }
 
   if (is.null(email)) {
-   email <- get_description_emails()
+   email <- try(get_description_emails())
+   if (inherits(email, "try-error")) {
+     return(invisible())
+   }
   }
 
   for (e in email) {
-    res <- try(dang::checkCRANStatus(e), silent = TRUE)
+    res <- try(dang::checkCRANStatus(e))
     if (!inherits(res, "try-error")) {
       return(invisible())
     }
