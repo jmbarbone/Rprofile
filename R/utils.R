@@ -20,6 +20,4 @@ ls_global_all <- function() {
   ls(all.names = TRUE, envir = globalenv(), sorted = FALSE)
 }
 
-sysfile <- function(..., check = FALSE) {
-  system.file(..., package = "Rprofile", mustWork = check)
-}
+sf <- mark::make_sf("Rprofile")
