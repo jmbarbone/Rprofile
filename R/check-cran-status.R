@@ -31,8 +31,15 @@
 }
 
 get_description_emails <- function() {
-  authors <- utils::packageDescription(basename(normalizePath(".")))
-  authors <- authors[["Authors@R"]]
+  pkg <- basename(normalizePath("."))
+
+  authors <- suppressWarnings(utils::packageDescription(pkg))
+
+  if (length(authors) == 1L && is.na(authors)) {
+    stop("Package `", pkg, "` not found in installed", call. = FALSE)
+  }
+
+  authors <- authors$Authors # partial matching for Authors@R
 
   if (any(grepl("person", authors))) {
     requireNamespace("utils", quietly = TRUE)
