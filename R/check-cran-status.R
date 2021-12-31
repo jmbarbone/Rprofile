@@ -35,7 +35,7 @@ get_description_emails <- function() {
   authors <- authors[["Authors@R"]]
 
   if (any(grepl("person", authors))) {
-    require("utils", quietly = TRUE)
+    requireNamespace("utils", quietly = TRUE)
   }
 
   authors <- eval(parse(text = trimws(authors)))
