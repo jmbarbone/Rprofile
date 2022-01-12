@@ -25,5 +25,6 @@ cat_fortune <- function() {
   # setting width high as it is adjusted later
   x <- paste(utils::capture.output(fortunes::fortune(width = 1000)))
   x <- x[seq_along(x[-1])[-1]]
-  cat(crayon::yellow(x), sep = "\n")
+  x <- paste0(x, "\n")
+  cat(crayon::yellow(x))
 }
