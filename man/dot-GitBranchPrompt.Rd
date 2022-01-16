@@ -6,6 +6,9 @@
 \usage{
 .GitBranchPrompt()
 }
+\value{
+The new prompt, invisibly.
+}
 \description{
 Applies a formatted prompt based on the git branch
 }

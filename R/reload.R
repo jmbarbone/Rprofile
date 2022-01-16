@@ -28,6 +28,7 @@
 #' @rdname Reload
 .Restart <- function() {
   mark::require_namespace("rstudioapi")
+  .ResetOptions()
   .RemoveAll()
   rstudioapi::restartSession()
 }
@@ -37,12 +38,8 @@
 #' @param keep_prompt Logical, if `FALSE` will not reset the `prompt` option
 #' @export
 .ResetOptions <- function(keep_prompt = TRUE) {
+  keep_prompt <- NULL
   x <- get_rprofile()
-
-  if (keep_prompt) {
-    x$op$prompt <- .GitBranchPrompt()
-  }
-
   assign_rprofile(x)
   options(x$op)
 }

@@ -2,15 +2,17 @@
 #'
 #' Applies a formatted prompt based on the git branch
 #'
+#' @returns The new prompt, invisibly.
 #' @export
 .GitBranchPrompt <- function() {
   mark::require_namespace("prompt")
   branch <- prompt::prompt_git()
+  prompt <- getOption("prompt")
 
   if (branch != getOption("prompt", "> ") & branch != "> ") {
-    branch_prompt <- paste0("[", sub(" >", "] >", branch))
-    prompt::set_prompt(branch_prompt)
+    prompt <- paste0("[", sub(" >", "] >", branch))
+    prompt::set_prompt(prompt)
   }
 
-  invisible(NULL)
+  invisible(prompt)
 }
