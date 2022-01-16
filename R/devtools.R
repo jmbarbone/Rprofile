@@ -7,6 +7,8 @@
 #' @export
 #' @family Rprofile
 .AttachDevtools <- function() {
-  suppressPackageStartupMessages(library("devtools", character.only = TRUE))
+  mark::require_namespace("devtools")
+  # cheating to not use base::require()
+  suppressPackageStartupMessages(("base" %colons% "require")("devtools"))
   invisible()
 }

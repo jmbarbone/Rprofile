@@ -23,6 +23,7 @@ Imports:
 Suggests:
     crayon,
     dang,
+    devtools,
     fortunes,
     praise,
     prompt,
