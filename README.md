@@ -4,6 +4,8 @@
 # Rprofile
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/jmbarbone/Rprofile/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jmbarbone/Rprofile/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of Rprofile is to provide simple, non-intrusive functions for

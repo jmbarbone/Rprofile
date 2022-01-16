@@ -4,6 +4,7 @@
 #'
 #' @param ... options to set
 #'
+#' @family Rprofile
 #' @export
 .AddRprofileOptions <- function(...) {
   x <- get_rprofile()

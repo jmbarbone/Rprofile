@@ -16,3 +16,12 @@ exists; ignored if \code{update} is not \code{TRUE}}
 \description{
 Get .Rprofile
 }
+\seealso{
+Other Rprofile: 
+\code{\link{.AddRprofileOptions}()},
+\code{\link{.AttachDevtools}()},
+\code{\link{.NiceMessage}()},
+\code{\link{.UtilMessage}()},
+\code{\link{attached_packages}}
+}
+\concept{Rprofile}

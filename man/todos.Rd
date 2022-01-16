@@ -4,11 +4,17 @@
 \alias{todos}
 \alias{.Todos}
 \alias{.Fixmes}
+\alias{.TodosHere}
+\alias{.FixmesHere}
 \title{TODOs and FIXMEs}
 \usage{
 .Todos(..., .quiet = FALSE, .space = FALSE)
 
 .Fixmes(..., .quiet = FALSE)
+
+.TodosHere(..., .quiet = FALSE)
+
+.FixmesHere(..., .quiet = FALSE)
 }
 \arguments{
 \item{...}{additional arguments pass to \link[mark:todos]{mark::todos}}
@@ -21,5 +27,11 @@
 See \link[mark:todos]{mark::todos}
 }
 \description{
+\code{.Todos()} and \code{.Fixmes()} default to recursively searching the
+path \code{"."} and can be changed with setting \code{path} in \code{...}.  \code{.TodosHere()}
+and \code{.FixmesHere()} try to search the active file, found with the use of
+\code{Rstudio}.
+}
+\details{
 Get a list of TODOs and FIXMEs
 }

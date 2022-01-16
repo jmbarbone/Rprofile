@@ -11,7 +11,7 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
   library(Rprofile)
 
   # Loads devtools and usethis
-  suppressPackageStartupMessages(library(devtools))
+  .AttachDevtools()
 
   .AddRprofileOptions(
     # crayon.enabled = interactive(),
@@ -42,7 +42,7 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
 
   if (interactive()) {
     .AddRprofileOptions(crayon.enabled = TRUE)
-    cat(crayon::cyan("Sourcing Rprofile/.Rprofile...\n"))
+    .UtilMessage("source_rprofile")
     .NiceMessage()
     .Todos(.quiet = FALSE, .space = TRUE)
     .AddRprofileOptions(crayon.enabled = NULL)

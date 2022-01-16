@@ -15,3 +15,12 @@ another random message is generated -- or not}
 \description{
 Adds a nice message to the start
 }
+\seealso{
+Other Rprofile: 
+\code{\link{.AddRprofileOptions}()},
+\code{\link{.AttachDevtools}()},
+\code{\link{.Rprofile}()},
+\code{\link{.UtilMessage}()},
+\code{\link{attached_packages}}
+}
+\concept{Rprofile}

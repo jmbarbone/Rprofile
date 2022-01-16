@@ -19,3 +19,12 @@
 \description{
 Clears out attached packages and properly loads
 }
+\seealso{
+Other Rprofile: 
+\code{\link{.AddRprofileOptions}()},
+\code{\link{.AttachDevtools}()},
+\code{\link{.NiceMessage}()},
+\code{\link{.Rprofile}()},
+\code{\link{.UtilMessage}()}
+}
+\concept{Rprofile}

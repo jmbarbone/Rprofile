@@ -4,6 +4,7 @@
 #'   another random message is generated -- or not
 #' @param space if `TRUE` adds another `"\n"` to the output
 #'
+#' @family Rprofile
 #' @export
 .NiceMessage <- function(x = 1:2, space = TRUE) {
   on.exit(if (space) cat("\n"))
@@ -19,7 +20,7 @@
 
 cat_praise <- function() {
   mark::require_namespace("praise")
-  cat(crayon::yellow(praise::praise()), "\n")
+  cat(crayon_yellow(praise::praise()), "\n")
 }
 
 cat_fortune <- function() {
@@ -28,5 +29,5 @@ cat_fortune <- function() {
   x <- paste(utils::capture.output(fortunes::fortune(width = 1000)))
   x <- x[seq_along(x[-1])[-1]]
   x <- paste0(x, "\n")
-  cat(crayon::yellow(x))
+  cat(crayon_yellow(x), sep = "\n")
 }

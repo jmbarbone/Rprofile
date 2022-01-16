@@ -21,6 +21,7 @@
   }
 
   for (e in email) {
+    cat("checking for", crayon_cyan(e), "\n")
     res <- try(dang::checkCRANStatus(e))
     if (!inherits(res, "try-error")) {
       return(invisible())

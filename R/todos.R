@@ -2,6 +2,11 @@
 #'
 #' Get a list of TODOs and FIXMEs
 #'
+#' @description `.Todos()` and `.Fixmes()` default to recursively searching the
+#'   path `"."` and can be changed with setting `path` in `...`.  `.TodosHere()`
+#'   and `.FixmesHere()` try to search the active file, found with the use of
+#'   `Rstudio`.
+#'
 #' @export
 #' @param ... additional arguments pass to [mark::todos]
 #' @param .quiet If `TRUE` doesn't print result
@@ -19,6 +24,21 @@
   do_todos("fixme", ..., .quiet = .quiet)
 }
 
+#' @rdname todos
+#' @export
+.TodosHere <- function(..., .quiet = FALSE) {
+  do_todo_here("todo", ..., .quiet = FALSE)
+}
+
+#' @rdname todos
+#' @export
+.FixmesHere <- function(..., .quiet = FALSE) {
+  do_todo_here("fixme", ..., .quiet = FALSE)
+}
+
+
+# helpers -----------------------------------------------------------------
+
 do_todos <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
   type <- mark::match_param(type)
   fun <- switch(type, todo = mark::todos, fixme = mark::fixmes)
@@ -27,3 +47,9 @@ do_todos <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
   invisible(todo)
 }
 
+do_todo_here <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
+  mark::require_namespace("rstudioapi")
+  stopifnot(interactive(), "path" %out% ...names())
+  path <- rstudioapi::getSourceEditorContext()$path
+  do_todos(type = type, path = path, ..., .quiet = .quiet)
+}
