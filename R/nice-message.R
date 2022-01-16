@@ -19,7 +19,7 @@
 
 cat_praise <- function() {
   mark::require_namespace("praise")
-  cat(crayon::yellow(praise::praise()), "\n")
+  cat(crayon_yellow(praise::praise()), "\n")
 }
 
 cat_fortune <- function() {
@@ -27,5 +27,5 @@ cat_fortune <- function() {
   # setting width high as it is adjusted later
   x <- paste(utils::capture.output(fortunes::fortune(width = 1000)))
   x <- x[seq_along(x[-1])[-1]]
-  cat(crayon::yellow(x), sep = "\n")
+  cat(crayon_yellow(x), sep = "\n")
 }

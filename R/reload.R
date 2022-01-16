@@ -8,7 +8,7 @@
 #' @export
 #' @name Reload
 .Reload <- function(remove_objects = TRUE, loud = FALSE) {
-  cat(crayon::cyan("Preparing Restart ...\n"))
+  cat(crayon_cyan("Preparing Restart ...\n"))
   objs <- setdiff(ls_global_all(), "rprofile_env")
 
   if (remove_objects) {
@@ -21,7 +21,7 @@
 
   .RemoveAttachedPackages()
   .Restart()
-  cat(crayon::cyan("Done!"))
+  cat(crayon_cyan("Done!"))
 }
 
 #' @export
