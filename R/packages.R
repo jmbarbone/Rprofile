@@ -58,6 +58,7 @@
 
 #' @export
 #' @rdname attached_packages
+#' @family Rprofile
 .AddAttachedPackagesToDefaultPackages <- function() {
   attached <- grep("^package[:]", search(), value = TRUE)
   e <- get_rprofile()

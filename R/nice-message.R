@@ -4,6 +4,7 @@
 #'   another random message is generated -- or not
 #' @param space if `TRUE` adds another `"\n"` to the output
 #'
+#' @family Rprofile
 #' @export
 .NiceMessage <- function(x = 1:2, space = TRUE) {
   on.exit(if (space) cat("\n"))

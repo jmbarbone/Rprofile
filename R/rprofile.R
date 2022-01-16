@@ -4,6 +4,7 @@
 #'   (defaults to the value of `overwrite`)
 #' @param overwrite If `TRUE` and `update = TRUE` will overwrite .Rprofile if it
 #'   exists; ignored if `update` is not `TRUE`
+#' @family Rprofile
 #' @export
 .Rprofile <- function(update = overwrite, overwrite = FALSE) {
   file <- "~/.Rprofile"
