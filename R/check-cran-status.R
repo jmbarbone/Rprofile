@@ -14,7 +14,7 @@
   }
 
   if (is.null(email)) {
-   email <- suppressWarnings(try(get_description_emails()))
+   email <- suppressWarnings(try(get_description_emails(), silent = TRUE))
    if (inherits(email, "try-error")) {
      return(invisible())
    }
@@ -41,10 +41,7 @@
 }
 
 show_table <- function() {
-  files <- list.files(tempdir(), "^cran-status.*.rds$", full.names = TRUE)
-  res <- files[which.max(file.mtime(files))]
-  res <- readRDS(res)
-
+  res <- get_recent_cran_check()
   time <- crayon_yellow(res[[1]])
   tab <- res[[2]]
 
@@ -53,44 +50,62 @@ show_table <- function() {
   print_cran_status(tab)
 }
 
+get_recent_cran_check <- function() {
+  files <- list.files(tempdir(), "^cran-status.*.rds$", full.names = TRUE)
+  res <- files[which.max(file.mtime(files))]
+  readRDS(res)
+}
+
 print_cran_status <- function(x) {
   if (!use_color()) {
     return(print(x))
   }
 
-
   x <- as.data.frame(x)
-  m <- match(c("PACKAGE", "ERROR", "WARN", "NOTE", "OK"), toupper(colnames(x)), 0L)
+  cols <- c("PACKAGE", "ERROR", "WARN", "NOTE", "OK")
+  m <- match(cols, toupper(colnames(x)), 0L)
+  names(m) <- cols
+  w <- which(m > 0L)
+  mc <- m[w]
 
   # I got lazy...
   if (all(m == 0L)) {
     return(print(x))
   }
 
-  colnames(x)[m]  <- c("PACKAGE", crayon_red("ERROR"), crayon_magenta("WARN"), crayon_blue("NOTE"), crayon_green("OK"))[m]
+  colnames(x)[mc] <- c(
+    "PACKAGE",
+    crayon_red("ERROR"),
+    crayon_magenta("WARN"),
+    crayon_blue("NOTE"),
+    crayon_green("OK")
+  )[w]
+
+  # now get them again without the formatting
   cn <- crayon_strip(colnames(x))
 
-  if (m[1] != 0) {
-    ns <- max(nchar(c(cn[m[1]], x[[m[1]]])))
-    x[[m[1]]] <- format(x[[m[1]]], width = ns)
-    colnames(x)[m[1]] <- format(colnames(x)[m[1]], width = ns)
+  if (mc["PACKAGE"] > 0L) {
+    i <- mc["PACKAGE"]
+    ns <- max(nchar(c(cn[i], x[[i]]))) + 1L
+    x[[i]] <- format(x[[i]], width = ns)
+    colnames(x)[i] <- format(colnames(x)[i], width = ns)
   }
 
-  for (i in m[-1]) {
-    if (i == 0) next
-    ok <- !(is.na(x[[i]]) | x[[i]] == "")
+  # browser()
+  for (i in mc[-1]) {
+    ok <- which(!is.na(x[[i]]) & x[[i]] != "")
     ns <- nchar(trimws(c(cn[i], x[[i]][ok])))
-    max <- max(max(ns), 3)
+    max <- max(max(ns) + 1L, 3L)
     numbs <- format(as.integer(x[[i]][ok]), width = max)
     x[[i]] <- ""
     x[[i]][ok] <- numbs
     x[[i]] <- format(x[[i]], width = max)
-    colnames(x)[i] <- paste0(strrep(" ", max - ns[1]), colnames(x)[i])
+    colnames(x)[i] <- paste0(strrep(" ", max - ns[1L]), colnames(x)[i])
   }
 
-  if (m[2] > 0) x[[m[2]]] <- crayon_red(x[[m[2]]])
-  if (m[3] > 0) x[[m[3]]] <- crayon_magenta(x[[m[3]]])
-  if (m[5] > 0) x[[m[5]]] <- crayon_green(x[[m[5]]])
+  if (isTRUE(mc["ERROR"] > 0L)) x[[mc["ERROR"]]] <- crayon_red(    x[[m["ERROR"]]])
+  if (isTRUE(mc["WARN"] > 0L))  x[[mc["WARN"]]]  <- crayon_magenta(x[[m["WARN"]]])
+  if (isTRUE(mc["OK"] > 0L))    x[[mc["OK"]]]    <- crayon_green(  x[[m["OK"]]])
 
   cat(colnames(x), "\n")
   apply(x, 1L, function(i) cat(i, "\n"))
