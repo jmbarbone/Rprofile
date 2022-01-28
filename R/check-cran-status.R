@@ -13,13 +13,14 @@
     return(invisible())
   }
 
-  if (is.null(email)) {
+  if (is.null(email) && !length(email)) {
    email <- suppressWarnings(try(get_description_emails(), silent = TRUE))
    if (inherits(email, "try-error")) {
      return(invisible())
    }
   }
 
+  cat("Checking CRAN status\n")
   success <- FALSE
   for (e in email) {
     if (success) cat("\n")
