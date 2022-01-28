@@ -29,5 +29,5 @@ cat_fortune <- function() {
   x <- paste(utils::capture.output(fortunes::fortune(width = 1000)))
   x <- x[seq_along(x[-1])[-1]]
   x <- paste0(x, "\n")
-  cat(crayon_yellow(x), sep = "\n")
+  cat(crayon_yellow(x))
 }
