@@ -38,4 +38,6 @@ library(Rprofile)
 .ResetOptions()     # resets options
 .GitBranchPrompt()  # shows git branch
 .Todos(), .Fixmes() # shows comments marked as TODO or FIXME
+.CheckCranStatus()  # shows current CRAN status for packages by authors
+.Search()           # pretty print of search()
 ```
