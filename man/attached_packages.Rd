@@ -9,12 +9,12 @@
 \usage{
 .SendAttachedPackagesToREnviron()
 
-.RemoveAttachedPackages(attached = NULL)
+.RemoveAttachedPackages(attached = search())
 
 .AddAttachedPackagesToDefaultPackages()
 }
 \arguments{
-\item{attached}{A character vector of packages - if NULL will find packages}
+\item{attached}{A character vector of packages, defaulting to \code{search()}}
 }
 \description{
 Clears out attached packages and properly loads
