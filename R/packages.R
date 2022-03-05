@@ -32,17 +32,13 @@
 
 #' @export
 #' @rdname attached_packages
-#' @param attached A character vector of packages - if NULL will find packages
-.RemoveAttachedPackages <- function(attached = NULL) {
-  if (is.null(attached)) {
-    attached <- grep("^package[:]", search(), value = TRUE)
-  } else {
-    bad <- grep("^package[:]", attached, invert = TRUE)
-    attached[bad] <- paste0("package:", attached[bad])
-  }
+#' @param attached A character vector of packages, defaulting to `search()`
+.RemoveAttachedPackages <- function(attached = search()) {
+  bad <- grep("^(package|org)[:]", attached, invert = TRUE)
+  attached[bad] <- paste0("package:", attached[bad])
 
   fine <- default_packages()
-  attached <- setdiff(attached, names(fine))
+  attached <- attached %wo% names(fine)
 
   for (a in attached) {
     tryCatch({
