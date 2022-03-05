@@ -21,6 +21,7 @@ Other Rprofile:
 \code{\link{.AddRprofileOptions}()},
 \code{\link{.AttachDevtools}()},
 \code{\link{.NiceMessage}()},
+\code{\link{.Search}()},
 \code{\link{.UtilMessage}()},
 \code{\link{attached_packages}}
 }
