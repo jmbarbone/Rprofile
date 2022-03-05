@@ -47,5 +47,6 @@ if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
     .Todos(.quiet = FALSE, .space = TRUE)
     .AddRprofileOptions(crayon.enabled = NULL)
     .CheckCranStatus()
+    .Search()
   }
 }
