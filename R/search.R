@@ -13,7 +13,8 @@
     if (n <= 2) {
       paste0(x, collapse = "")
     } else {
-      by <- max(2, getOption("width") %/% nchar(x[1]))
+      nc <- nchar(x[1])
+      by <- max(2, max(nc, getOption("width") - 2) %/% nc)
       s <- unique(c(seq(0, n, by = by), n))
       ends <- s[-1]
       starts <- s[-length(s)] + 1
