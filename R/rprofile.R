@@ -10,7 +10,7 @@
   file <- "~/.Rprofile"
   if (update) {
     on.exit(try(Sys.chmod(file, "200"), silent = TRUE), add = TRUE)
-    rfile <- sf(".Rprofile", check = TRUE)
+    rfile <- sf("dot-Rprofile.R", check = TRUE)
     file.copy(rfile, file, overwrite = overwrite, copy.date = TRUE)
   } else {
     file <- normalizePath(file, mustWork = TRUE)
