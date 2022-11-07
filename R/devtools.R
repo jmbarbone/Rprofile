@@ -7,7 +7,7 @@
 #' @export
 #' @family Rprofile
 .AttachDevtools <- function() {
-  mark::require_namespace("devtools")
+  requireNamespace("devtools")
   # mimics cli::cli_inform()
   cat(crayon_cyan("i"), " Loading ", crayon_blue("devtools"), "\n", sep = "")
   # cheating to not use base::require()

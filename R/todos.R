@@ -8,10 +8,10 @@
 #'   `Rstudio`.
 #'
 #' @export
-#' @param ... additional arguments pass to [mark::todos]
+#' @param ... additional arguments pass to `mark::todos``
 #' @param .quiet If `TRUE` doesn't print result
 #' @param .space If `TRUE` adds another `"\n"` to the output
-#' @return See [mark::todos]
+#' @return See `?mark::todos`
 #' @name todos
 .Todos <- function(..., .quiet = FALSE, .space = FALSE) {
   on.exit(if (.space) cat("\n"))
@@ -40,6 +40,11 @@
 # helpers -----------------------------------------------------------------
 
 do_todos <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
+  if (!requireNamespace("mark", quietly = TRUE)) {
+    message("mark is not available")
+    return(invisible())
+  }
+
   type <- mark::match_param(type)
   fun <- switch(type, todo = mark::todos, fixme = mark::fixmes)
   todo <- try(fun(...), silent = TRUE)
@@ -48,7 +53,7 @@ do_todos <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
 }
 
 do_todo_here <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
-  mark::require_namespace("rstudioapi")
+  requireNamespace("rstudioapi")
   stopifnot(interactive(), "path" %out% ...names())
   path <- rstudioapi::getSourceEditorContext()$path
   do_todos(type = type, path = path, ..., .quiet = .quiet)

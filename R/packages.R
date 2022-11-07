@@ -22,7 +22,7 @@
 
   defaults <- c(default_packages(), attached)
   x$op$defaultPackages <- defaults
-  pkgs <- mark::collapse0(defaults, sep = ",")
+  pkgs <- paste0(defaults, collapse = ",")
   line <- sprintf("%s\nR_DEFAULT_PACKAGES='%s'\n", tag, pkgs)
   cat(line, sep = "", file = file, append = fe)
 

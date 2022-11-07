@@ -13,6 +13,9 @@
 #'
 #' @export
 .CharacterIndex <- function(x = NULL) {
+  requireNamespace("fuj")
+  requireNamespace("mark")
+
   if (is.null(x)) {
     x <- mark::read_clipboard()
   }
@@ -23,6 +26,6 @@
     }
 
     nm <- mark::chr_split(x)
-    mark::set_names0(seq_along(nm), nm)
+    fuj::set_names(seq_along(nm), nm)
   })
 }
