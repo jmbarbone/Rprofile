@@ -3,6 +3,6 @@
 # Loads devtools and usethis
 
 if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
-  Rprofile::.AttachDevtools()
-  Rprofile::.GitBranchPrompt()
+  tryCatch(Rprofile::.AttachDevtools(), error = function(e) invisible())
+  tryCatch(Rprofile::.GitBranchPrompt(), error = function(e) invisible())
 }
