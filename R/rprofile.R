@@ -9,7 +9,7 @@
 .Rprofile <- function(update = overwrite, overwrite = FALSE) {
   file <- "~/.Rprofile"
   if (update) {
-    on.exit(try(Sys.chmod(file, "200"), silent = TRUE), add = TRUE)
+    on.exit(try(Sys.chmod(file, "777"), silent = TRUE), add = TRUE)
     rfile <- sf("dot-Rprofile.R", check = TRUE)
     file.copy(rfile, file, overwrite = overwrite, copy.date = TRUE)
   } else {
