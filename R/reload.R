@@ -14,7 +14,7 @@
   if (remove_objects) {
     if (loud & length(objs) > 0L) {
       message("Removing all objects in the Global Environment:\n",
-        mark::collapse0(objs, sep = " ... "))
+        paste0(objs, collapse = " ... "))
     }
     rm(list = objs, envir = .GlobalEnv)
   }
@@ -27,7 +27,7 @@
 #' @export
 #' @rdname Reload
 .Restart <- function() {
-  mark::require_namespace("rstudioapi")
+  requireNamespace("rstudioapi")
   .ResetOptions()
   .RemoveAll()
   rstudioapi::restartSession()

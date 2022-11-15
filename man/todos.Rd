@@ -17,14 +17,14 @@
 .FixmesHere(..., .quiet = FALSE)
 }
 \arguments{
-\item{...}{additional arguments pass to \link[mark:todos]{mark::todos}}
+\item{...}{additional arguments pass to `mark::todos``}
 
 \item{.quiet}{If \code{TRUE} doesn't print result}
 
 \item{.space}{If \code{TRUE} adds another \code{"\\n"} to the output}
 }
 \value{
-See \link[mark:todos]{mark::todos}
+See \code{?mark::todos}
 }
 \description{
 \code{.Todos()} and \code{.Fixmes()} default to recursively searching the

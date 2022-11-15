@@ -17,7 +17,6 @@ RoxygenNote: 7.2.1
 Depends:
     R (>= 3.6.0)
 Imports: 
-    mark,
     magrittr,
     utils
 Suggests:
@@ -25,8 +24,11 @@ Suggests:
     dang,
     devtools,
     fortunes,
+    fuj, 
+    mark,
     praise,
     prompt,
     rstudioapi
 Remotes:
+    github::jmbarbone/fuj,
     github::jmbarbone/mark
