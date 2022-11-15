@@ -30,5 +30,5 @@ Suggests:
     prompt,
     rstudioapi
 Remotes:
-    github::jmbarbone/fuj
+    github::jmbarbone/fuj,
     github::jmbarbone/mark
