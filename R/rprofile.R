@@ -15,6 +15,6 @@
   } else {
     file <- normalizePath(file, mustWork = TRUE)
     cat("Opening", file, "\n")
-    file.edit(file)
+    utils::file.edit(file)
   }
 }
