@@ -19,12 +19,12 @@
 }
 
 cat_praise <- function() {
-  mark::require_namespace("praise")
+  requireNamespace("praise")
   cat(crayon_yellow(praise::praise()), "\n")
 }
 
 cat_fortune <- function() {
-  mark::require_namespace("fortunes")
+  requireNamespace("fortunes")
   # setting width high as it is adjusted later
   x <- paste(utils::capture.output(fortunes::fortune(width = 1000)))
   x <- x[seq_along(x[-1])[-1]]

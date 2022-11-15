@@ -9,7 +9,7 @@
   # op <- options(warn = -1) # get rid of warnings for now
   # on.exit(options(op))
 
-  if (!mark::package_available("dang")) {
+  if (!requireNamespace("dang", quietly = TRUE)) {
     return(invisible())
   }
 
