@@ -27,7 +27,7 @@
   cat("Copying files...\n  old  ", old, "\n  new  ", new, "\n", sep = "")
 
   if (isTRUE(file.copy(old, new, overwrite = isTRUE(overwrite)))) {
-    fs::file_chmod(new, "u-x")
+    fs::file_chmod(new, "+x")
     writeLines(crayon_green("Success"))
   } else {
     writeLines(crayon_red("Failure"))
