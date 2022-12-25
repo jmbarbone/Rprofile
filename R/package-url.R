@@ -15,7 +15,7 @@ do_open_pkg_url <- function(x) {
     return(NULL)
   }
 
-  urls <- packageDescription(x)$URL
+  urls <- utils::packageDescription(x)$URL
 
   if (is.null(urls)) {
     msg <- sprintf("no URL found for {%s}", x)
