@@ -11,10 +11,10 @@
 numeric starts to a branch name, and then appends that to the beginning of
 the message with an octothorp (e.g., 123-branch appends "#123 ").  The
 \code{jira} version looks for the alphanumeric code value of a ticket and
-appends that with square brackets (e.g., ABC-123 appends "\link{ABC-123} ").}
+appends that with square brackets (e.g., ABC-123 appends "[ABC-123] ").}
 
 \item{overwrite}{If \code{TRUE}, overwrites the \code{.git/hooks/prepare-commit-msg}
-file, if it exists (passed to \code{\link[base:files]{base::file.copy()}})}
+file, if it exists (passed to \link[fs:copy]{fs::file_copy})}
 }
 \description{
 Copies one of two git message preparation templates
