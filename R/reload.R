@@ -99,7 +99,7 @@ remove_tag_and_save <- function(file, tag, warn = TRUE) {
 
   # Remove line of tag and next line
   out <- x[-c(line, line + 1L)]
-  out <- mark::collapse0(out, sep = "\n")
+  out <- paste0(out, collapse = "\n")
   out <- gsub("\n?$", "\n", out)
   writeLines(out, file)
 }

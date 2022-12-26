@@ -8,12 +8,15 @@
 #' @export
 .Rprofile <- function(update = overwrite, overwrite = FALSE) {
   file <- "~/.Rprofile"
+  requireNamespace("fs")
+
   if (update) {
-    on.exit(try(Sys.chmod(file, "777"), silent = TRUE), add = TRUE)
+    on.exit(try(fs::file_chmod(file, "777"), silent = TRUE), add = TRUE)
     rfile <- sf("dot-Rprofile.R", check = TRUE)
-    file.copy(rfile, file, overwrite = overwrite, copy.date = TRUE)
+    fs::file_copy(rfile, file, overwrite = overwrite)
   } else {
-    file <- normalizePath(file, mustWork = TRUE)
+    file <- fs::path_norm(file)
+    stopifnot(fs::file_exists(file))
     cat("Opening", file, "\n")
     utils::file.edit(file)
   }
