@@ -8,13 +8,16 @@
 #'   `jira` version looks for the alphanumeric code value of a ticket and
 #'   appends that with square brackets (e.g., ABC-123 appends "\[ABC-123\] ").
 #' @param overwrite If `TRUE`, overwrites the `.git/hooks/prepare-commit-msg`
-#'   file, if it exists (passed to [fs::file_copy])
+#'   file, if it exists (passed to `fs::file_copy`)
 #'
 #' @export
 .GitPrepareCommitMsg <- function(
     method = c("github", "jira"),
     overwrite = FALSE
 ) {
+  requireNamespace("mark")
+  requireNamespace("fs")
+
   method <- mark::match_param(method)
   file <- sprintf("prepare-commit-msg-%s.sh", method)
   old <- system.file(file, package = "Rprofile", mustWork = TRUE)

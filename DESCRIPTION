@@ -17,7 +17,6 @@ RoxygenNote: 7.2.3
 Depends:
     R (>= 3.6.0)
 Imports: 
-    fs,
     magrittr,
     utils
 Suggests:
@@ -26,6 +25,7 @@ Suggests:
     devtools,
     fortunes,
     fuj, 
+    fs,
     mark,
     praise,
     prompt,
