@@ -1,6 +1,7 @@
 # Rprofile (development)
 
-* Adds `.GitPrepareCommitMsg()` to copy one of two templates to `.git/hook/prepare-commit-msg` [#10]
+* Adds `.NewsUrls()` to update links in `NEWS.md` [#11](https://github.com/jmbarbone/Rprofile/issues/11)
+* Adds `.GitPrepareCommitMsg()` to copy one of two templates to `.git/hook/prepare-commit-msg` [#10](https://github.com/jmbarbone/Rprofile/issues/10)
 
 # Rprofile 0.0.0.9000
 
