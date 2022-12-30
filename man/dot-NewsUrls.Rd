@@ -4,7 +4,7 @@
 \alias{.NewsUrls}
 \title{Add URLs to NEWS}
 \usage{
-.NewsUrls(path = ".", ask = interactive(), url = NULL, check)
+.NewsUrls(path = ".", ask = interactive(), url = NULL)
 }
 \arguments{
 \item{path}{The path to your package}

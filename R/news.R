@@ -7,7 +7,7 @@
 #' @param url Optional URL to set for bug reports
 #' @returns Nothing, called for its side effects
 #' @export
-.NewsUrls <- function(path = ".", ask = interactive(), url = NULL, check) {
+.NewsUrls <- function(path = ".", ask = interactive(), url = NULL) {
   stopifnot(length(path) == 1, is.character(path))
 
   path0 <- path
