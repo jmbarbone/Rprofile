@@ -8,6 +8,14 @@
 \description{
 What the package does (one paragraph).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/jmbarbone/Rprofile}
+  \item Report bugs at \url{https://github.com/jmbarbone/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Jordan Mark Barbone \email{jmbarbone@gmail.com} (\href{https://orcid.org/0000-0001-9788-3628}{ORCID}) [copyright holder]
 
