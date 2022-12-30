@@ -7,8 +7,11 @@
 #' @param url Optional URL to set for bug reports
 #' @returns Nothing, called for its side effects
 #' @export
-.NewsUrls <- function(path = ".", ask = interactive(), url = NULL) {
+.NewsUrls <- function(path = ".", ask = interactive(), url = NULL, check) {
   stopifnot(length(path) == 1, is.character(path))
+
+  path0 <- path
+
   if (is.null(url)) {
     url <- get_desc_url(path)
   }
@@ -40,6 +43,13 @@
   )
 
   writeLines(x, path)
+
+  if (requireNamespace("urlchecker", quietly = TRUE)) {
+    message("running urlchecker::url_check()")
+    try(urlchecker::url_check(path = path0, progress = FALSE))
+  }
+
+  invisible()
 }
 
 get_desc_url <- function(x = ".") {
