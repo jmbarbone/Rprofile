@@ -9,6 +9,8 @@ Authors@R:
            comment = c(ORCID = "0000-0001-9788-3628"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
+URL: https://github.com/jmbarbone/Rprofile
+BugReports: https://github.com/jmbarbone/issues
 Encoding: UTF-8
 Language: en-US
 LazyData: true
@@ -24,12 +26,14 @@ Suggests:
     dang,
     devtools,
     fortunes,
-    fuj, 
+    fuj,
     fs,
     mark,
     praise,
     prompt,
-    rstudioapi
+    rstudioapi,
+    testthat (>= 3.0.0)
 Remotes:
     github::jmbarbone/fuj,
     github::jmbarbone/mark
+Config/testthat/edition: 3
