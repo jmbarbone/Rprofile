@@ -36,9 +36,10 @@
   fs::dir_create(hook_dir)
   new <- fs::path(hook_dir, "prepare-commit-msg")
   cat("Copying files...\n  old  ", old, "\n  new  ", new, "\n", sep = "")
+  fs::file_copy(old, new, overwrite = isTRUE(overwrite))
+  fs::file_chmod(new, "777")
 
-  if (isTRUE(fs::file_copy(old, new, overwrite = isTRUE(overwrite)))) {
-    fs::file_chmod(new, "+x")
+  if (fs::file_access(new, mode = "executable")) {
     writeLines(crayon_green("Success"))
   } else {
     writeLines(crayon_red("Failure"))
