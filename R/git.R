@@ -39,6 +39,11 @@
   fs::file_copy(old, new, overwrite = isTRUE(overwrite))
   fs::file_chmod(new, "777")
 
+  if (fuj::is_windows()) {
+    # specifically for the GitHub desktop app
+    writeLines(c("#!/usr/bin/env sh", readLines(new)[-1]), new)
+  }
+
   if (fs::file_access(new, mode = "execute")) {
     writeLines(crayon_green("Success"))
   } else {
