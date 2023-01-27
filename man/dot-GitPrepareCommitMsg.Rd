@@ -4,9 +4,15 @@
 \alias{.GitPrepareCommitMsg}
 \title{Git prepare commit message}
 \usage{
-.GitPrepareCommitMsg(method = c("github", "jira"), overwrite = FALSE)
+.GitPrepareCommitMsg(
+  path = ".",
+  method = c("github", "jira"),
+  overwrite = FALSE
+)
 }
 \arguments{
+\item{path}{The path directory of your package (with a \code{.git} folder inside)}
+
 \item{method}{Either \code{"github"} or \code{"jira"}.  The \code{github} version looks for
 numeric starts to a branch name, and then appends that to the beginning of
 the message with an octothorp (e.g., 123-branch appends "#123 ").  The
