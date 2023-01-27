@@ -39,7 +39,7 @@
   fs::file_copy(old, new, overwrite = isTRUE(overwrite))
   fs::file_chmod(new, "777")
 
-  if (fs::file_access(new, mode = "executable")) {
+  if (fs::file_access(new, mode = "execute")) {
     writeLines(crayon_green("Success"))
   } else {
     writeLines(crayon_red("Failure"))
