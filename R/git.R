@@ -2,6 +2,7 @@
 #'
 #' Copies one of two git message preparation templates
 #'
+#' @param path The path directory of your package (with a `.git` folder inside)
 #' @param method Either `"github"` or `"jira"`.  The `github` version looks for
 #'   numeric starts to a branch name, and then appends that to the beginning of
 #'   the message with an octothorp (e.g., 123-branch appends "#123 ").  The
@@ -12,11 +13,16 @@
 #'
 #' @export
 .GitPrepareCommitMsg <- function(
+    path = ".",
     method = c("github", "jira"),
     overwrite = FALSE
 ) {
   requireNamespace("mark")
   requireNamespace("fs")
+
+  wd <- getwd()
+  on.exit(setwd(wd))
+  setwd(path)
 
   method <- mark::match_param(method)
   file <- sprintf("prepare-commit-msg-%s.sh", method)
