@@ -1,7 +1,7 @@
 # Rprofile (development)
 
-* Adds `.NewsUrls()` to update links in `NEWS.md` [#11](https://github.com/jmbarbone/Rprofile/issues/11)
-* Adds `.GitPrepareCommitMsg()` to copy one of two templates to `.git/hook/prepare-commit-msg` [#10](https://github.com/jmbarbone/Rprofile/issues/10)
+* Adds `.GitPrepareCommitMsg()` to copy one of two templates to `.git/hook/prepare-commit-msg` [#10]
+* Adds `.OpenFile()` to open a file path or an object inside a file [#6]
 
 # Rprofile 0.0.0.9000
 
