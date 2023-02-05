@@ -33,7 +33,9 @@ Suggests:
     prompt,
     rstudioapi,
     testthat (>= 3.0.0),
-    urlchecker
+    urlchecker,
+    readr,
+    xopen
 Remotes:
     github::jmbarbone/fuj,
     github::jmbarbone/mark
