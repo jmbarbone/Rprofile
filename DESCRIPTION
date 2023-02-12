@@ -35,7 +35,8 @@ Suggests:
     testthat (>= 3.0.0),
     urlchecker,
     readr,
-    xopen
+    xopen,
+    spelling
 Remotes:
     github::jmbarbone/fuj,
     github::jmbarbone/mark
