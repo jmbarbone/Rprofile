@@ -53,7 +53,7 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.GitPrepareCommitMsg</span><span class="op">(</span></span>
 <span>  path <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"github"</span>, <span class="st">"jira"</span><span class="op">)</span>,</span>
+<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"github"</span>, <span class="st">"jira"</span>, <span class="st">"github-start"</span>, <span class="st">"github-end"</span>, <span class="st">"jira-start"</span>, <span class="st">"jira-end"</span><span class="op">)</span>,</span>
 <span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -65,11 +65,15 @@
 
 
 <dt>method</dt>
-<dd><p>Either <code>"github"</code> or <code>"jira"</code>.  The <code>github</code> version looks for
-numeric starts to a branch name, and then appends that to the beginning of
-the message with an octothorp (e.g., 123-branch appends "#123 ").  The
-<code>jira</code> version looks for the alphanumeric code value of a ticket and
-appends that with square brackets (e.g., ABC-123 appends "[ABC-123] ").</p></dd>
+<dd><p>One of the following (see details for more info): <code>github</code>,
+<code>jira</code>, <code>github-start</code>, <code>github-end</code>, <code>jira-start</code>, <code>jira-end</code>.  The
+<code>github</code> versions looks for numeric starts to a branch name, and then
+either appends the branch number to the beginning of the message with an
+octothorp (e.g., 123-branch appends "#123 ") or at the end, wrapped in
+parenthesis.  The <code>jira</code> version looks for the alphanumeric code value of a
+ticket and appends that with square brackets (e.g., ABC-123 appends
+"[ABC-123] ") to the start or the end.  Appending to the <em>start</em> is the
+default functionality.</p></dd>
 
 
 <dt>overwrite</dt>
