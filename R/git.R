@@ -2,19 +2,24 @@
 #'
 #' Copies one of two git message preparation templates
 #'
+#'
 #' @param path The path directory of your package (with a `.git` folder inside)
-#' @param method Either `"github"` or `"jira"`.  The `github` version looks for
-#'   numeric starts to a branch name, and then appends that to the beginning of
-#'   the message with an octothorp (e.g., 123-branch appends "#123 ").  The
-#'   `jira` version looks for the alphanumeric code value of a ticket and
-#'   appends that with square brackets (e.g., ABC-123 appends "\[ABC-123\] ").
+#' @param method One of the following (see details for more info): `github`,
+#'   `jira`, `github-start`, `github-end`, `jira-start`, `jira-end`.  The
+#'   `github` versions looks for numeric starts to a branch name, and then
+#'   either appends the branch number to the beginning of the message with an
+#'   octothorp (e.g., 123-branch appends "#123 ") or at the end, wrapped in
+#'   parenthesis.  The `jira` version looks for the alphanumeric code value of a
+#'   ticket and appends that with square brackets (e.g., ABC-123 appends
+#'   "\[ABC-123\] ") to the start or the end.  Appending to the _start_ is the
+#'   default functionality.
 #' @param overwrite If `TRUE`, overwrites the `.git/hooks/prepare-commit-msg`
 #'   file, if it exists (passed to `fs::file_copy`)
 #'
 #' @export
 .GitPrepareCommitMsg <- function(
     path = ".",
-    method = c("github", "jira"),
+    method = c("github", "jira", "github-start", "github-end", "jira-start", "jira-end"),
     overwrite = FALSE
 ) {
   requireNamespace("mark")
@@ -25,6 +30,8 @@
   setwd(path)
 
   method <- mark::match_param(method)
+
+  method <- sub("-start$", "", method)
   file <- sprintf("prepare-commit-msg-%s.sh", method)
   old <- system.file(file, package = "Rprofile", mustWork = TRUE)
 
