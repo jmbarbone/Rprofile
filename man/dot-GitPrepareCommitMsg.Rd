@@ -6,18 +6,22 @@
 \usage{
 .GitPrepareCommitMsg(
   path = ".",
-  method = c("github", "jira"),
+  method = c("github", "jira", "github-start", "github-end", "jira-start", "jira-end"),
   overwrite = FALSE
 )
 }
 \arguments{
 \item{path}{The path directory of your package (with a \code{.git} folder inside)}
 
-\item{method}{Either \code{"github"} or \code{"jira"}.  The \code{github} version looks for
-numeric starts to a branch name, and then appends that to the beginning of
-the message with an octothorp (e.g., 123-branch appends "#123 ").  The
-\code{jira} version looks for the alphanumeric code value of a ticket and
-appends that with square brackets (e.g., ABC-123 appends "[ABC-123] ").}
+\item{method}{One of the following (see details for more info): \code{github},
+\code{jira}, \code{github-start}, \code{github-end}, \code{jira-start}, \code{jira-end}.  The
+\code{github} versions looks for numeric starts to a branch name, and then
+either appends the branch number to the beginning of the message with an
+octothorp (e.g., 123-branch appends "#123 ") or at the end, wrapped in
+parenthesis.  The \code{jira} version looks for the alphanumeric code value of a
+ticket and appends that with square brackets (e.g., ABC-123 appends
+"[ABC-123] ") to the start or the end.  Appending to the \emph{start} is the
+default functionality.}
 
 \item{overwrite}{If \code{TRUE}, overwrites the \code{.git/hooks/prepare-commit-msg}
 file, if it exists (passed to \code{fs::file_copy})}
