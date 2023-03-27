@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Based on https://serebrov.github.io/html/2019-06-16-git-hook-to-add-issue-number-to-commit-message.html
 #
 # This hook works for branches named such as "123-description" and will add
-# "#123 " to the commit message.
+# "(#23) " to the commit message.
 #
-# 123-description >> #123
+# 123-description >> (#123)
 #
 # Example:
 #
@@ -13,7 +12,7 @@
 # $ echo "commit msg" > foo
 # $ sh .git/hooks/prepare-commit-msg foo
 # $ cat foo
-# #> #123 commit msg
+# #> commit msg (#123)
 # ```
 
 # get current branch
@@ -27,5 +26,5 @@ ISSUE_ID=$(echo $BRANCH_NAME | sed -nE 's,(^[0-9]+)-.+,\1,p')
 if [[ ! -z $ISSUE_ID ]]
 then
   # $1 is the name of the file containing the commit message
-  echo -e "#$ISSUE_ID $(cat $1)" > "$1"
+  echo -e "$(cat $1) (#$ISSUE_ID)" > "$1"
 fi

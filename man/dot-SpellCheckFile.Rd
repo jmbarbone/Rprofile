@@ -7,7 +7,8 @@
 .SpellCheckFile(path = NULL)
 }
 \arguments{
-\item{path}{A path to spell check; if \code{NULL} check the current}
+\item{path}{A path to spell check; if \code{NULL} check the current file open in
+the RStudio editor}
 }
 \description{
 Spell check a file
