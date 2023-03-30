@@ -9,7 +9,7 @@
 #' @param ... Additional arguments passed to `lintr::lint()`
 #' @returns See `lintr::lint()`
 #' @export
-.LintFile <- function(path = NULL, linters = "default", ...) {
+.LintFile <- function(path = NULL, linters = NULL, ...) {
   fuj::require_namespace("lintr")
 
   if (is.null(path)) {
@@ -17,10 +17,11 @@
     path <- rstudioapi::getSourceEditorContext()$path
   }
 
-  if (is.character(linters)) {
-    linters <- lintr::available_linters(tags = linters)$linter
-    linters <- fuj::set_names(linters)
-    linters <- lapply(linters, get, pos = asNamespace("lintr"))
+  if (is.null(linters) && file.exists(".lintr") && getOption("verbose")) {
+    message("Presumably reading from .lintr")
+    writeLines(readLines(".lintr"))
+  } else if (is.character(linters)) {
+    linters <- lintr::linters_with_tags(linters)
   }
 
   path <- normalizePath(path, .Platform$file.sep, mustWork = TRUE)

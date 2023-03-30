@@ -4,7 +4,7 @@
 \alias{.LintFile}
 \title{Lint a single file}
 \usage{
-.LintFile(path = NULL, linters = "default", ...)
+.LintFile(path = NULL, linters = NULL, ...)
 }
 \arguments{
 \item{path}{The file path.  Default (\code{NULL}) checks for the current file open
