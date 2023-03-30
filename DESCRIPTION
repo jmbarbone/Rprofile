@@ -37,7 +37,8 @@ Suggests:
     urlchecker,
     readr,
     xopen,
-    spelling
+    spelling,
+    lintr
 Remotes:
     github::jmbarbone/fuj,
     github::jmbarbone/mark
