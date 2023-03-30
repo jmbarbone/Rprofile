@@ -4,15 +4,20 @@
 \alias{.LintFile}
 \title{Lint a single file}
 \usage{
-.LintFile(path = NULL)
+.LintFile(path = NULL, linters = "default", ...)
 }
 \arguments{
 \item{path}{The file path.  Default (\code{NULL}) checks for the current file open
 in the source editor in \strong{RStudio}.}
+
+\item{linters}{Passed to \code{linters} argument in \code{lintr::lint()}; however,
+when passing a character vector, finds all linters with that tag.}
+
+\item{...}{Additional arguments passed to \code{lintr::lint()}}
 }
 \value{
-See \code{lintr::lint_dir()}
+See \code{lintr::lint()}
 }
 \description{
-Use \code{lintr::lint_dir()} to \emph{lint} a single file
+Use \code{lintr::lint()} to \emph{lint} a single file
 }
