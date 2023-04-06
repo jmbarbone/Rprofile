@@ -1,8 +1,16 @@
 # Rprofile (development)
 
+## New features
+
+* `.Rprofile()` gains a `path` argument (with defaults) for identifying an `.Rprofile` location [#23]
+* `.FindRprofile()` added to find your `.Rprofile` file; used within `.Rprofile()` [#23] 
 * Adds `.LintFile()` for selecting individual files to `lint` (defaults to currently opened file) [#21]
 * Adds `.GitPrepareCommitMsg()` to copy one of two templates to `.git/hook/prepare-commit-msg` [#10]
 * Adds `.OpenFile()` to open a file path or an object inside a file [#6]
+
+## Fixes
+
+* `.Rprofile()` now uses `fs::path_expand_r()` to resolve tilde expansions, e.g., with `"~/.Rprofile"` [#23]
 
 # Rprofile 0.0.0.9000
 
