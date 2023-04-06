@@ -4,7 +4,7 @@
 \alias{.Rprofile}
 \title{Get .Rprofile}
 \usage{
-.Rprofile(update = overwrite, overwrite = FALSE)
+.Rprofile(update = overwrite, overwrite = FALSE, path = .FindRprofile())
 }
 \arguments{
 \item{update}{If \code{TRUE} will copy the .Rprofile from the Rprofile package
@@ -12,6 +12,8 @@
 
 \item{overwrite}{If \code{TRUE} and \code{update = TRUE} will overwrite .Rprofile if it
 exists; ignored if \code{update} is not \code{TRUE}}
+
+\item{path}{The file location of your \code{.Rprofile}}
 }
 \description{
 Get .Rprofile
