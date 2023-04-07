@@ -17,8 +17,8 @@ Other Rprofile:
 \code{\link{.AddRprofileOptions}()},
 \code{\link{.AttachDevtools}()},
 \code{\link{.NiceMessage}()},
-\code{\link{.Rprofile}()},
 \code{\link{.UtilMessage}()},
+\code{\link{Rprofile-file}},
 \code{\link{attached_packages}}
 }
 \concept{Rprofile}
