@@ -25,6 +25,9 @@
     <loc>https://jmbarbone.github.io/Rprofile/reference/Reload.html</loc>
   </url>
   <url>
+    <loc>https://jmbarbone.github.io/Rprofile/reference/Rprofile-file.html</loc>
+  </url>
+  <url>
     <loc>https://jmbarbone.github.io/Rprofile/reference/Rprofile-package.html</loc>
   </url>
   <url>
@@ -65,9 +68,6 @@
   </url>
   <url>
     <loc>https://jmbarbone.github.io/Rprofile/reference/dot-ResetOptions.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/Rprofile/reference/dot-Rprofile.html</loc>
   </url>
   <url>
     <loc>https://jmbarbone.github.io/Rprofile/reference/dot-Search.html</loc>
