@@ -1,12 +1,18 @@
 #' Get .Rprofile
 #'
+#' @returns
+#' * `.Rprofile()` The `.Rprofile()` path, invisibly
+#' @family Rprofile
+#' @name Rprofile
+NULL
+
+#' @export
+#' @rdname Rprofile
 #' @param update If `TRUE` will copy the .Rprofile from the Rprofile package
 #'   (defaults to the value of `overwrite`)
 #' @param overwrite If `TRUE` and `update = TRUE` will overwrite .Rprofile if it
 #'   exists; ignored if `update` is not `TRUE`
 #' @param path The file location of your `.Rprofile`
-#' @family Rprofile
-#' @export
 .Rprofile <- function(
     update = overwrite,
     overwrite = FALSE,
@@ -31,16 +37,16 @@
 
     cat("Opening", old_path, "\n")
     utils::file.edit(old_path)
+    invisible(old_path)
   }
 }
 
-#' Find `.Rprofile`
-#'
-#' @details The first location searched is
-#'
+#' @export
+#' @rdname Rprofile
 #' @param quiet If `TRUE` silences messages, otherwise provides information
 #'   about the location of `.Rprofile`
-#' @returns See **Details**
+#' @returns
+#' * `.FindRprofile()` (hopefully) a path to your `.Rprofile`
 .FindRprofile <- function(quiet = FALSE) {
   msg <- if (quiet) {
     function(...) invisible()
@@ -48,7 +54,7 @@
     match.fun("message")
   }
 
-  path <- getOption("rprofile.rprofile", NA)
+  path <- getOption("rprofile.rprofile")
 
   if (!is.null(path)) {
     msg("using .Rprofile from options")
