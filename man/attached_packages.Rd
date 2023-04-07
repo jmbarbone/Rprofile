@@ -24,8 +24,8 @@ Other Rprofile:
 \code{\link{.AddRprofileOptions}()},
 \code{\link{.AttachDevtools}()},
 \code{\link{.NiceMessage}()},
-\code{\link{.Rprofile}()},
 \code{\link{.Search}()},
-\code{\link{.UtilMessage}()}
+\code{\link{.UtilMessage}()},
+\code{\link{Rprofile}}
 }
 \concept{Rprofile}

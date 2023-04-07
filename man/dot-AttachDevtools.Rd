@@ -16,9 +16,9 @@ Attached \code{devtools} without start up messages
 Other Rprofile: 
 \code{\link{.AddRprofileOptions}()},
 \code{\link{.NiceMessage}()},
-\code{\link{.Rprofile}()},
 \code{\link{.Search}()},
 \code{\link{.UtilMessage}()},
+\code{\link{Rprofile}},
 \code{\link{attached_packages}}
 }
 \concept{Rprofile}

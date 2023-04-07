@@ -20,8 +20,8 @@ Other Rprofile:
 \code{\link{.AddRprofileOptions}()},
 \code{\link{.AttachDevtools}()},
 \code{\link{.NiceMessage}()},
-\code{\link{.Rprofile}()},
 \code{\link{.Search}()},
+\code{\link{Rprofile}},
 \code{\link{attached_packages}}
 }
 \concept{Rprofile}
