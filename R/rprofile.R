@@ -3,11 +3,11 @@
 #' @returns
 #' * `.Rprofile()` The `.Rprofile()` path, invisibly
 #' @family Rprofile
-#' @name Rprofile
+#' @name Rprofile-file
 NULL
 
 #' @export
-#' @rdname Rprofile
+#' @rdname Rprofile-file
 #' @param update If `TRUE` will copy the .Rprofile from the Rprofile package
 #'   (defaults to the value of `overwrite`)
 #' @param overwrite If `TRUE` and `update = TRUE` will overwrite .Rprofile if it
@@ -42,7 +42,7 @@ NULL
 }
 
 #' @export
-#' @rdname Rprofile
+#' @rdname Rprofile-file
 #' @param quiet If `TRUE` silences messages, otherwise provides information
 #'   about the location of `.Rprofile`
 #' @returns
