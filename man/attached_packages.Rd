@@ -26,6 +26,6 @@ Other Rprofile:
 \code{\link{.NiceMessage}()},
 \code{\link{.Search}()},
 \code{\link{.UtilMessage}()},
-\code{\link{Rprofile}}
+\code{\link{Rprofile-file}}
 }
 \concept{Rprofile}
