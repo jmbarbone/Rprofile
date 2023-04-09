@@ -51,7 +51,12 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.LintFile</span><span class="op">(</span>path <span class="op">=</span> <span class="cn">NULL</span>, linters <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.LintFile</span><span class="op">(</span></span>
+<span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  linters <span class="op">=</span> <span class="st">"default"</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  config <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"GLOBAL_LINTER"</span>, <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -68,6 +73,10 @@ when passing a character vector, finds all linters with that tag.</p></dd>
 
 <dt>...</dt>
 <dd><p>Additional arguments passed to <code><a href="https://lintr.r-lib.org/reference/lint.html" class="external-link">lintr::lint()</a></code></p></dd>
+
+
+<dt>config</dt>
+<dd><p>Global configuration file; when <code>NA</code> does nothing</p></dd>
 
 </dl></div>
     <div class="section level2">
