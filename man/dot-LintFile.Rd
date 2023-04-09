@@ -4,7 +4,12 @@
 \alias{.LintFile}
 \title{Lint a single file}
 \usage{
-.LintFile(path = NULL, linters = "default", ...)
+.LintFile(
+  path = NULL,
+  linters = "default",
+  ...,
+  config = Sys.getenv("GLOBAL_LINTER", NA)
+)
 }
 \arguments{
 \item{path}{The file path.  Default (\code{NULL}) checks for the current file open
@@ -14,6 +19,8 @@ in the source editor in \strong{RStudio}.}
 when passing a character vector, finds all linters with that tag.}
 
 \item{...}{Additional arguments passed to \code{lintr::lint()}}
+
+\item{config}{Global configuration file; when \code{NA} does nothing}
 }
 \value{
 See \code{lintr::lint()}
