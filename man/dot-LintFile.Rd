@@ -8,7 +8,7 @@
   path = NULL,
   linters = "default",
   ...,
-  config = Sys.getenv("GLOBAL_LINTER", NA)
+  config = Sys.getenv("LINTR_GLOBAL_CONFIG", NA)
 )
 }
 \arguments{
