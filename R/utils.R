@@ -38,5 +38,5 @@ ls_global_all <- function() {
 }
 
 sf <- function(...) {
-  ("make_sf" %colons% "mark")("Rprofile", ...)
+  ("mark" %colons% "make_sf")("Rprofile")(...)
 }
