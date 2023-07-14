@@ -7,6 +7,7 @@
 * Adds `.LintFile()` for selecting individual files to `lint` (defaults to currently opened file) [#21]
 * Adds `.GitPrepareCommitMsg()` to copy one of two templates to `.git/hook/prepare-commit-msg` [#10]
 * Adds `.OpenFile()` to open a file path or an object inside a file [#6]
+* `.Rprofile(TRUE)` should work again with correction to internal `sf()` 
 
 ## Fixes
 
