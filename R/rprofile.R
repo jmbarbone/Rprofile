@@ -24,7 +24,7 @@ NULL
   old_path <- fs::path_norm(old_path)
 
   if (update) {
-    on.exit(try(fs::file_chmod(old_path, "777"), silent = TRUE), add = TRUE)
+    on.exit(try0(fs::file_chmod(old_path, "777")), add = TRUE)
     new_path <- sf("dot-Rprofile.R", check = TRUE)
     fs::file_copy(new_path, old_path, overwrite = overwrite)
   } else {

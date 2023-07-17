@@ -11,7 +11,6 @@
   get(name, envir = asNamespace(package))
 }
 
-
 `%out%` <- function(...) { ("fuj" %colons% "%out%")(...) }
 `%wo%` <- function(...) { ("fuj" %colons% "%wo%")(...) }
 
@@ -39,4 +38,8 @@ ls_global_all <- function() {
 
 sf <- function(...) {
   ("mark" %colons% "make_sf")("Rprofile")(...)
+}
+
+try0 <- function(expr) {
+  suppressWarnings(try(expr, silent = TRUE))
 }

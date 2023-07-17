@@ -14,7 +14,7 @@
   }
 
   if (is.null(email) && !length(email)) {
-   email <- suppressWarnings(try(get_description_emails(), silent = TRUE))
+   email <- try0(get_description_emails())
    if (inherits(email, "try-error")) {
      return(invisible())
    }
@@ -26,9 +26,7 @@
     if (success) cat("\n")
     cat("checking for", crayon_blue(e))
     # shhhh
-    res <- suppressWarnings(
-      try(utils::capture.output(dang::checkCRANStatus(e)), silent = TRUE)
-    )
+    res <- try0(utils::capture.output(dang::checkCRANStatus(e)))
     if (!inherits(res, "try-error")) {
       show_table()
       success <- TRUE

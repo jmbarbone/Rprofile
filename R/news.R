@@ -46,7 +46,7 @@
 
   if (requireNamespace("urlchecker", quietly = TRUE)) {
     message("running urlchecker::url_check()")
-    try(urlchecker::url_check(path = path0, progress = FALSE))
+    try0(urlchecker::url_check(path = path0, progress = FALSE))
   }
 
   invisible()

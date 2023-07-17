@@ -47,7 +47,7 @@ do_todos <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
 
   type <- mark::match_param(type)
   fun <- switch(type, todo = mark::todos, fixme = mark::fixmes)
-  todo <- try(fun(...), silent = TRUE)
+  todo <- try0(fun(...))
   if (!is.null(todo) && !.quiet && !inherits(todo, "try-error")) print(todo)
   invisible(todo)
 }
