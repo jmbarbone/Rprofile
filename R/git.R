@@ -11,8 +11,9 @@
 #'   octothorp (e.g., 123-branch appends "#123 ") or at the end, wrapped in
 #'   parenthesis.  The `jira` version looks for the alphanumeric code value of a
 #'   ticket and appends that with square brackets (e.g., ABC-123 appends
-#'   "\[ABC-123\] ") to the start or the end.  Appending to the _start_ is the
-#'   default functionality.
+#'   "\[ABC-123\] ") to the start or the end.  Appending to the _end_ is the
+#'   default functionality got `github` but appending to the _start_ is the
+#'   default for `jira`.
 #' @param overwrite If `TRUE`, overwrites the `.git/hooks/prepare-commit-msg`
 #'   file, if it exists (passed to `fs::file_copy`)
 #'
@@ -30,8 +31,16 @@
   setwd(path)
 
   method <- mark::match_param(method)
+  switch(
+    method,
+    github = {
+      method <- "github-end"
+    },
+    jira = {
+      method <- "jira-start"
+    }
+  )
 
-  method <- sub("-start$", "", method)
   file <- sprintf("prepare-commit-msg-%s.sh", method)
   old <- system.file(file, package = "Rprofile", mustWork = TRUE)
 
