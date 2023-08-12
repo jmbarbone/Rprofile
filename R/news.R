@@ -70,6 +70,7 @@ get_desc_url <- function(x = ".") {
     stop("DESCRIPTION not found")
   }
 
+  # directly grabbing from read.dcf("DESCRIPTION")[, "URL"] may result in errors
   desc <- as.list(as.data.frame(read.dcf(path)))
   url <- desc$URL
 
