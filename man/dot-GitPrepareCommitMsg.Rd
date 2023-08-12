@@ -20,8 +20,9 @@ either appends the branch number to the beginning of the message with an
 octothorp (e.g., 123-branch appends "#123 ") or at the end, wrapped in
 parenthesis.  The \code{jira} version looks for the alphanumeric code value of a
 ticket and appends that with square brackets (e.g., ABC-123 appends
-"[ABC-123] ") to the start or the end.  Appending to the \emph{start} is the
-default functionality.}
+"[ABC-123] ") to the start or the end.  Appending to the \emph{end} is the
+default functionality got \code{github} but appending to the \emph{start} is the
+default for \code{jira}.}
 
 \item{overwrite}{If \code{TRUE}, overwrites the \code{.git/hooks/prepare-commit-msg}
 file, if it exists (passed to \code{fs::file_copy})}
