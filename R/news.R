@@ -10,8 +10,6 @@
 .NewsUrls <- function(path = ".", ask = interactive(), url = NULL) {
   stopifnot(length(path) == 1, is.character(path))
 
-  path0 <- path
-
   if (is.null(url)) {
     url <- get_desc_url(path)
   }
@@ -24,32 +22,45 @@
     stop("Path not found: ", path)
   }
 
-  x <- readLines(path)
-  m <- regexpr("\\[\\#[0-9]+\\](?!\\(https)", x, perl = TRUE)
-  mtext <- regmatches(x, m)
+  old_copy <- new_copy <- old <- new <- readLines(path)
+  m <- regexpr("\\[\\#[0-9]+\\](?!\\(https)", old, perl = TRUE)
+  if (all(m == -1L)) {
+    message("no URLs detected")
+    return(invisible())
+  }
 
-  regmatches(x, m) <- sprintf("%s(%s)", mtext, paste0(url, gsub("[^0-9]", "", mtext)))
-  writeLines(path)
-  writeLines(paste("| ", x))
+  mtext <- regmatches(old, m)
+  regmatches(old_copy, m) <- crayon_yellow(mtext)
+  regmatches(new, m) <- sprintf("%s(%s)", mtext, paste0(url, gsub("[^0-9]", "", mtext)))
+  regmatches(new_copy, m) <- crayon_cyan(sprintf("%s(%s)", mtext, paste0(url, gsub("[^0-9]", "", mtext))))
+  lines <- which(m > 0)
+  labels <- sprintf("[%s]: ", format(lines))
+  cat(crayon_yellow("OLD\n"))
+  cat(old_copy[lines], fill = TRUE, labels = labels)
+  cat(crayon_cyan("\nNEW\n"))
+  cat(new_copy[lines], fill = TRUE, labels = labels)
 
-  if (!isFALSE(ask)) switch(
-    utils::menu(
-      title = "\nOkay to update?",
-      choices = c("yeah, sure", "no ..."
-      )
-    ),
-    `1` = message("cool"),
-    `2` = return(invisible())
-  )
-
-  writeLines(x, path)
+  if (!isFALSE(ask)) {
+    switch(
+      utils::menu(
+        title = "\nOkay to update?",
+        choices = c("yeah, sure", "no ..."
+        )
+      ),
+      `1` = message("cool"),
+      `2` = return(invisible())
+    )
+  }
 
   if (requireNamespace("urlchecker", quietly = TRUE)) {
     message("running urlchecker::url_check()")
-    try0(urlchecker::url_check(path = path0, progress = FALSE))
+    temp <- tempfile()
+    on.exit(file.remove(temp))
+    writeLines(new, temp)
+    try0(urlchecker::url_check(path = temp, progress = FALSE))
   }
 
-  invisible()
+  writeLines(new, path)
 }
 
 get_desc_url <- function(x = ".") {
