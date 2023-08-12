@@ -19,3 +19,8 @@ Nothing, called for its side effects
 \description{
 Include links to github on \code{NEWS.md}
 }
+\details{
+URLs are detected for GitHub issue.  For example, a line with "Fixes
+bug \link{#123}" will append the URL for the issue number 123.  The repository
+is picked up from the \code{DESCRIPTION} file.
+}
