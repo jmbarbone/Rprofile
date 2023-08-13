@@ -13,6 +13,10 @@
 
 * `.Rprofile()` now uses `fs::path_expand_r()` to resolve tilde expansions, e.g., with `"~/.Rprofile"` [#23]
 
+## Enhancements
+
+* `.NewsUrls()` now has prettier print for differences; URLs detected are highlighted with `{crayon}` and only the changed lines (with line numbers) are printed
+
 # Rprofile 0.0.0.9000
 
 * Added a `NEWS.md` file to track changes to the package.
