@@ -11,12 +11,12 @@
 #' @param url Optional URL to set for bug reports
 #' @returns Nothing, called for its side effects
 #' @export
-.NewsUrls <- function(path = ".", ask = interactive(), url = NULL) {
+.NewsUrls <- function(
+    path = ".",
+    ask = interactive(),
+    url = get_desc_url(path)
+) {
   stopifnot(length(path) == 1, is.character(path))
-
-  if (is.null(url)) {
-    url <- get_desc_url(path)
-  }
 
   if (dir.exists(path)) {
     path <- "NEWS.md"
