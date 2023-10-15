@@ -16,17 +16,20 @@
     ask = interactive(),
     url = get_desc_url(path)
 ) {
-  stopifnot(length(path) == 1, is.character(path))
+  stopifnot(
+    length(path) == 1,
+    is.character(path),
+    dir.exists(path)
+  )
 
-  if (dir.exists(path)) {
-    path <- "NEWS.md"
+  news <- file.path(news, "NEWS.md")
+
+  if (!file.exists(news)) {
+    stop("NEWS.md not found: ", news)
   }
 
-  if (!file.exists(path)) {
-    stop("Path not found: ", path)
-  }
-
-  old_copy <- new_copy <- old <- new <- readLines(path)
+  force(url)
+  old_copy <- new_copy <- old <- new <- readLines(news)
   m <- regexpr("\\[\\#[0-9]+\\](?!\\(https)", old, perl = TRUE)
   if (all(m == -1L)) {
     message("no URLs detected")
@@ -64,7 +67,7 @@
     try0(urlchecker::url_check(path = temp, progress = FALSE))
   }
 
-  writeLines(new, path)
+  writeLines(new, news)
 }
 
 get_desc_url <- function(x = ".") {
