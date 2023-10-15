@@ -1,6 +1,7 @@
 
 use_color <- function() {
-  requireNamespace("crayon", quietly = TRUE) && crayon::has_color()
+  requireNamespace("crayon", quietly = TRUE) &&
+    getOption("crayon.enabled", crayon::has_color())
 }
 
 # add more when used
