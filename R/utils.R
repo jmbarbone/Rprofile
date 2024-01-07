@@ -1,3 +1,6 @@
+`%||%` <- function(x, y) {
+  if (is.null(x)) y else x
+}
 
 `%colons%` <- function(package, name) {
   # poor copy of fuj::`%colons%`
@@ -42,4 +45,11 @@ sf <- function(...) {
 
 try0 <- function(expr) {
   suppressWarnings(try(expr, silent = TRUE))
+}
+
+require_namespace <- function(...) {
+  for (ns in c(...)) {
+    requireNamespace(ns, quietly = TRUE)
+  }
+  invisible()
 }
