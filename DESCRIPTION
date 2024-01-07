@@ -43,6 +43,6 @@ Suggests:
     usethis,
     xopen
 Remotes:
-    github::jmbarbone/fuj,
-    github::jmbarbone/mark
+    github::jmbarbone/fuj@*release,
+    github::jmbarbone/mark@*release
 Config/testthat/edition: 3
