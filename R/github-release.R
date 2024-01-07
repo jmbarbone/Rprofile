@@ -16,6 +16,7 @@
 #' @param publish Whether to publish the release or keep as a draft.  Default is
 #'   `FALSE`.
 #' @param prerelease Whether to create prerelease.  Default is `FALSE`.
+#' @export
 .GithubRelease <- function(publish = NULL, prerelease = FALSE) {
   ask <- function() {
     if (!interactive()) {

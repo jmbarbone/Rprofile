@@ -4,13 +4,13 @@
 \alias{.GithubRelease}
 \title{Create a \strong{GitHub} Release}
 \usage{
-.GithubRelease(publish = FALSE, prerelease = FALSE)
+.GithubRelease(publish = NULL, prerelease = FALSE)
 }
 \arguments{
 \item{publish}{Whether to publish the release or keep as a draft.  Default is
 \code{FALSE}.}
 
-\item{prerelease}{Whether to create prerelease  Default is \code{FALSE}.}
+\item{prerelease}{Whether to create prerelease.  Default is \code{FALSE}.}
 }
 \description{
 Wrapper for \code{usethis::use_github_release()}.
