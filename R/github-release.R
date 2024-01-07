@@ -18,6 +18,7 @@
 #' @param prerelease Whether to create prerelease.  Default is `FALSE`.
 #' @export
 .GithubRelease <- function(publish = NULL, prerelease = FALSE) {
+  require_namespace("cli", "gh", "usethis")
   ask <- function() {
     if (!interactive()) {
       return(FALSE)

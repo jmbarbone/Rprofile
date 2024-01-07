@@ -23,22 +23,25 @@ Imports:
     magrittr,
     utils
 Suggests:
+    cli,
     crayon,
     dang,
     devtools,
     fortunes,
-    fuj,
     fs,
+    fuj,
+    gh,
+    lintr,
     mark,
     praise,
     prompt,
+    readr,
     rstudioapi,
+    spelling,
     testthat (>= 3.0.0),
     urlchecker,
-    readr,
-    xopen,
-    spelling,
-    lintr
+    usethis,
+    xopen
 Remotes:
     github::jmbarbone/fuj,
     github::jmbarbone/mark
