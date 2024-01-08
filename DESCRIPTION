@@ -1,6 +1,6 @@
 Package: Rprofile
 Title: Functions to be loaded with Rprofile
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "Jordan Mark",
            family = "Barbone",
@@ -23,23 +23,26 @@ Imports:
     magrittr,
     utils
 Suggests:
+    cli,
     crayon,
     dang,
     devtools,
     fortunes,
-    fuj,
     fs,
+    fuj,
+    gh,
+    lintr,
     mark,
     praise,
     prompt,
+    readr,
     rstudioapi,
+    spelling,
     testthat (>= 3.0.0),
     urlchecker,
-    readr,
-    xopen,
-    spelling,
-    lintr
+    usethis,
+    xopen
 Remotes:
-    github::jmbarbone/fuj,
-    github::jmbarbone/mark
+    github::jmbarbone/fuj@*release,
+    github::jmbarbone/mark@*release
 Config/testthat/edition: 3

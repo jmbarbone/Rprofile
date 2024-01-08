@@ -5,7 +5,7 @@
 #' @returns The new prompt, invisibly.
 #' @export
 .GitBranchPrompt <- function() {
-  if (!requireNamespace("prompt", quietly = TRUE)) {
+  if (!require_namespace("prompt")) {
     message("prompt not available")
     return(invisible())
   }
