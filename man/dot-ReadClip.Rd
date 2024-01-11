@@ -7,10 +7,7 @@
 .ReadClip(convert = c("auto", "none", "some", "data.frame", "tibble"), ...)
 }
 \arguments{
-\item{...}{Additional arguments passed to \code{\link[utils:read.table]{utils::read.table()}} (defaults
-have been changed)}
-
-\item{method}{The method to use.
+\item{convert}{The method to use.
 \itemize{
 \item \code{"auto"}: (default) Parses contents either into a vector and applies some
 conversion; if multiple lines are detected, attempts to parse as a table
@@ -18,8 +15,10 @@ conversion; if multiple lines are detected, attempts to parse as a table
 \item \code{"some"}: Returns the contents as a character vector and performs some
 parsing to possibly convert to a vector
 \item \code{"data.frame"}: Returns the contents as a data frame (via \code{clipr::read_clip_tbl()})
-\item \code{"tibble"}: Returns the contents as a tibble (via \code{clipr::read_clip_tbl()})
 }}
+
+\item{...}{Additional arguments passed to \code{\link[utils:read.table]{utils::read.table()}} (defaults
+have been changed)}
 }
 \description{
 Reads the clipboard and returns the contents as a character vector or table

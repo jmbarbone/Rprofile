@@ -4,14 +4,13 @@
 #'
 #' @details Essentially wraps `clipr::read_clip()`
 #'
-#' @param method The method to use.
+#' @param convert The method to use.
 #' - `"auto"`: (default) Parses contents either into a vector and applies some
 #'   conversion; if multiple lines are detected, attempts to parse as a table
 #' - `"none"`: Returns the contents as a string
 #' - `"some"`: Returns the contents as a character vector and performs some
 #'   parsing to possibly convert to a vector
 #' - `"data.frame"`: Returns the contents as a data frame (via `clipr::read_clip_tbl()`)
-#' - `"tibble"`: Returns the contents as a tibble (via `clipr::read_clip_tbl()`)
 #' @param ... Additional arguments passed to [utils::read.table()] (defaults
 #'   have been changed)
 #' @export
@@ -46,10 +45,6 @@
     none = clipr::read_clip(allow_non_interactive = TRUE),
     some = scan(text = .ReadClip("none"), what = "character", quiet = TRUE),
     data.frame = read_table(.ReadClip("none"), ...),
-    tibble = {
-      requireNamespace("tibble")
-      tibble::as_tibble(.ReadClip("data.frame", ...))
-    },
     auto = {
       text <- .ReadClip("none")
       if (length(text) == 1) {
