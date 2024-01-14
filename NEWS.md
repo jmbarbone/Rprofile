@@ -14,10 +14,12 @@
 ## Fixes
 
 * `.Rprofile()` now uses `fs::path_expand_r()` to resolve tilde expansions, e.g., with `"~/.Rprofile"` [#23]
+* Improves checking for `R_PROFILE` envvar
 
 ## Enhancements
 
 * `.NewsUrls()` now has prettier print for differences; URLs detected are highlighted with `{crayon}` and only the changed lines (with line numbers) are printed
+* Improvements with package checking
 
 # Rprofile 0.0.0.9000
 
