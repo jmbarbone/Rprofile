@@ -61,8 +61,8 @@ NULL
     return(path)
   }
 
-  path <- Sys.getenv("R_PROFILE", NA)
-  if (!is.na(path)) {
+  path <- Sys.getenv("R_PROFILE", "")
+  if (path != "") {
     msg("using .Rprofile from envvar R_PROFILE")
     return(path)
   }
