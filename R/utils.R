@@ -46,10 +46,3 @@ sf <- function(...) {
 try0 <- function(expr) {
   suppressWarnings(try(expr, silent = TRUE))
 }
-
-require_namespace <- function(...) {
-  for (ns in c(...)) {
-    requireNamespace(ns, quietly = TRUE)
-  }
-  invisible()
-}
