@@ -6,7 +6,7 @@
 \usage{
 .LintFile(
   path = NULL,
-  linters = "default",
+  linters = NULL,
   ...,
   config = Sys.getenv("LINTR_GLOBAL_CONFIG", NA)
 )
