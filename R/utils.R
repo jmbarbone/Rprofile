@@ -43,6 +43,6 @@ sf <- function(...) {
   ("mark" %colons% "make_sf")("Rprofile")(...)
 }
 
-try0 <- function(expr) {
-  suppressWarnings(try(expr, silent = TRUE))
+.try <- function(expr) {
+  tryCatch(expr, error = force)
 }

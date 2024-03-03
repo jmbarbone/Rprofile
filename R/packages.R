@@ -41,7 +41,7 @@
   attached <- attached %wo% names(fine)
 
   for (a in attached) {
-    try0(unloadNamespace(a))
+    .try(unloadNamespace(a))
   }
 }
 

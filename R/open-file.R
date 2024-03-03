@@ -15,7 +15,7 @@
 #' @param force If `TRUE` ignores potential file path in `x`
 #' @rdname OpenFile
 .OpenFile.default <- function(x, force = FALSE, ...) {
-  if (!force && isTRUE(try0(file.exists(x)))) {
+  if (!force && isTRUE(.try(file.exists(x)))) {
     requireNamespace("xopen")
     xopen::xopen(x)
     return(x)

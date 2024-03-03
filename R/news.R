@@ -64,7 +64,7 @@
     temp <- tempfile()
     on.exit(file.remove(temp))
     writeLines(new, temp)
-    try0(urlchecker::url_check(path = temp, progress = FALSE))
+    .try(urlchecker::url_check(path = temp, progress = FALSE))
   }
 
   writeLines(new, news)
