@@ -10,14 +10,14 @@
     return(invisible())
   }
 
-  branch <- prompt::prompt_git()
-  prompt <- getOption("prompt")
-
-  if (branch != getOption("prompt", "> ") & branch != "> ") {
-    prompt <- paste0("[", sub(" >", "] >", branch))
-    prompt::set_prompt(prompt)
+  if (!prompt::is_git_dir()) {
+    return(prompt::set_prompt("> "))
   }
 
-  invisible(prompt)
+  prompt::set_prompt(sprintf(
+    "[%s%s%s] > ",
+    prompt::git_branch(),
+    prompt::git_dirty(),
+    prompt::git_arrows()
+  ))
 }
-#'
