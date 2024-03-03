@@ -7,10 +7,10 @@
 #' @export
 #' @family Rprofile
 .AttachDevtools <- function() {
-  requireNamespace("devtools")
-  # mimics cli::cli_inform()
-  cat(crayon_cyan("i"), " Loading ", crayon_blue("devtools"), "\n", sep = "")
-  # cheating to not use base::require()
-  suppressPackageStartupMessages(("base" %colons% "require")("devtools"))
-  invisible()
+  invisible(c(
+    usethis =
+      suppressPackageStartupMessages(("base" %colons% "require")("usethis")),
+    devtools =
+      suppressPackageStartupMessages(("base" %colons% "require")("devtools"))
+  ))
 }
