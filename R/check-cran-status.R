@@ -3,19 +3,16 @@
 #' A wrapper
 #'
 #' @param email The email address to query CRAN
-#' @seealso [dang::checkCRANStatus]
+#' @seealso [dang::checkCRANStatus()]
 #' @export
 .CheckCranStatus <- function(email = NULL) {
-  # op <- options(warn = -1) # get rid of warnings for now
-  # on.exit(options(op))
-
   if (!requireNamespace("dang", quietly = TRUE)) {
     return(invisible())
   }
 
   if (is.null(email) && !length(email)) {
-   email <- try0(get_description_emails())
-   if (inherits(email, "try-error")) {
+   email <- .try(get_description_emails())
+   if (inherits(email, "error")) {
      return(invisible())
    }
   }
@@ -26,8 +23,8 @@
     if (success) cat("\n")
     cat("checking for", crayon_blue(e))
     # shhhh
-    res <- try0(utils::capture.output(dang::checkCRANStatus(e)))
-    if (!inherits(res, "try-error")) {
+    res <- .try(utils::capture.output(dang::checkCRANStatus(e)))
+    if (!inherits(res, "error")) {
       show_table()
       success <- TRUE
     } else {
@@ -60,6 +57,7 @@ print_cran_status <- function(x) {
     return(print(x))
   }
 
+  xx <- x
   x <- as.data.frame(x)
   cols <- c("PACKAGE", "ERROR", "WARN", "NOTE", "OK")
   m <- match(cols, toupper(colnames(x)), 0L)
@@ -72,6 +70,27 @@ print_cran_status <- function(x) {
     return(print(x))
   }
 
+  # now get them again without the formatting
+  cn <- crayon_strip(colnames(x))
+
+  if (isTRUE(mc["ERROR"] > 0L)) x[[mc["ERROR"]]] <- crayon_red(    x[[m["ERROR"]]])
+  if (isTRUE(mc["WARN"] > 0L))  x[[mc["WARN"]]]  <- crayon_magenta(x[[m["WARN"]]])
+  if (isTRUE(mc["OK"] > 0L))    x[[mc["OK"]]]    <- crayon_green(  x[[m["OK"]]])
+
+  if (requireNamespace("cli", quietly = TRUE)) {
+    apply(x, 1L, function(row) {
+      cli::cli_text(
+        sprintf(
+          "{.href [%s](https://cloud.r-project.org/web/packages/%s/index.html)} ",
+          row[1L],
+          row[1L]
+        ),
+        paste0(row[-1L], collapse = " ")
+      )
+    })
+    return(invisible(xx))
+  }
+
   colnames(x)[mc] <- c(
     "PACKAGE",
     crayon_red("ERROR"),
@@ -80,9 +99,6 @@ print_cran_status <- function(x) {
     crayon_green("OK")
   )[w]
 
-  # now get them again without the formatting
-  cn <- crayon_strip(colnames(x))
-
   if (mc["PACKAGE"] > 0L) {
     i <- mc["PACKAGE"]
     ns <- max(nchar(c(cn[i], x[[i]]))) + 1L
@@ -90,7 +106,6 @@ print_cran_status <- function(x) {
     colnames(x)[i] <- format(colnames(x)[i], width = ns)
   }
 
-  # browser()
   for (i in mc[-1]) {
     ok <- which(!is.na(x[[i]]) & x[[i]] != "")
     ns <- nchar(trimws(c(cn[i], x[[i]][ok])))
@@ -102,12 +117,9 @@ print_cran_status <- function(x) {
     colnames(x)[i] <- paste0(strrep(" ", max - ns[1L]), colnames(x)[i])
   }
 
-  if (isTRUE(mc["ERROR"] > 0L)) x[[mc["ERROR"]]] <- crayon_red(    x[[m["ERROR"]]])
-  if (isTRUE(mc["WARN"] > 0L))  x[[mc["WARN"]]]  <- crayon_magenta(x[[m["WARN"]]])
-  if (isTRUE(mc["OK"] > 0L))    x[[mc["OK"]]]    <- crayon_green(  x[[m["OK"]]])
-
   cat(colnames(x), "\n")
   apply(x, 1L, function(i) cat(i, "\n"))
+  invisible(xx)
 }
 
 get_description_emails <- function() {
