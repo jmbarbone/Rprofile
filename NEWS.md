@@ -10,6 +10,10 @@
 * Adds `.GitPrepareCommitMsg()` to copy one of two templates to `.git/hook/prepare-commit-msg` [#10]
 * Adds `.OpenFile()` to open a file path or an object inside a file [#6]
 * `.Rprofile(TRUE)` should work again with correction to internal `sf()` 
+* `.GitBranchPrompt()` has been simplified
+* A new `..Rprofile` environment will be created on start-up as a copy of an internal package environment
+* `@jmbarbone`'s preferred settings are now included as `.RprofileJordan()`, now a single command I can run in my `.Rprofile`
+* `.CheckCranStatus()` has simplified output when `{cli}` is available; linked included to packages [#8]
 
 ## Fixes
 
