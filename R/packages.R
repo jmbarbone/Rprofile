@@ -5,7 +5,6 @@
 #' @export
 #' @name attached_packages
 .SendAttachedPackagesToREnviron <- function() {
-  x <- get_rprofile()
   attached <- grep("^package[:]", search(), value = TRUE)
   attached <- rev(gsub("^package[:]", "", attached))
   attached <- setdiff(attached, .default_packages)
@@ -21,12 +20,10 @@
   }
 
   defaults <- c(default_packages(), attached)
-  x$op$defaultPackages <- defaults
+  .AddRprofileOptions(defaultPackages = defaults)
   pkgs <- paste0(defaults, collapse = ",")
   line <- sprintf("%s\nR_DEFAULT_PACKAGES='%s'\n", tag, pkgs)
   cat(line, sep = "", file = file, append = fe)
-
-  assign_rprofile(x)
   .RemoveAttachedPackages()
 }
 
@@ -50,12 +47,11 @@
 #' @family Rprofile
 .AddAttachedPackagesToDefaultPackages <- function() {
   attached <- grep("^package[:]", search(), value = TRUE)
-  e <- get_rprofile()
   names(attached) <- attached
   attached <- sub("^package[:]", "", attached)
-  new <- unique(c(attached, e$op$defaultPackages, "base"), fromLast = TRUE)
-  e$op$defaultPackages <- new
-  assign_rprofile(e)
+  attached <- c(attached, getOption("defaultPackages"), "base")
+  attached <- unique(attached, fromLast = TRUE)
+  .AddRprofileOptions(defaultPackages = attached)
 }
 
 #' Open package url

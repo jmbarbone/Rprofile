@@ -9,7 +9,7 @@
 #' @name Reload
 .Reload <- function(remove_objects = TRUE, loud = FALSE) {
   cat(crayon_cyan("Preparing Restart ...\n"))
-  objs <- setdiff(ls_global_all(), "rprofile_env")
+  objs <- setdiff(ls_global_all(), "..Rprofile")
 
   if (remove_objects) {
     if (loud & length(objs) > 0L) {
@@ -38,10 +38,13 @@
 #' @param keep_prompt Logical, if `FALSE` will not reset the `prompt` option
 #' @export
 .ResetOptions <- function(keep_prompt = TRUE) {
-  keep_prompt <- NULL
-  x <- get_rprofile()
-  assign_rprofile(x)
-  options(x$op)
+  op <- options()
+
+  if (!keep_prompt) {
+    op$prompt <- getOption("prompt")
+  }
+
+  do.call(.AddRprofileOptions, op)
 }
 
 #' Remove all objects
