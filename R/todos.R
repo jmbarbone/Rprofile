@@ -39,15 +39,21 @@
 
 # helpers -----------------------------------------------------------------
 
-do_todos <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
+do_todos <- function(
+    type = c("todo", "fixme"),
+    ...,
+    .quiet = FALSE
+) {
   if (!requireNamespace("mark", quietly = TRUE)) {
     message("mark is not available")
     return(invisible())
   }
 
   type <- mark::match_param(type)
+  params <- list(...)
+  params$ext <- params$ext %||% c("R", "Rmd", "qmd", "md", "py")
   fun <- switch(type, todo = mark::todos, fixme = mark::fixmes)
-  todo <- .try(fun(...))
+  todo <- .try(do.call(fun, params))
 
   if (
     !is.null(todo) &&
