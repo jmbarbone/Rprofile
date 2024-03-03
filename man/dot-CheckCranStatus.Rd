@@ -13,5 +13,5 @@
 A wrapper
 }
 \seealso{
-\link[dang:checkCRANStatus]{dang::checkCRANStatus}
+\code{\link[dang:checkCRANStatus]{dang::checkCRANStatus()}}
 }
