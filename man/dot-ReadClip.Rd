@@ -14,7 +14,8 @@ conversion; if multiple lines are detected, attempts to parse as a table
 \item \code{"none"}: Returns the contents as a string
 \item \code{"some"}: Returns the contents as a character vector and performs some
 parsing to possibly convert to a vector
-\item \code{"data.frame"}: Returns the contents as a data frame (via \code{clipr::read_clip_tbl()})
+\item \code{"data.frame"}: Returns the contents as a data frame (via
+\code{clipr::read_clip_tbl()})
 }}
 
 \item{...}{Additional arguments passed to \code{\link[utils:read.table]{utils::read.table()}} (defaults

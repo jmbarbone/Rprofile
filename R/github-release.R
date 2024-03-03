@@ -11,6 +11,7 @@
 #'   - the package has a **DESCRIPTION** file which contains an appropriate
 #'   `Package` name and `Version`
 #'   - you want to use the `generate_release_notes` feature of the
+# nolint next: line_length_linter.
 #'   [GitHub API](https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#create-a-release)
 #'
 #' @param publish Whether to publish the release or keep as a draft.  Default is
@@ -27,7 +28,11 @@
     switch(
       utils::menu(
         title = "\nWould you like to publish this release?",
-        choices = c("yeah, publish", "no, continue as draft", "nevermind, cancel")
+        choices = c(
+          "yeah, publish",
+          "no, continue as draft",
+          "nevermind, cancel"
+        )
       ),
       TRUE,
       FALSE,

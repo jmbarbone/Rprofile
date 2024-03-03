@@ -14,8 +14,13 @@
   get(name, envir = asNamespace(package))
 }
 
-`%out%` <- function(...) { ("fuj" %colons% "%out%")(...) }
-`%wo%` <- function(...) { ("fuj" %colons% "%wo%")(...) }
+`%out%` <- function(...) {
+  ("fuj" %colons% "%out%")(...)
+}
+
+`%wo%` <- function(...) {
+  ("fuj" %colons% "%wo%")(...)
+}
 
 assign_ <- function(...) {
   ("base" %colons% "assign")(...)

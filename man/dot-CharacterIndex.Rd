@@ -18,5 +18,6 @@ x <- c("Split this apart", "and count each character.")
 
 }
 \references{
-Inspired by: https://www.r-bloggers.com/2020/12/little-helpers-character-index-counter/
+Inspired by:
+https://www.r-bloggers.com/2020/12/little-helpers-character-index-counter/
 }

@@ -38,8 +38,16 @@
 
   mtext <- regmatches(old, m)
   regmatches(old_copy, m) <- crayon_yellow(mtext)
-  regmatches(new, m) <- sprintf("%s(%s)", mtext, paste0(url, gsub("[^0-9]", "", mtext)))
-  regmatches(new_copy, m) <- crayon_cyan(sprintf("%s(%s)", mtext, paste0(url, gsub("[^0-9]", "", mtext))))
+  regmatches(new, m) <- sprintf(
+    "%s(%s)",
+    mtext,
+    paste0(url, gsub("[^0-9]", "", mtext))
+  )
+
+  regmatches(new_copy, m) <- crayon_cyan(
+    sprintf("%s(%s)", mtext, paste0(url, gsub("[^0-9]", "", mtext)))
+  )
+
   lines <- which(m > 0)
   labels <- sprintf("[%s]: ", format(lines))
   cat(crayon_yellow("OLD\n"))

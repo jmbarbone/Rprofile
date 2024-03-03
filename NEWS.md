@@ -14,6 +14,7 @@
 * A new `..Rprofile` environment will be created on start-up as a copy of an internal package environment
 * `@jmbarbone`'s preferred settings are now included as `.RprofileJordan()`, now a single command I can run in my `.Rprofile`
 * `.CheckCranStatus()` has simplified output when `{cli}` is available; linked included to packages [#8]
+* packing `lint`ing now included
 
 ## Fixes
 

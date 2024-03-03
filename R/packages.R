@@ -4,6 +4,7 @@
 #'
 #' @export
 #' @name attached_packages
+# nolint next: object_length_linter.
 .SendAttachedPackagesToREnviron <- function() {
   attached <- grep("^package[:]", search(), value = TRUE)
   attached <- rev(gsub("^package[:]", "", attached))
@@ -45,6 +46,7 @@
 #' @export
 #' @rdname attached_packages
 #' @family Rprofile
+# nolint next: object_length_linter.
 .AddAttachedPackagesToDefaultPackages <- function() {
   attached <- grep("^package[:]", search(), value = TRUE)
   names(attached) <- attached

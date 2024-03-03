@@ -73,14 +73,23 @@ print_cran_status <- function(x) {
   # now get them again without the formatting
   cn <- crayon_strip(colnames(x))
 
-  if (isTRUE(mc["ERROR"] > 0L)) x[[mc["ERROR"]]] <- crayon_red(    x[[m["ERROR"]]])
-  if (isTRUE(mc["WARN"] > 0L))  x[[mc["WARN"]]]  <- crayon_magenta(x[[m["WARN"]]])
-  if (isTRUE(mc["OK"] > 0L))    x[[mc["OK"]]]    <- crayon_green(  x[[m["OK"]]])
+  if (isTRUE(mc["ERROR"] > 0L)) {
+    x[[mc["ERROR"]]] <- crayon_red(x[[m["ERROR"]]])
+  }
+
+  if (isTRUE(mc["WARN"] > 0L)) {
+    x[[mc["WARN"]]] <- crayon_magenta(x[[m["WARN"]]])
+  }
+
+  if (isTRUE(mc["OK"] > 0L)) {
+    x[[mc["OK"]]] <- crayon_green(x[[m["OK"]]])
+  }
 
   if (requireNamespace("cli", quietly = TRUE)) {
     apply(x, 1L, function(row) {
       cli::cli_text(
         sprintf(
+          # nolint next: line_length_linter.
           "{.href [%s](https://cloud.r-project.org/web/packages/%s/index.html)} ",
           row[1L],
           row[1L]

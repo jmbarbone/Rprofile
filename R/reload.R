@@ -12,7 +12,7 @@
   objs <- setdiff(ls_global_all(), "..Rprofile")
 
   if (remove_objects) {
-    if (loud & length(objs) > 0L) {
+    if (loud && length(objs) > 0L) {
       message("Removing all objects in the Global Environment:\n",
         paste0(objs, collapse = " ... "))
     }
@@ -71,7 +71,15 @@ default_packages <- function() {
   op
 }
 
-.default_packages <- c("base", "datasets", "utils", "grDevices", "graphics", "stats", "methods")
+.default_packages <- c(
+  "base",
+  "datasets",
+  "utils",
+  "grDevices",
+  "graphics",
+  "stats",
+  "methods"
+)
 names(.default_packages) <- paste0("package:", .default_packages)
 
 

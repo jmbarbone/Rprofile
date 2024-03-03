@@ -17,6 +17,8 @@ lockEnvironment(rprofile)
 #'
 #' @export
 .RprofileJordan <- function() {
+  .libPaths(c(.libPaths(), "~/R/pak-library", "~/R/scribe-library"))
+
   .AttachDevtools()
   .AddAttachedPackagesToDefaultPackages()
   .GitBranchPrompt()
@@ -51,9 +53,12 @@ lockEnvironment(rprofile)
           comment = c(ORCID = "0000-0001-9788-3628")
         ),
         usethis.description = list(
-          `Authors@R` = 'person("Jordan Mark", "Barbone", email = "jmbarbone@gmail.com",
+          `Authors@R` = 'person(
+                          "Jordan Mark", "Barbone",
+                          email = "jmbarbone@gmail.com",
                           role = c("aut", "cph", "cre"),
-                          comment = c(ORCID = "0000-0001-9788-3628"))',
+                          comment = c(ORCID = "0000-0001-9788-3628")
+                        )',
           License = "MIT + file LICENSE",
           Language =  "en-US"
         )

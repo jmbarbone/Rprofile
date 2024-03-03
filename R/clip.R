@@ -10,7 +10,8 @@
 #' - `"none"`: Returns the contents as a string
 #' - `"some"`: Returns the contents as a character vector and performs some
 #'   parsing to possibly convert to a vector
-#' - `"data.frame"`: Returns the contents as a data frame (via `clipr::read_clip_tbl()`)
+#' - `"data.frame"`: Returns the contents as a data frame (via
+#'   `clipr::read_clip_tbl()`)
 #' @param ... Additional arguments passed to [utils::read.table()] (defaults
 #'   have been changed)
 #' @export

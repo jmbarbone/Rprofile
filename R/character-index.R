@@ -4,8 +4,8 @@
 #'
 #' @param x A character vector
 #'
-#' @references
-#' Inspired by: https://www.r-bloggers.com/2020/12/little-helpers-character-index-counter/
+#' @references Inspired by:
+#' https://www.r-bloggers.com/2020/12/little-helpers-character-index-counter/
 #'
 #' @examples
 #' x <- c("Split this apart", "and count each character.")
