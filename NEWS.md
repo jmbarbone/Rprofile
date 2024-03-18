@@ -1,4 +1,4 @@
-# Rprofile (development)
+# Rprofile (development version)
 
 ## New features
 
