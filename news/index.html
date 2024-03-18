@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">Rprofile</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9005</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9006</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,6 +44,47 @@
       <small>Source: <a href="https://github.com/jmbarbone/Rprofile/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="rprofile-development-version">Rprofile (development version)<a class="anchor" aria-label="anchor" href="#rprofile-development-version"></a></h2>
+<div class="section level3">
+<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li>
+<code><a href="../reference/dot-ReadClip.html">.ReadClip()</a></code> added to read clipboard contents [#31]</li>
+<li>
+<code><a href="../reference/dot-GithubRelease.html">.GithubRelease()</a></code> added to create a GitHub (pre)release [#29]</li>
+<li>
+<code><a href="../reference/Rprofile-file.html">.Rprofile()</a></code> gains a <code>path</code> argument (with defaults) for identifying an <code>.Rprofile</code> location [#23]</li>
+<li>
+<code><a href="../reference/Rprofile-file.html">.FindRprofile()</a></code> added to find your <code>.Rprofile</code> file; used within <code><a href="../reference/Rprofile-file.html">.Rprofile()</a></code> [#23]</li>
+<li>Adds <code><a href="../reference/dot-LintFile.html">.LintFile()</a></code> for selecting individual files to <code>lint</code> (defaults to currently opened file) [#21]</li>
+<li>Adds <code><a href="../reference/dot-GitPrepareCommitMsg.html">.GitPrepareCommitMsg()</a></code> to copy one of two templates to <code>.git/hook/prepare-commit-msg</code> [#10]</li>
+<li>Adds <code><a href="../reference/OpenFile.html">.OpenFile()</a></code> to open a file path or an object inside a file [#6]</li>
+<li>
+<code>.Rprofile(TRUE)</code> should work again with correction to internal <code>sf()</code>
+</li>
+<li>
+<code><a href="../reference/dot-GitBranchPrompt.html">.GitBranchPrompt()</a></code> has been simplified</li>
+<li>A new <code>..Rprofile</code> environment will be created on start-up as a copy of an internal package environment</li>
+<li>
+<code>@jmbarbone</code>’s preferred settings are now included as <code><a href="../reference/dot-RprofileJordan.html">.RprofileJordan()</a></code>, now a single command I can run in my <code>.Rprofile</code>
+</li>
+<li>
+<code><a href="../reference/dot-CheckCranStatus.html">.CheckCranStatus()</a></code> has simplified output when <a href="https://cli.r-lib.org" class="external-link">cli</a> is available; linked included to packages [#8]</li>
+<li>packing <code>lint</code>ing now included</li>
+</ul></div>
+<div class="section level3">
+<h3 id="fixes-development-version">Fixes<a class="anchor" aria-label="anchor" href="#fixes-development-version"></a></h3>
+<ul><li>
+<code><a href="../reference/Rprofile-file.html">.Rprofile()</a></code> now uses <code><a href="https://fs.r-lib.org/reference/path_expand.html" class="external-link">fs::path_expand_r()</a></code> to resolve tilde expansions, e.g., with <code>"~/.Rprofile"</code> [#23]</li>
+<li>Improves checking for <code>R_PROFILE</code> envvar</li>
+</ul></div>
+<div class="section level3">
+<h3 id="enhancements-development-version">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-development-version"></a></h3>
+<ul><li>
+<code><a href="../reference/dot-NewsUrls.html">.NewsUrls()</a></code> now has prettier print for differences; URLs detected are highlighted with <a href="https://github.com/r-lib/crayon#readme" class="external-link">crayon</a> and only the changed lines (with line numbers) are printed</li>
+<li>Improvements with package checking</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.0.0.9000" id="rprofile-0009000">Rprofile 0.0.0.9000<a class="anchor" aria-label="anchor" href="#rprofile-0009000"></a></h2>
 <ul><li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
@@ -82,7 +123,8 @@
 <li><code><a href="../reference/dot-UtilMessage.html">.UtilMessage()</a></code></li>
 </ul></li>
 </ul></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
