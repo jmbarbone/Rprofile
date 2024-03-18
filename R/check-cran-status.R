@@ -23,7 +23,9 @@
     if (success) cat("\n")
     cat("checking for", crayon_blue(e))
     # shhhh
-    res <- .try(utils::capture.output(dang::checkCRANStatus(e)))
+    res <- suppressWarnings(
+      .try(utils::capture.output(dang::checkCRANStatus(e)))
+    )
     if (!inherits(res, "error")) {
       show_table()
       success <- TRUE
