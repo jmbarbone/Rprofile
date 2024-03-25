@@ -23,7 +23,7 @@
     if (success) cat("\n")
     cat("checking for", crayon_blue(e))
     # shhhh
-    res <- .try(utils::capture.output(dang::checkCRANStatus(e)))
+    res <- fuj::wuffle(.try(utils::capture.output(dang::checkCRANStatus(e))))
     if (!inherits(res, "error")) {
       show_table()
       success <- TRUE
