@@ -35,5 +35,7 @@ sf <- function(...) {
 }
 
 .try <- function(expr) {
-  tryCatch(expr, error = force)
+  tryCatch(expr, error = function(e) {
+    invisible(structure(list(condition = e), class = "rprofile_error"))
+  })
 }
