@@ -17,7 +17,11 @@ lockEnvironment(rprofile)
 #'
 #' @export
 .RprofileJordan <- function() {
-  .libPaths(c(.libPaths(), "~/R/pak-library", "~/R/scribe-library"))
+  .libPaths(c(
+    .libPaths(),
+    Sys.getenv("R_LIBS_PAK", "~/R/pak-library"),
+    Sys.getenv("R_LIBS_SCRIBE", "~/R/scribe-library")
+  ))
 
   .AttachDevtools()
   .AddAttachedPackagesToDefaultPackages()
