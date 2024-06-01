@@ -1,6 +1,6 @@
 Package: Rprofile
 Title: Functions to be loaded with Rprofile
-Version: 0.0.0.9006
+Version: 0.0.0.9007
 Authors@R: 
     person(given = "Jordan Mark",
            family = "Barbone",
@@ -30,10 +30,10 @@ Suggests:
     devtools,
     fortunes,
     fs,
-    fuj,
+    fuj (>= 0.2.1),
     gh,
     lintr,
-    mark,
+    mark (>= 0.8.0),
     praise,
     prompt,
     readr,
