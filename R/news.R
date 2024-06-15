@@ -22,10 +22,11 @@
     dir.exists(path)
   )
 
-  news <- file.path(news, "NEWS.md")
+  pkg <- normalizePath(path, "/", TRUE)
+  news <- file.path(pkg, "NEWS.md")
 
   if (!file.exists(news)) {
-    stop("NEWS.md not found: ", news)
+    stop("NEWS.md not found: ", path)
   }
 
   force(url)
