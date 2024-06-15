@@ -50,7 +50,11 @@ show_table <- function() {
 }
 
 get_recent_cran_check <- function() {
-  files <- list.files(tempdir(), "^dang_check_cran_status__.*\\.rds$", full.names = TRUE)
+  files <- list.files(
+    tempdir(),
+    "^dang_check_cran_status__.*\\.rds$",
+    full.names = TRUE
+  )
   res <- files[which.max(file.mtime(files))]
   readRDS(res)
 }
