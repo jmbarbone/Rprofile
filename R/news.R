@@ -56,15 +56,11 @@
   cat(new_copy[lines], fill = TRUE, labels = labels)
 
   if (!isFALSE(ask)) {
-    switch(
-      utils::menu(
-        title = "\nOkay to update?",
-        choices = c("yeah, sure", "no ..."
-        )
-      ),
-      `1` = message("cool"),
-      `2` = return(invisible())
-    )
+    if (yes_no("okay to update?")) {
+      message("cool")
+    } else {
+      return(invisible())
+    }
   }
 
   if (requireNamespace("urlchecker", quietly = TRUE)) {

@@ -25,6 +25,7 @@
 
 * `.NewsUrls()` now has prettier print for differences; URLs detected are highlighted with `{crayon}` and only the changed lines (with line numbers) are printed
 * Improvements with package checking
+* Prompts via `utils::menu()` cleaned up
 
 # Rprofile 0.0.0.9000
 

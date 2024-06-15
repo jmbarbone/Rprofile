@@ -25,19 +25,13 @@
       return(FALSE)
     }
 
-    switch(
-      utils::menu(
-        title = "\nWould you like to publish this release?",
-        choices = c(
-          "yeah, publish",
-          "no, continue as draft",
-          "nevermind, cancel"
-        )
-      ),
-      TRUE,
-      FALSE,
+    answer <- yes_no("Would you like to publish this release?", na = "CANCEL")
+
+    if (is.na(answer)) {
       force_exit()
-    )
+    }
+
+    answer
   }
 
   force_exit <- function() {
