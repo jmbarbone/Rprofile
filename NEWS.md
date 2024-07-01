@@ -16,6 +16,7 @@
 * `.CheckCranStatus()` has simplified output when `{cli}` is available; linked included to packages [#8]
 * packing `lint`ing now included
 * `.GlobalHandle()` added to call `rlang::global_handle()`
+* `.FileOpen()` now normalizes a path for a file before attempting to open
 
 ## Fixes
 

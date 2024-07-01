@@ -16,6 +16,7 @@
 #' @rdname OpenFile
 .OpenFile.default <- function(x, force = FALSE, ...) {
   if (!force && isTRUE(.try(file.exists(x)))) {
+    x <- normalizePath(x, "/")
     requireNamespace("xopen")
     xopen::xopen(x)
     return(x)
