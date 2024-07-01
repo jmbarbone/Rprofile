@@ -17,6 +17,7 @@
 * packing `lint`ing now included
 * `.GlobalHandle()` added to call `rlang::global_handle()`
 * `.FileOpen()` now normalizes a path for a file before attempting to open
+* `.OpenFile()` added as an alias for `.FileOpen()`
 
 ## Fixes
 

@@ -4,7 +4,7 @@
 \alias{.GithubRelease}
 \title{Create a \strong{GitHub} Release}
 \usage{
-.GithubRelease(publish = NULL, prerelease = FALSE)
+.GithubRelease(publish = NULL, prerelease = NULL)
 }
 \arguments{
 \item{publish}{Whether to publish the release or keep as a draft.  Default is
