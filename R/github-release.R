@@ -18,7 +18,7 @@
 #'   `FALSE`.
 #' @param prerelease Whether to create prerelease.  Default is `FALSE`.
 #' @export
-.GithubRelease <- function(publish = NULL, prerelease = FALSE) {
+.GithubRelease <- function(publish = NULL, prerelease = NULL) {
   fuj::require_namespace("cli", "gh", "usethis")
   ask <- function() {
     if (!interactive()) {
@@ -37,6 +37,17 @@
   force_exit <- function() {
     stop(fuj::new_condition("...", "forced_exit"))
   }
+
+
+  if (is.null(prerelease)) {
+    if (ask()) {
+      prerelease <- yes_no("Is this a pre-release?")
+    } else {
+      prerelease <- FALSE
+    }
+  }
+
+  prerelease <- isTRUE(prerelease)
 
   if (!prerelease) {
     fuj::require_namespace("usethis")
