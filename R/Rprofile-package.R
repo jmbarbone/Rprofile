@@ -1,4 +1,5 @@
 #' @keywords internal
+#' @importFrom fuj %||% %out% %colons% %wo%
 "_PACKAGE"
 
 # The following block is used by usethis to automatically manage
@@ -26,6 +27,7 @@ lockEnvironment(rprofile)
   .AttachDevtools()
   .AddAttachedPackagesToDefaultPackages()
   .GitBranchPrompt()
+  .GlobalHandle()
 
   if (interactive()) {
     .UtilMessage("source_rprofile")

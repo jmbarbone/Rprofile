@@ -20,6 +20,7 @@ RoxygenNote: 7.3.1
 Depends:
     R (>= 3.6.0)
 Imports: 
+    fuj (>= 0.2.1),
     magrittr,
     utils
 Suggests:
@@ -30,7 +31,6 @@ Suggests:
     devtools,
     fortunes,
     fs,
-    fuj (>= 0.2.1),
     gh,
     lintr,
     mark (>= 0.8.0),
