@@ -6,7 +6,7 @@
 #'   `usethis::use_github_release()` is employed to create a prerelease.  This
 #'   assumes ...
 #'   - the package is hosted on **GitHub**
-#'   - the remote is named **origin**d
+#'   - the remote is named **origin**
 #'   - the branch is named **main**
 #'   - the package has a **DESCRIPTION** file which contains an appropriate
 #'   `Package` name and `Version`
