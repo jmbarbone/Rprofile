@@ -15,6 +15,9 @@
 * `@jmbarbone`'s preferred settings are now included as `.RprofileJordan()`, now a single command I can run in my `.Rprofile`
 * `.CheckCranStatus()` has simplified output when `{cli}` is available; linked included to packages [#8]
 * packing `lint`ing now included
+* `.GlobalHandle()` added to call `rlang::global_handle()`
+* `.FileOpen()` now normalizes a path for a file before attempting to open
+* `.OpenFile()` added as an alias for `.FileOpen()`
 
 ## Fixes
 
@@ -25,6 +28,7 @@
 
 * `.NewsUrls()` now has prettier print for differences; URLs detected are highlighted with `{crayon}` and only the changed lines (with line numbers) are printed
 * Improvements with package checking
+* Prompts via `utils::menu()` cleaned up
 
 # Rprofile 0.0.0.9000
 

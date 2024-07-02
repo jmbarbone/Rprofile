@@ -3,12 +3,15 @@
 \name{OpenFile}
 \alias{OpenFile}
 \alias{.OpenFile}
+\alias{.FileOpen}
 \alias{.OpenFile.default}
 \alias{.OpenFile.data.frame}
 \alias{.OpenFile.matrix}
 \title{Open (as) File}
 \usage{
 .OpenFile(x, ...)
+
+.FileOpen(x, ...)
 
 \method{.OpenFile}{default}(x, force = FALSE, ...)
 
