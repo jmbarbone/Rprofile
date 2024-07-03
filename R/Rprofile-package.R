@@ -1,4 +1,5 @@
 #' @keywords internal
+#' @importFrom fuj %||% %out% %colons% %wo%
 "_PACKAGE"
 
 # The following block is used by usethis to automatically manage
@@ -17,11 +18,16 @@ lockEnvironment(rprofile)
 #'
 #' @export
 .RprofileJordan <- function() {
-  .libPaths(c(.libPaths(), "~/R/pak-library", "~/R/scribe-library"))
+  .libPaths(c(
+    .libPaths(),
+    Sys.getenv("R_LIBS_PAK", "~/R/pak-library"),
+    Sys.getenv("R_LIBS_SCRIBE", "~/R/scribe-library")
+  ))
 
   .AttachDevtools()
   .AddAttachedPackagesToDefaultPackages()
   .GitBranchPrompt()
+  .GlobalHandle()
 
   if (interactive()) {
     .UtilMessage("source_rprofile")

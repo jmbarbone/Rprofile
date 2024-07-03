@@ -6,7 +6,7 @@
 #'   `usethis::use_github_release()` is employed to create a prerelease.  This
 #'   assumes ...
 #'   - the package is hosted on **GitHub**
-#'   - the remote is named **origin**d
+#'   - the remote is named **origin**
 #'   - the branch is named **main**
 #'   - the package has a **DESCRIPTION** file which contains an appropriate
 #'   `Package` name and `Version`
@@ -18,31 +18,36 @@
 #'   `FALSE`.
 #' @param prerelease Whether to create prerelease.  Default is `FALSE`.
 #' @export
-.GithubRelease <- function(publish = NULL, prerelease = FALSE) {
+.GithubRelease <- function(publish = NULL, prerelease = NULL) {
   fuj::require_namespace("cli", "gh", "usethis")
   ask <- function() {
     if (!interactive()) {
       return(FALSE)
     }
 
-    switch(
-      utils::menu(
-        title = "\nWould you like to publish this release?",
-        choices = c(
-          "yeah, publish",
-          "no, continue as draft",
-          "nevermind, cancel"
-        )
-      ),
-      TRUE,
-      FALSE,
+    answer <- yes_no("Would you like to publish this release?", na = "CANCEL")
+
+    if (is.na(answer)) {
       force_exit()
-    )
+    }
+
+    answer
   }
 
   force_exit <- function() {
     stop(fuj::new_condition("...", "forced_exit"))
   }
+
+
+  if (is.null(prerelease)) {
+    if (ask()) {
+      prerelease <- yes_no("Is this a pre-release?")
+    } else {
+      prerelease <- FALSE
+    }
+  }
+
+  prerelease <- isTRUE(prerelease)
 
   if (!prerelease) {
     fuj::require_namespace("usethis")

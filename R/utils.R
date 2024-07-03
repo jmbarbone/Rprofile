@@ -1,27 +1,3 @@
-`%||%` <- function(x, y) {
-  if (is.null(x)) y else x
-}
-
-`%colons%` <- function(package, name) {
-  # poor copy of fuj::`%colons%`
-  stopifnot(
-    length(package) == 1,
-    is.character(package),
-    length(name) == 1, is.character(name)
-  )
-
-  requireNamespace(package)
-  get(name, envir = asNamespace(package))
-}
-
-`%out%` <- function(...) {
-  ("fuj" %colons% "%out%")(...)
-}
-
-`%wo%` <- function(...) {
-  ("fuj" %colons% "%wo%")(...)
-}
-
 assign_ <- function(...) {
   ("base" %colons% "assign")(...)
 }
@@ -35,5 +11,37 @@ sf <- function(...) {
 }
 
 .try <- function(expr) {
-  tryCatch(expr, error = force)
+  tryCatch(expr, error = function(e) {
+    invisible(structure(list(condition = e), class = "rprofile_error"))
+  })
+}
+
+yes_no <- function(..., na = NULL) {
+  # basically a rewrite of yesno::yesno()
+  msg <- paste0(..., collapse = "")
+  yes <- c("Yes", "You betcha", "Certainly", "Absolutely", "Of course")
+  no <- c("No", "Absolutely not", "Certainly not", "No way", "Not a chance",
+          "Let me think about it", "Not sure", "I don't know")
+
+  choices <- c(
+    sample(c(sample(yes, 1), sample(no, 2))),
+    if (length(na)) sample(na, 1)
+  )
+
+  res <- utils::menu(title = msg, choices = choices)
+  if (res == 0) {
+    return(NA)
+  }
+
+  res <- choices[res]
+
+  if (res %in% yes) {
+    return(TRUE)
+  }
+
+  if (res %in% no) {
+    return(FALSE)
+  }
+
+  NA
 }

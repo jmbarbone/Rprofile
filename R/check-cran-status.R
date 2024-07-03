@@ -11,10 +11,10 @@
   }
 
   if (is.null(email) && !length(email)) {
-   email <- .try(get_description_emails())
-   if (inherits(email, "error")) {
-     return(invisible())
-   }
+    email <- .try(get_description_emails())
+    if (inherits(email, "error")) {
+      return(invisible())
+    }
   }
 
   cat("Checking CRAN status\n")
@@ -22,8 +22,11 @@
   for (e in email) {
     if (success) cat("\n")
     cat("checking for", crayon_blue(e))
-    # shhhh
-    res <- fuj::wuffle(.try(utils::capture.output(dang::checkCRANStatus(e))))
+    res <- fuj::wuffle(.try(utils::capture.output(dang::checkCRANStatus(
+      email = e,
+      cache = tempfile("dang_check_cran_status__", fileext = ".rds"),
+      cache.life = 3600
+    ))))
     if (!inherits(res, "error")) {
       show_table()
       success <- TRUE
@@ -38,7 +41,7 @@
 
 show_table <- function() {
   res <- get_recent_cran_check()
-  time <- crayon_yellow(res[[1]])
+  time <- crayon_yellow(format(res[[1]], "%Y-%m-%d %H:%M:%S", usetz = TRUE))
   tab <- res[[2]]
 
   cat("\n")
@@ -47,7 +50,11 @@ show_table <- function() {
 }
 
 get_recent_cran_check <- function() {
-  files <- list.files(tempdir(), "^cran-status.*.rds$", full.names = TRUE)
+  files <- list.files(
+    tempdir(),
+    "^dang_check_cran_status__.*\\.rds$",
+    full.names = TRUE
+  )
   res <- files[which.max(file.mtime(files))]
   readRDS(res)
 }
@@ -94,7 +101,7 @@ print_cran_status <- function(x) {
           row[1L],
           row[1L]
         ),
-        paste0(row[-1L], collapse = " ")
+        paste0(row[crayon_strip(row) != ""][-1L], collapse = " ")
       )
     })
     return(invisible(xx))

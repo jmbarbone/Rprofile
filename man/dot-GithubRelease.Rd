@@ -4,7 +4,7 @@
 \alias{.GithubRelease}
 \title{Create a \strong{GitHub} Release}
 \usage{
-.GithubRelease(publish = NULL, prerelease = FALSE)
+.GithubRelease(publish = NULL, prerelease = NULL)
 }
 \arguments{
 \item{publish}{Whether to publish the release or keep as a draft.  Default is
@@ -21,7 +21,7 @@ When \code{prerelease} is \code{TRUE}, a facsimile of
 assumes ...
 \itemize{
 \item the package is hosted on \strong{GitHub}
-\item the remote is named \strong{origin}d
+\item the remote is named \strong{origin}
 \item the branch is named \strong{main}
 \item the package has a \strong{DESCRIPTION} file which contains an appropriate
 \code{Package} name and \code{Version}
