@@ -40,7 +40,7 @@
 
 
   if (is.null(prerelease)) {
-    if (ask()) {
+    if (publish %||% ask()) {
       prerelease <- yes_no("Is this a pre-release?")
     } else {
       prerelease <- FALSE
@@ -83,7 +83,7 @@
   repo <- extract("[[:alnum:]]+(?=\\.git$)")
 
   stopifnot(nzchar(owner), nzchar(repo))
-
+  
   tryCatch({
     release <- gh::gh(
       sprintf("POST /repos/%s/%s/releases", owner, repo),
