@@ -7,10 +7,9 @@
 .GithubRelease(publish = NULL, prerelease = NULL)
 }
 \arguments{
-\item{publish}{Whether to publish the release or keep as a draft.  Default is
-\code{FALSE}.}
-
-\item{prerelease}{Whether to create prerelease.  Default is \code{FALSE}.}
+\item{publish, prerelease}{Whether this release should be published and if it
+should be tagged as a \strong{prerelease}. When \code{\link[=missing]{missing()}} will prompt during
+an \code{\link[=interactive]{interactive()}} session, otherwise defaults to \code{FALSE}}
 }
 \description{
 Wrapper for \code{usethis::use_github_release()}.

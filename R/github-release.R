@@ -14,48 +14,45 @@
 # nolint next: line_length_linter.
 #'   [GitHub API](https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#create-a-release)
 #'
-#' @param publish Whether to publish the release or keep as a draft.  Default is
-#'   `FALSE`.
-#' @param prerelease Whether to create prerelease.  Default is `FALSE`.
+#' @param publish,prerelease Whether this release should be published and if it
+#'   should be tagged as a **prerelease**. When [missing()] will prompt during
+#'   an [interactive()] session, otherwise defaults to `FALSE`
 #' @export
 .GithubRelease <- function(publish = NULL, prerelease = NULL) {
   fuj::require_namespace("cli", "gh", "usethis")
-  ask <- function() {
-    if (!interactive()) {
-      return(FALSE)
-    }
-
-    answer <- yes_no("Would you like to publish this release?", na = "CANCEL")
-
-    if (is.na(answer)) {
-      force_exit()
-    }
-
-    answer
-  }
 
   force_exit <- function() {
     stop(fuj::new_condition("...", "forced_exit"))
   }
 
-
-  if (is.null(prerelease)) {
-    if (publish %||% ask()) {
+  if (missing(prerelease)) {
+    if (interactive()) {
       prerelease <- yes_no("Is this a pre-release?")
     } else {
       prerelease <- FALSE
     }
   }
 
-  prerelease <- isTRUE(prerelease)
+  if (missing(publish)) {
+    if (interactive()) {
+      publish <- yes_no("Would you like to publish this release?")
+    } else {
+      publish <- FALSE
+    }
+  }
 
-  if (!prerelease) {
+  if (isFALSE(prerelease)) {
     fuj::require_namespace("usethis")
     return(tryCatch(
-      usethis::use_github_release(publish = publish %||% ask()),
+      usethis::use_github_release(publish = publish),
       forcedExitError = function(e) invisible(NULL)
     ))
   }
+
+  # we don't want to evaluate `publish` until after usethis::use_github_release()
+  # is called so that when we pass our intentional error, it breaks during that
+  # function call
+  publish <- isTRUE(publish)
 
   # get all the fancy side effects of `usethis::use_github_release()` without
   # actually creating a release
@@ -83,7 +80,7 @@
   repo <- extract("[[:alnum:]]+(?=\\.git$)")
 
   stopifnot(nzchar(owner), nzchar(repo))
-  
+
   tryCatch({
     release <- gh::gh(
       sprintf("POST /repos/%s/%s/releases", owner, repo),
