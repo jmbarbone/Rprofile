@@ -60,9 +60,9 @@
   # get all the fancy side effects of `usethis::use_github_release()` without
   # actually creating a release
   withCallingHandlers(
-    .GithubRelease(publish = force_exit()),
+    .GithubRelease(publish = force_exit(), prerelease = FALSE),
     rlang_message = function(e) {
-      # don't include not on publishing
+      # don't include note on publishing
       if (grepl("Publish", conditionMessage(e), fixed = TRUE)) {
         tryInvokeRestart("muffleMessage")
       }
