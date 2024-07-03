@@ -15,9 +15,15 @@
 * `@jmbarbone`'s preferred settings are now included as `.RprofileJordan()`, now a single command I can run in my `.Rprofile`
 * `.CheckCranStatus()` has simplified output when `{cli}` is available; linked included to packages [#8]
 * packing `lint`ing now included
-* `.GlobalHandle()` added to call `rlang::global_handle()`
+* `.CheckCranStatus()` specifically sets temporary file for check status results
+* `.CheckCranStatus()` outputs corrected
+* `.GlobalHandle()` added to call `rlang::global_handle()`; added into `.RprofileJordan()`
 * `.FileOpen()` now normalizes a path for a file before attempting to open
 * `.OpenFile()` added as an alias for `.FileOpen()`
+* `.RprofileJordan()` checks for additional library paths from envvars `R_LIBS_PAK` and `R_LIBS_SCRIBE`
+* `.GithubRelease()` now prompts for both `publish` and `pre-release` params when they are not set
+* `.NewsUrls()` paths corrected and no longer error in error
+* `{fuj}` is now imported
 
 ## Fixes
 
