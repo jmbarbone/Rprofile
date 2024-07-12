@@ -5,11 +5,11 @@
 * `.ReadClip()` added to read clipboard contents [#31]
 * `.GithubRelease()` added to create a GitHub (pre)release [#29]
 * `.Rprofile()` gains a `path` argument (with defaults) for identifying an `.Rprofile` location [#23]
-* `.FindRprofile()` added to find your `.Rprofile` file; used within `.Rprofile()` [#23] 
+* `.FindRprofile()` added to find your `.Rprofile` file; used within `.Rprofile()` [#23]
 * Adds `.LintFile()` for selecting individual files to `lint` (defaults to currently opened file) [#21]
 * Adds `.GitPrepareCommitMsg()` to copy one of two templates to `.git/hook/prepare-commit-msg` [#10]
 * Adds `.OpenFile()` to open a file path or an object inside a file [#6]
-* `.Rprofile(TRUE)` should work again with correction to internal `sf()` 
+* `.Rprofile(TRUE)` should work again with correction to internal `sf()`
 * `.GitBranchPrompt()` has been simplified
 * A new `..Rprofile` environment will be created on start-up as a copy of an internal package environment
 * `@jmbarbone`'s preferred settings are now included as `.RprofileJordan()`, now a single command I can run in my `.Rprofile`
@@ -29,6 +29,7 @@
 
 * `.Rprofile()` now uses `fs::path_expand_r()` to resolve tilde expansions, e.g., with `"~/.Rprofile"` [#23]
 * Improves checking for `R_PROFILE` envvar
+* `.CheckCranStatus()` now (again?) exits quietly when an email is not found
 
 ## Enhancements
 
@@ -53,7 +54,7 @@
   * `.Search()` to print out `search()` a bit nicer
 * Initial exported `.Rprofile` utilities
   * `.AddAttachedPackagesToDefaultPackages()`
-  * `.AddRprofileOptions()` 
+  * `.AddRprofileOptions()`
   * `.AttachDevtools()`
   * `.SendAttachedPackagesToREnviron()`
   * `.UtilMessage()`

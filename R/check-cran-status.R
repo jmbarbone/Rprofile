@@ -10,9 +10,9 @@
     return(invisible())
   }
 
-  if (is.null(email) && !length(email)) {
+  if (is.null(email)) {
     email <- .try(get_description_emails())
-    if (inherits(email, "error")) {
+    if (inherits(email, "rprofile_error")) {
       return(invisible())
     }
   }
