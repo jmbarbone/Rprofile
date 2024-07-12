@@ -87,7 +87,7 @@
       name = paste(desc$Package, desc$Version),
       tag_name = paste0("v", desc$Version),
       target_commitish = "main",
-      draft = !(publish %||% ask()),
+      draft = isFALSE(publish %||% yes_no("Is this a draft?")),
       prerelease = TRUE,
       body = paste("Prerelease of", desc$Package),
       generate_release_notes = TRUE
