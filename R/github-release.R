@@ -49,9 +49,9 @@
     ))
   }
 
-  # we don't want to evaluate `publish` until after usethis::use_github_release()
-  # is called so that when we pass our intentional error, it breaks during that
-  # function call
+  # we don't want to evaluate `publish` until after
+  # usethis::use_github_release() is called so that when we pass our intentional
+  # error, it breaks during that function call
   publish <- isTRUE(publish)
 
   # get all the fancy side effects of `usethis::use_github_release()` without
