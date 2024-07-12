@@ -19,7 +19,7 @@
   }
 
   for (i in seq_along(new)) {
-    assign(
+    assign_(
       opts[i],
       new[[i]],
       envir = rprofile$options
