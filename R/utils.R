@@ -45,3 +45,7 @@ yes_no <- function(..., na = NULL) {
 
   NA
 }
+
+is_rprofile_error <- function(x) {
+  inherits(x, "rprofile_error")
+}

@@ -59,7 +59,7 @@ do_todos <- function(
   if (
     !is.null(todo) &&
     !.quiet &&
-    !inherits(todo, "error")
+    !is_rprofile_error(todo)
   ) {
     print(todo)
   }

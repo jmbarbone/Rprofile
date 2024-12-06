@@ -12,7 +12,7 @@
 
   if (is.null(email)) {
     email <- .try(get_description_emails())
-    if (inherits(email, "rprofile_error")) {
+    if (is_rprofile_error(email)) {
       return(invisible())
     }
   }
@@ -27,7 +27,7 @@
       cache = tempfile("dang_check_cran_status__", fileext = ".rds"),
       cache.life = 3600
     ))))
-    if (!inherits(res, "error")) {
+    if (!is_rprofile_error(res)) {
       show_table()
       success <- TRUE
     } else {
