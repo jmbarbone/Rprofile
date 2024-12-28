@@ -3,7 +3,11 @@
 # Loads devtools and usethis
 
 if (isTRUE(requireNamespace("Rprofile", quietly = TRUE))) {
-  tryCatch(Rprofile::.AttachDevtools(), error = function(e) invisible())
-  tryCatch(Rprofile::.GitBranchPrompt(), error = function(e) invisible())
-  tryCatch(unloadNamespace("Rprofile"), error = function(e) invisible())
+  local({
+    ignore <- function(...) invisible()
+    tryCatch(Rprofile::.AttachDevtools(), error = ignore)
+    tryCatch(Rprofile::.GitBranchPrompt(), error = ignore)
+    tryCatch(Rprofile::.UsePackageLibrary(), error = ignore)
+  })
+  tryCatch(unloadNamespace("Rprofile"), error = \(e) invisible())
 }
