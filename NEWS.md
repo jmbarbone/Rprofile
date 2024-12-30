@@ -24,6 +24,8 @@
 * `.GithubRelease()` now prompts for both `publish` and `pre-release` params when they are not set
 * `.NewsUrls()` paths corrected and no longer error in error
 * `{fuj}` is now imported
+* `.Pak()` added as a wrapper for `pak::pak()`
+* `.UsePackageLibrary()` appends a new path to the library path based on the directory of the package
 
 ## Fixes
 
