@@ -12,3 +12,7 @@
 \description{
 Wrapper for \code{{pak::pak}}
 }
+\details{
+If the envvar \code{R_LIBS_PAK} is set then it will be used as the
+library path for \code{{pak}}
+}
