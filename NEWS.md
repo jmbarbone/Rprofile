@@ -26,6 +26,7 @@
 * `{fuj}` is now imported
 * `.Pak()` added as a wrapper for `pak::pak()`
 * `.UsePackageLibrary()` appends a new path to the library path based on the directory of the package
+* `.RemoveGlobalConflicts()` added to remove global conflicts
 
 ## Fixes
 
