@@ -1,5 +1,5 @@
 #' Create a personal package library
-#' 
+#'
 #' @export
 .UsePackageLibrary <- function() {
   fuj::require_namespace("here")
