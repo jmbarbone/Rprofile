@@ -4,7 +4,10 @@
 \alias{.Search}
 \title{Search print}
 \usage{
-.Search()
+.Search(pattern = ".")
+}
+\arguments{
+\item{pattern}{A regular expression to search for in the search path}
 }
 \value{
 Nothing, called for its side-effects
