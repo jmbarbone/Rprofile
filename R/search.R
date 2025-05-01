@@ -2,11 +2,12 @@
 #'
 #' A more colorful way of printing [search()]
 #'
+#' @param pattern A regular expression to search for in the search path
 #' @export
 #' @returns Nothing, called for its side-effects
 #' @family Rprofile
-.Search <- function() {
-  x <- paste0(format(search()), " ")
+.Search <- function(pattern = ".") {
+  x <- paste0(format(grep(pattern, search(), value = TRUE)), " ")
   n <- length(x)
 
   res <-
