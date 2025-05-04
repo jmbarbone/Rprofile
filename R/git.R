@@ -19,16 +19,16 @@
 #'
 #' @export
 .GitPrepareCommitMsg <- function(
-    path = ".",
-    method = c(
-      "github",
-      "jira",
-      "github-start",
-      "github-end",
-      "jira-start",
-      "jira-end"
-    ),
-    overwrite = FALSE
+  path = ".",
+  method = c(
+    "github",
+    "jira",
+    "github-start",
+    "github-end",
+    "jira-start",
+    "jira-end"
+  ),
+  overwrite = FALSE
 ) {
   requireNamespace("mark")
   requireNamespace("fs")

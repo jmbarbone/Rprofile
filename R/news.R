@@ -12,9 +12,9 @@
 #' @returns Nothing, called for its side effects
 #' @export
 .NewsUrls <- function(
-    path = ".",
-    ask = interactive(),
-    url = get_desc_url(path)
+  path = ".",
+  ask = interactive(),
+  url = get_desc_url(path)
 ) {
   stopifnot(
     length(path) == 1,

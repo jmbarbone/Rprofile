@@ -11,10 +11,10 @@
 #' @returns See `lintr::lint()`
 #' @export
 .LintFile <- function(
-    path = NULL,
-    linters = NULL,
-    ...,
-    config = Sys.getenv("LINTR_GLOBAL_CONFIG", NA)
+  path = NULL,
+  linters = NULL,
+  ...,
+  config = Sys.getenv("LINTR_GLOBAL_CONFIG", NA)
 ) {
   fuj::require_namespace("lintr")
 
@@ -37,5 +37,5 @@
   }
 
   path <- normalizePath(path, .Platform$file.sep, mustWork = TRUE)
-  lintr::lint(path, linters = linters,  ...)
+  lintr::lint(path, linters = linters, ...)
 }

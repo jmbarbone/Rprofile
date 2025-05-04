@@ -81,19 +81,21 @@
 
   stopifnot(nzchar(owner), nzchar(repo))
 
-  tryCatch({
-    release <- gh::gh(
-      sprintf("POST /repos/%s/%s/releases", owner, repo),
-      name = paste(desc$Package, desc$Version),
-      tag_name = paste0("v", desc$Version),
-      target_commitish = "main",
-      draft = isFALSE(publish %||% yes_no("Is this a draft?")),
-      prerelease = TRUE,
-      body = paste("Prerelease of", desc$Package),
-      generate_release_notes = TRUE
-    )
-    cli::cli_text(sprintf("Release at {.url %s}", release$html_url))
-    invisible(release)
-  },
-  forcedExitError = function(e) invisible(NULL))
+  tryCatch(
+    {
+      release <- gh::gh(
+        sprintf("POST /repos/%s/%s/releases", owner, repo),
+        name = paste(desc$Package, desc$Version),
+        tag_name = paste0("v", desc$Version),
+        target_commitish = "main",
+        draft = isFALSE(publish %||% yes_no("Is this a draft?")),
+        prerelease = TRUE,
+        body = paste("Prerelease of", desc$Package),
+        generate_release_notes = TRUE
+      )
+      cli::cli_text(sprintf("Release at {.url %s}", release$html_url))
+      invisible(release)
+    },
+    forcedExitError = function(e) invisible(NULL)
+  )
 }

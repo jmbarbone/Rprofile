@@ -14,9 +14,9 @@ NULL
 #'   exists; ignored if `update` is not `TRUE`
 #' @param path The file location of your `.Rprofile`
 .Rprofile <- function(
-    update = overwrite,
-    overwrite = FALSE,
-    path = .FindRprofile()
+  update = overwrite,
+  overwrite = FALSE,
+  path = .FindRprofile()
 ) {
   requireNamespace("fs")
   stopifnot(is.character(path), length(path) == 1)

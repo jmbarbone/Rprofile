@@ -1,4 +1,3 @@
-
 #' Spell check a file
 #'
 #' @param path A path to spell check; if `NULL` check the current file open in

@@ -1,4 +1,3 @@
-
 #' TODOs and FIXMEs
 #'
 #' Get a list of TODOs and FIXMEs
@@ -41,9 +40,9 @@
 # helpers -----------------------------------------------------------------
 
 do_todos <- function(
-    type = c("todo", "fixme"),
-    ...,
-    .quiet = FALSE
+  type = c("todo", "fixme"),
+  ...,
+  .quiet = FALSE
 ) {
   if (!requireNamespace("mark", quietly = TRUE)) {
     message("mark is not available")
@@ -58,8 +57,8 @@ do_todos <- function(
 
   if (
     !is.null(todo) &&
-    !.quiet &&
-    !is_rprofile_error(todo)
+      !.quiet &&
+      !is_rprofile_error(todo)
   ) {
     print(todo)
   }

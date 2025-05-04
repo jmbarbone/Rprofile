@@ -20,8 +20,16 @@ yes_no <- function(..., na = NULL) {
   # basically a rewrite of yesno::yesno()
   msg <- paste0(..., collapse = "")
   yes <- c("Yes", "You betcha", "Certainly", "Absolutely", "Of course")
-  no <- c("No", "Absolutely not", "Certainly not", "No way", "Not a chance",
-          "Let me think about it", "Not sure", "I don't know")
+  no <- c(
+    "No",
+    "Absolutely not",
+    "Certainly not",
+    "No way",
+    "Not a chance",
+    "Let me think about it",
+    "Not sure",
+    "I don't know"
+  )
 
   choices <- c(
     sample(c(sample(yes, 1), sample(no, 2))),

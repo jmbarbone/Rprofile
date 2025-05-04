@@ -1,4 +1,3 @@
-
 require(usethis)
 require(devtools)
 

@@ -1,4 +1,3 @@
-
 #' Attach devtools
 #'
 #' Attached `devtools` without start up messages
@@ -8,9 +7,11 @@
 #' @family Rprofile
 .AttachDevtools <- function() {
   invisible(c(
-    usethis =
-      suppressPackageStartupMessages(("base" %colons% "require")("usethis")),
-    devtools =
-      suppressPackageStartupMessages(("base" %colons% "require")("devtools"))
+    usethis = suppressPackageStartupMessages(("base" %colons% "require")(
+      "usethis"
+    )),
+    devtools = suppressPackageStartupMessages(("base" %colons% "require")(
+      "devtools"
+    ))
   ))
 }

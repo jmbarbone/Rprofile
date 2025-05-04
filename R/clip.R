@@ -16,24 +16,24 @@
 #'   have been changed)
 #' @export
 .ReadClip <- function(
-    convert = c("auto", "none", "some", "data.frame", "tibble"),
-    ...
+  convert = c("auto", "none", "some", "data.frame", "tibble"),
+  ...
 ) {
   read_table <- function(...) {
     requireNamespace("mark")
     params <- list(...)
     default <- list(
-      header           = TRUE,
-      sep              = "\t",
-      row.names        = NULL,
-      na.strings       = c("", "NA", "N/A", "#N/A"),
-      check.names      = FALSE,
+      header = TRUE,
+      sep = "\t",
+      row.names = NULL,
+      na.strings = c("", "NA", "N/A", "#N/A"),
+      check.names = FALSE,
       stringsAsFactors = FALSE,
-      encoding         = "UTF-8",
-      comment.char     = "",
+      encoding = "UTF-8",
+      comment.char = "",
       blank.lines.skip = TRUE,
-      fill             = TRUE,
-      strip.white      = TRUE
+      fill = TRUE,
+      strip.white = TRUE
     )
     params <- mark::merge_list(default, params, keep = "y")
     params$text <- text
