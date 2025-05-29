@@ -7,6 +7,7 @@
 #' @export
 .CheckCranStatus <- function(email = NULL) {
   if (!requireNamespace("dang", quietly = TRUE)) {
+    cat("package {dang} is needed for .CheckCranStatus()\n")
     return(invisible())
   }
 

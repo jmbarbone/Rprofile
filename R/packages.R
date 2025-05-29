@@ -68,8 +68,7 @@
 
 do_open_pkg_url <- function(x) {
   if (!requireNamespace(x, quietly = TRUE)) {
-    msg <- sprintf("no installation found for {%s}", x)
-    message(msg)
+    message(sprintf("no installation found for {%s}", x))
     return(NULL)
   }
 

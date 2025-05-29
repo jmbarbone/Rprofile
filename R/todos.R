@@ -45,7 +45,7 @@ do_todos <- function(
   .quiet = FALSE
 ) {
   if (!requireNamespace("mark", quietly = TRUE)) {
-    message("mark is not available")
+    cat("package {mark} is needed for .Todos() and .Fixmes()\n")
     return(invisible())
   }
 

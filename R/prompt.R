@@ -6,7 +6,7 @@
 #' @export
 .GitBranchPrompt <- function() {
   if (!requireNamespace("prompt", quietly = TRUE)) {
-    message("prompt not available")
+    cat("Package {prompt} is required for .GitBranchPrompt\n")
     return(invisible())
   }
 
