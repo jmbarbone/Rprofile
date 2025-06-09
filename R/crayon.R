@@ -4,14 +4,28 @@ use_color <- function() {
 }
 
 # add more when used
-crayon_cyan <- function(x) if (use_color()) crayon::cyan(x) else x
-crayon_yellow <- function(x) if (use_color()) crayon::yellow(x) else x
-crayon_green <- function(x) if (use_color()) crayon::green(x) else x
-crayon_blue <- function(x) if (use_color()) crayon::blue(x) else x
-crayon_red <- function(x) if (use_color()) crayon::red(x) else x
-crayon_magenta <- function(x) if (use_color()) crayon::magenta(x) else x
-crayon_silver <- function(x) if (use_color()) crayon::silver(x) else x
+crayon_ <- function(color) {
+  function(x) {
+    if (use_color()) {
+      utils::getFromNamespace(color, asNamespace("crayon"))(x)
+    } else {
+      x
+    }
+  }
+}
+
+crayon_cyan <- crayon_("cyan")
+crayon_yellow <- crayon_("yellow")
+crayon_green <- crayon_("green")
+crayon_blue <- crayon_("blue")
+crayon_red <- crayon_("red")
+crayon_magenta <- crayon_("magenta")
+crayon_silver <- crayon_("silver")
 
 crayon_strip <- function(x) {
-  if (requireNamespace("crayon", quietly = TRUE)) crayon::strip_style(x) else x
+  if (requireNamespace("crayon", quietly = TRUE)) {
+    crayon::strip_style(x)
+  } else {
+    x
+  }
 }
