@@ -29,7 +29,12 @@
     path <- rstudioapi::getSourceEditorContext()$path
   }
 
-  if (is.null(linters) && file.exists(".lintr") && getOption("verbose")) {
+  # fmt: skip
+  if (
+    is.null(linters) &&
+    file.exists(".lintr") &&
+    getOption("verbose")
+  ) {
     message("Presumably reading from .lintr")
     writeLines(readLines(".lintr"))
   } else if (is.character(linters)) {

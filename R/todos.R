@@ -55,10 +55,11 @@ do_todos <- function(
   fun <- switch(type, todo = mark::todos, fixme = mark::fixmes)
   todo <- .try(do.call(fun, params))
 
+  # fmt: skip
   if (
     !is.null(todo) &&
-      !.quiet &&
-      !is_rprofile_error(todo)
+    !.quiet &&
+    !is_rprofile_error(todo)
   ) {
     print(todo)
   }
