@@ -30,8 +30,8 @@
   ),
   overwrite = FALSE
 ) {
-  requireNamespace("mark")
-  requireNamespace("fs")
+  fuj::require_namespace("mark")
+  fuj::require_namespace("fs")
 
   wd <- getwd()
   on.exit(setwd(wd))

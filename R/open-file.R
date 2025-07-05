@@ -21,12 +21,12 @@
 .OpenFile.default <- function(x, force = FALSE, ...) {
   if (!force && isTRUE(.try(file.exists(x)))) {
     x <- normalizePath(x, "/")
-    requireNamespace("xopen")
+    fuj::require_namespace("xopen")
     xopen::xopen(x)
     return(x)
   }
 
-  requireNamespace("readr")
+  fuj::require_namespace("readr")
   op <- options(readr.show_progress = FALSE)
   on.exit(options(op), add = TRUE)
 
@@ -39,7 +39,7 @@
 #' @export
 #' @rdname OpenFile
 .OpenFile.data.frame <- function(x, ...) {
-  requireNamespace("readr")
+  fuj::require_namespace("readr")
   op <- options(readr.show_progress = FALSE)
   on.exit(options(op), add = TRUE)
 

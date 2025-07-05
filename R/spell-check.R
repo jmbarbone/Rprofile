@@ -4,9 +4,9 @@
 #'   the RStudio editor
 #' @export
 .SpellCheckFile <- function(path = NULL) {
-  requireNamespace("spelling")
+  fuj::require_namespace("spelling")
   if (is.null(path)) {
-    requireNamespace("rstudioapi")
+    fuj::require_namespace("rstudioapi")
     path <- rstudioapi::getSourceEditorContext()$path
   } else {
     path <- normalizePath(path, mustWork = TRUE)

@@ -18,7 +18,7 @@ NULL
   overwrite = FALSE,
   path = .FindRprofile()
 ) {
-  requireNamespace("fs")
+  fuj::require_namespace("fs")
   stopifnot(is.character(path), length(path) == 1)
   old_path <- fs::path_expand_r(path)
   old_path <- fs::path_norm(old_path)

@@ -13,8 +13,7 @@
 #'
 #' @export
 .CharacterIndex <- function(x = NULL) {
-  requireNamespace("fuj")
-  requireNamespace("mark")
+  fuj::require_namespace("mark")
 
   if (is.null(x)) {
     x <- mark::read_clipboard()

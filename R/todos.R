@@ -68,7 +68,7 @@ do_todos <- function(
 }
 
 do_todo_here <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
-  requireNamespace("rstudioapi")
+  fuj::require_namespace("rstudioapi")
   stopifnot(interactive(), "path" %out% ...names())
   path <- rstudioapi::getSourceEditorContext()$path
   do_todos(type = type, path = path, ..., .quiet = .quiet)

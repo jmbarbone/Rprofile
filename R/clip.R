@@ -20,7 +20,7 @@
   ...
 ) {
   read_table <- function(...) {
-    requireNamespace("mark")
+    fuj::require_namespace("mark")
     params <- list(...)
     default <- list(
       header = TRUE,
@@ -40,7 +40,7 @@
     do.call(utils::read.table, params)
   }
 
-  requireNamespace("clipr")
+  fuj::require_namespace("clipr")
   switch(
     match.arg(convert),
     none = clipr::read_clip(allow_non_interactive = TRUE),
