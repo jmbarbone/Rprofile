@@ -28,6 +28,7 @@
 * `.UsePackageLibrary()` appends a new path to the library path based on the directory of the package
 * `.RemoveGlobalConflicts()` added to remove global conflicts
 * `.Search(pattern)` now allows for pattern matching [#38]
+* `{magrittr}` removed as an import 
 
 ## Fixes
 
