@@ -14,6 +14,7 @@
   if (is.null(email)) {
     email <- .try(get_description_emails())
     if (is_rprofile_error(email)) {
+      cat("No email found in DESCRIPTION file, please provide one\n")
       return(invisible())
     }
   }
@@ -26,7 +27,7 @@
     res <- fuj::wuffle(.try(utils::capture.output(dang::checkCRANStatus(
       email = e,
       cache = tempfile("dang_check_cran_status__", fileext = ".rds"),
-      cache.life = 3600
+      cache.life = 3600L
     ))))
     if (!is_rprofile_error(res)) {
       show_table()
@@ -43,7 +44,7 @@
 show_table <- function() {
   res <- get_recent_cran_check()
   time <- crayon_yellow(format(res[[1]], "%Y-%m-%d %H:%M:%S", usetz = TRUE))
-  tab <- res[[2]]
+  tab <- res[[2L]]
 
   cat("\n")
   writeLines(time)
