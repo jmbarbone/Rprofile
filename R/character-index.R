@@ -15,13 +15,11 @@
 .CharacterIndex <- function(x = NULL) {
   fuj::require_namespace("mark")
 
-  if (is.null(x)) {
-    x <- mark::read_clipboard()
-  }
+  x <- x %||% mark::read_clipboard()
 
   lapply(x, function(x) {
-    if (length(x) == 0) {
-      return(NA_real_)
+    if (length(x) == 0L) {
+      return(NA_integer_)
     }
 
     nm <- mark::chr_split(x)
