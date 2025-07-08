@@ -48,7 +48,7 @@
     data.frame = read_table(.ReadClip("none"), ...),
     auto = {
       text <- .ReadClip("none")
-      if (length(text) == 1) {
+      if (length(text) == 1L) {
         utils::type.convert(
           scan(text = text, what = "character", quiet = TRUE),
           as.is = TRUE,
