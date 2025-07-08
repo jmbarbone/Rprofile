@@ -6,12 +6,12 @@
 #' @export
 #' @family Rprofile
 .AttachDevtools <- function() {
+  req <- function(x) {
+    suppressPackageStartupMessages(("base" %:::% "require")(x))
+  }
+
   invisible(c(
-    usethis = suppressPackageStartupMessages(("base" %colons% "require")(
-      "usethis"
-    )),
-    devtools = suppressPackageStartupMessages(("base" %colons% "require")(
-      "devtools"
-    ))
+    usethis = req("usethis"),
+    devtools = req("devtools"),
   ))
 }
