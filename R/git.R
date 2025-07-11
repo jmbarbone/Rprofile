@@ -21,12 +21,12 @@
 .GitPrepareCommitMsg <- function(
   path = ".",
   method = c(
-    "github",
-    "jira",
-    "github-start",
-    "github-end",
-    "jira-start",
-    "jira-end"
+    list(
+      "github-end" = c("github", "github-end"),
+      "jira-start" = c("jira", "jira-start"),
+      "github-start",
+      "jira-end"
+    )
   ),
   overwrite = FALSE
 ) {
@@ -38,15 +38,6 @@
   setwd(path)
 
   method <- mark::match_param(method)
-  switch(
-    method,
-    github = {
-      method <- "github-end"
-    },
-    jira = {
-      method <- "jira-start"
-    }
-  )
 
   file <- sprintf("prepare-commit-msg-%s.sh", method)
   old <- system.file(file, package = "Rprofile", mustWork = TRUE)
