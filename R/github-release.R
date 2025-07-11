@@ -25,20 +25,22 @@
     stop(fuj::new_condition("...", "forced_exit"))
   }
 
-  if (missing(prerelease)) {
-    if (interactive()) {
-      prerelease <- yes_no("Is this a pre-release?")
-    } else {
-      prerelease <- FALSE
-    }
+  if (is.null(prerelease)) {
+    prerelease <-
+      if (interactive()) {
+        yes_no("Is this a pre-release?")
+      } else {
+        FALSE
+      }
   }
 
-  if (missing(publish)) {
-    if (interactive()) {
-      publish <- yes_no("Would you like to publish this release?")
-    } else {
-      publish <- FALSE
-    }
+  if (is.null(publish)) {
+    publish <-
+      if (interactive()) {
+        yes_no("Would you like to publish this release?")
+      } else {
+        FALSE
+      }
   }
 
   if (isFALSE(prerelease)) {
