@@ -58,7 +58,7 @@
 
   # get all the fancy side effects of `usethis::use_github_release()` without
   # actually creating a release
-  withCallingHandlers(
+  tryCatch(
     .GithubRelease(publish = force_exit(), prerelease = FALSE),
     rlang_message = function(e) {
       # don't include note on publishing
@@ -66,10 +66,7 @@
         tryInvokeRestart("muffleMessage")
       }
     },
-    forcedExitError = function(e) {
-      print("woo")
-      invisible(NULL)
-    }
+    forcedExitError = function(e) invisible(NULL)
   )
 
   desc <- as.list(as.data.frame(read.dcf("DESCRIPTION")))
