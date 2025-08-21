@@ -6,7 +6,8 @@
 \usage{
 .GitPrepareCommitMsg(
   path = ".",
-  method = c("github", "jira", "github-start", "github-end", "jira-start", "jira-end"),
+  method = c(list(`github-end` = c("github", "github-end"), `jira-start` = c("jira",
+    "jira-start"), "github-start", "jira-end")),
   overwrite = FALSE
 )
 }
