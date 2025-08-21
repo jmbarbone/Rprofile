@@ -13,5 +13,6 @@
   invisible(c(
     usethis = req("usethis"),
     devtools = req("devtools"),
+    NULL
   ))
 }
