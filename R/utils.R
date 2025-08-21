@@ -1,5 +1,5 @@
 assign_ <- function(...) {
-  ("base" %colons% "assign")(...)
+  ("base" %::% "assign")(...)
 }
 
 ls_global_all <- function() {
@@ -7,7 +7,7 @@ ls_global_all <- function() {
 }
 
 sf <- function(...) {
-  ("mark" %colons% "make_sf")("Rprofile")(...)
+  ("mark" %::% "make_sf")("Rprofile")(...)
 }
 
 .try <- function(expr) {

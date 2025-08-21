@@ -7,7 +7,7 @@
 #' @family Rprofile
 .AttachDevtools <- function() {
   req <- function(x) {
-    suppressPackageStartupMessages(("base" %:::% "require")(x))
+    suppressPackageStartupMessages(("base" %::% "require")(x))
   }
 
   invisible(c(

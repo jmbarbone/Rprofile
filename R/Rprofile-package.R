@@ -1,5 +1,5 @@
 #' @keywords internal
-#' @importFrom fuj %||% %out% %colons% %wo%
+#' @importFrom fuj %||% %out% %wo% %::%
 "_PACKAGE"
 
 # The following block is used by usethis to automatically manage
