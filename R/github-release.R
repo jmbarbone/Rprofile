@@ -75,8 +75,8 @@
     regmatches(git_repo, regexpr(pattern, git_repo, perl = TRUE))
   }
 
-  owner <- extract("(?<=github\\.com\\/)[[:alnum:]]+(?=\\/[[:alnum:]]+)")
-  repo <- extract("[[:alnum:]]+(?=\\.git$)")
+  owner <- extract("(?<=github\\.com\\/)[[:alnum:]-]+(?=\\/[[:alnum:]-]+)")
+  repo <- extract("[[:alnum:]-]+(?=\\.git$)")
 
   stopifnot(nzchar(owner), nzchar(repo))
 
