@@ -3,7 +3,7 @@
 ## New features
 
 * `.ReadClip()` added to read clipboard contents [#31]
-* `.GithubRelease()` added to create a GitHub (pre)release [#29]
+* `.GithubRelease()` added to create a GitHub (pre)release [#29], [#41]
 * `.Rprofile()` gains a `path` argument (with defaults) for identifying an `.Rprofile` location [#23]
 * `.FindRprofile()` added to find your `.Rprofile` file; used within `.Rprofile()` [#23]
 * Adds `.LintFile()` for selecting individual files to `lint` (defaults to currently opened file) [#21]
