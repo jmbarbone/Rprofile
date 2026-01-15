@@ -14,10 +14,14 @@
     return(prompt::set_prompt("> "))
   }
 
-  prompt::set_prompt(sprintf(
-    "[%s%s%s] > ",
-    prompt::git_branch(),
-    prompt::git_dirty(),
-    prompt::git_arrows()
-  ))
+  git_prompt <- function(...) {
+    sprintf(
+      "[%s%s%s] > ",
+      prompt::git_branch(),
+      prompt::git_dirty(),
+      prompt::git_arrows()
+    )
+  }
+
+  prompt::set_prompt(git_prompt)
 }
