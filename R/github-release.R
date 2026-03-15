@@ -22,7 +22,7 @@
   fuj::require_namespace("cli", "gh", "usethis")
 
   force_exit <- function() {
-    stop(fuj::new_condition("...", "forced_exit"))
+    stop(fuj::new_condition("...", "forced_exit", type = "error"))
   }
 
   if (is.null(prerelease)) {
@@ -66,7 +66,8 @@
         tryInvokeRestart("muffleMessage")
       }
     },
-    forcedExitError = function(e) invisible(NULL)
+    forcedExitError = function(e) invisible(NULL),
+    forced_exit_error = function(e) invisible(NULL)
   )
 
   desc <- as.list(as.data.frame(read.dcf("DESCRIPTION")))
