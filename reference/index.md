@@ -1,0 +1,101 @@
+# Package index
+
+## All functions
+
+- [`.OpenFile()`](https://jmbarbone.github.io/Rprofile/reference/OpenFile.md)
+  [`.FileOpen()`](https://jmbarbone.github.io/Rprofile/reference/OpenFile.md)
+  : Open (as) File
+
+- [`.Reload()`](https://jmbarbone.github.io/Rprofile/reference/Reload.md)
+  [`.Restart()`](https://jmbarbone.github.io/Rprofile/reference/Reload.md)
+  : Reload
+
+- [`.Rprofile()`](https://jmbarbone.github.io/Rprofile/reference/Rprofile-file.md)
+  [`.FindRprofile()`](https://jmbarbone.github.io/Rprofile/reference/Rprofile-file.md)
+  : Get .Rprofile
+
+- [`.SendAttachedPackagesToREnviron()`](https://jmbarbone.github.io/Rprofile/reference/attached_packages.md)
+  [`.RemoveAttachedPackages()`](https://jmbarbone.github.io/Rprofile/reference/attached_packages.md)
+  [`.AddAttachedPackagesToDefaultPackages()`](https://jmbarbone.github.io/Rprofile/reference/attached_packages.md)
+  : Manage attached packages
+
+- [`.AddRprofileOptions()`](https://jmbarbone.github.io/Rprofile/reference/dot-AddRprofileOptions.md)
+  : Add options
+
+- [`.AttachDevtools()`](https://jmbarbone.github.io/Rprofile/reference/dot-AttachDevtools.md)
+  : Attach devtools
+
+- [`.CharacterIndex()`](https://jmbarbone.github.io/Rprofile/reference/dot-CharacterIndex.md)
+  : Character index
+
+- [`.CheckCranStatus()`](https://jmbarbone.github.io/Rprofile/reference/dot-CheckCranStatus.md)
+  : Check Cran Status
+
+- [`.GitBranchPrompt()`](https://jmbarbone.github.io/Rprofile/reference/dot-GitBranchPrompt.md)
+  : Git branch prompt
+
+- [`.GitPrepareCommitMsg()`](https://jmbarbone.github.io/Rprofile/reference/dot-GitPrepareCommitMsg.md)
+  : Git prepare commit message
+
+- [`.GithubRelease()`](https://jmbarbone.github.io/Rprofile/reference/dot-GithubRelease.md)
+  :
+
+  Create a **GitHub** Release
+
+- [`.GlobalHandle()`](https://jmbarbone.github.io/Rprofile/reference/dot-GlobalHandle.md)
+  : Global handle
+
+- [`.LintFile()`](https://jmbarbone.github.io/Rprofile/reference/dot-LintFile.md)
+  : Lint a single file
+
+- [`.NewsUrls()`](https://jmbarbone.github.io/Rprofile/reference/dot-NewsUrls.md)
+  : Add URLs to NEWS
+
+- [`.NiceMessage()`](https://jmbarbone.github.io/Rprofile/reference/dot-NiceMessage.md)
+  : Adds a nice message to the start
+
+- [`.OpenPackageUrl()`](https://jmbarbone.github.io/Rprofile/reference/dot-OpenPackageUrl.md)
+  : Open package url
+
+- [`.Pak()`](https://jmbarbone.github.io/Rprofile/reference/dot-Pak.md)
+  :
+
+  Wrapper for `{pak::pak}`
+
+- [`.ReadClip()`](https://jmbarbone.github.io/Rprofile/reference/dot-ReadClip.md)
+  : Read the clipboard
+
+- [`.RemoveAll()`](https://jmbarbone.github.io/Rprofile/reference/dot-RemoveAll.md)
+  : Remove all objects
+
+- [`.RemoveGlobalConflicts()`](https://jmbarbone.github.io/Rprofile/reference/dot-RemoveGlobalConflicts.md)
+  : Remove global conflicts
+
+- [`.ResetOptions()`](https://jmbarbone.github.io/Rprofile/reference/dot-ResetOptions.md)
+  : Reset options
+
+- [`.RprofileJordan()`](https://jmbarbone.github.io/Rprofile/reference/dot-RprofileJordan.md)
+  : Jordan's Rprofile options
+
+- [`.Search()`](https://jmbarbone.github.io/Rprofile/reference/dot-Search.md)
+  : Search print
+
+- [`.SpellCheckFile()`](https://jmbarbone.github.io/Rprofile/reference/dot-SpellCheckFile.md)
+  : Spell check a file
+
+- [`.UsePackageLibrary()`](https://jmbarbone.github.io/Rprofile/reference/dot-UsePackageLibrary.md)
+  : Create a personal package library
+
+- [`.UtilMessage()`](https://jmbarbone.github.io/Rprofile/reference/dot-UtilMessage.md)
+  : Utility messages
+
+- [`remove_tag_and_save()`](https://jmbarbone.github.io/Rprofile/reference/remove_tag_and_save.md)
+  : Finds where tag is in file and removes the line and the line after
+  Assumes that the 'tag' is from this package and starts with
+  '@jordan\_' setting "tag" to NULL will remove any instances
+
+- [`.Todos()`](https://jmbarbone.github.io/Rprofile/reference/todos.md)
+  [`.Fixmes()`](https://jmbarbone.github.io/Rprofile/reference/todos.md)
+  [`.TodosHere()`](https://jmbarbone.github.io/Rprofile/reference/todos.md)
+  [`.FixmesHere()`](https://jmbarbone.github.io/Rprofile/reference/todos.md)
+  : TODOs and FIXMEs
