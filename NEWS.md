@@ -29,6 +29,7 @@
 * `.RemoveGlobalConflicts()` added to remove global conflicts
 * `.Search(pattern)` now allows for pattern matching [#38]
 * `{magrittr}` removed as an import 
+* `.GitBranchPrompt()` now uses a function and doesn't require manual runs to update branch [#43]
 
 ## Fixes
 
