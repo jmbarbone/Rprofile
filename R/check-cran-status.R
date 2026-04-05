@@ -22,7 +22,9 @@
   cat("Checking CRAN status\n")
   success <- FALSE
   for (e in email) {
-    if (success) cat("\n")
+    if (success) {
+      cat("\n")
+    }
     cat("checking for", crayon_blue(e))
     res <- fuj::wuffle(.try(utils::capture.output(dang::checkCRANStatus(
       email = e,
@@ -38,7 +40,7 @@
     }
   }
 
-  return(invisible(NULL))
+  invisible()
 }
 
 show_table <- function() {
