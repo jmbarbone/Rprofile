@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/jmbarbone/Rprofile/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/jmbarbone/Rprofile/blob/v0.0.0.9014/DESCRIPTION)
 
 Barbone J (2026). *Rprofile: Functions to be loaded with Rprofile*. R
 package version 0.0.0.9014, <https://github.com/jmbarbone/Rprofile>.
