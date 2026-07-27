@@ -2,9 +2,12 @@
 % Please edit documentation in R/github-actions.R
 \name{.UseGithubAction}
 \alias{.UseGithubAction}
+\alias{.UseGitHubAction}
 \title{Use GitHub Action}
 \usage{
 .UseGithubAction(x, repo = NULL, name = NULL, ref = NULL, ask = interactive())
+
+.UseGitHubAction(x, repo = NULL, name = NULL, ref = NULL, ask = interactive())
 }
 \arguments{
 \item{x, repo, name, ref}{Name/location of the action.  You can use a format

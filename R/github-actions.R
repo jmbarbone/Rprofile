@@ -113,4 +113,6 @@
   }
 }
 
+#' @export
+#' @rdname dot-UseGithubAction
 .UseGitHubAction <- .UseGithubAction

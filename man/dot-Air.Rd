@@ -15,7 +15,7 @@
 Wrapper for calling \code{air}
 }
 \examples{
-\notrun{
+\dontrun{
 .Air("format", paths = "R", check = TRUE, log_level = "trace")
 }
 }

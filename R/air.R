@@ -7,7 +7,7 @@
 #' @param ... Additional arguments to pass to the command.
 #' @export
 #' @examples
-#' \notrun{
+#' \dontrun{
 #' .Air("format", paths = "R", check = TRUE, log_level = "trace")
 #' }
 .Air <- function(cmd = c("format", "language-server", "help"), ...) {
