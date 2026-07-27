@@ -6,7 +6,7 @@
 \alias{Rprofile-package}
 \title{Rprofile: Functions to be loaded with Rprofile}
 \description{
-What the package does (one paragraph).
+Provides a set of non-intrusive development utilities.
 }
 \seealso{
 Useful links:
@@ -19,6 +19,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Jordan Mark Barbone \email{jmbarbone@gmail.com} (\href{https://orcid.org/0000-0001-9788-3628}{ORCID}) [copyright holder]
+
+Authors:
+\itemize{
+  \item Jordan Mark Barbone \email{jmbarbone@gmail.com} (\href{https://orcid.org/0000-0001-9788-3628}{ORCID}) [copyright holder]
+}
 
 }
 \keyword{internal}

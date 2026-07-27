@@ -2,9 +2,12 @@
 % Please edit documentation in R/github-release.R
 \name{.GithubRelease}
 \alias{.GithubRelease}
+\alias{.GitHubRelease}
 \title{Create a \strong{GitHub} Release}
 \usage{
 .GithubRelease(publish = NULL, prerelease = NULL)
+
+.GitHubRelease(publish = NULL, prerelease = NULL)
 }
 \arguments{
 \item{publish, prerelease}{Whether this release should be published and if it

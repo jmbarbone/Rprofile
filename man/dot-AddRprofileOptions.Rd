@@ -13,11 +13,11 @@
 Adds options to \code{rprofile_env}
 }
 \seealso{
-Other Rprofile: 
-\code{\link{.AttachDevtools}()},
-\code{\link{.NiceMessage}()},
-\code{\link{.Search}()},
-\code{\link{.UtilMessage}()},
+Other Rprofile:
+\code{\link[=.AttachDevtools]{.AttachDevtools()}},
+\code{\link[=.NiceMessage]{.NiceMessage()}},
+\code{\link[=.Search]{.Search()}},
+\code{\link[=.UtilMessage]{.UtilMessage()}},
 \code{\link{Rprofile-file}},
 \code{\link{attached_packages}}
 }

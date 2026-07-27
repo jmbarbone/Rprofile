@@ -16,11 +16,11 @@ None, called for its side effects
 This is exported only for use in \code{.Rprofile}
 }
 \seealso{
-Other Rprofile: 
-\code{\link{.AddRprofileOptions}()},
-\code{\link{.AttachDevtools}()},
-\code{\link{.NiceMessage}()},
-\code{\link{.Search}()},
+Other Rprofile:
+\code{\link[=.AddRprofileOptions]{.AddRprofileOptions()}},
+\code{\link[=.AttachDevtools]{.AttachDevtools()}},
+\code{\link[=.NiceMessage]{.NiceMessage()}},
+\code{\link[=.Search]{.Search()}},
 \code{\link{Rprofile-file}},
 \code{\link{attached_packages}}
 }

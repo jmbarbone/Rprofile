@@ -16,11 +16,11 @@ another random message is generated -- or not}
 Adds a nice message to the start
 }
 \seealso{
-Other Rprofile: 
-\code{\link{.AddRprofileOptions}()},
-\code{\link{.AttachDevtools}()},
-\code{\link{.Search}()},
-\code{\link{.UtilMessage}()},
+Other Rprofile:
+\code{\link[=.AddRprofileOptions]{.AddRprofileOptions()}},
+\code{\link[=.AttachDevtools]{.AttachDevtools()}},
+\code{\link[=.Search]{.Search()}},
+\code{\link[=.UtilMessage]{.UtilMessage()}},
 \code{\link{Rprofile-file}},
 \code{\link{attached_packages}}
 }

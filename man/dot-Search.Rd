@@ -16,11 +16,11 @@ Nothing, called for its side-effects
 A more colorful way of printing \code{\link[=search]{search()}}
 }
 \seealso{
-Other Rprofile: 
-\code{\link{.AddRprofileOptions}()},
-\code{\link{.AttachDevtools}()},
-\code{\link{.NiceMessage}()},
-\code{\link{.UtilMessage}()},
+Other Rprofile:
+\code{\link[=.AddRprofileOptions]{.AddRprofileOptions()}},
+\code{\link[=.AttachDevtools]{.AttachDevtools()}},
+\code{\link[=.NiceMessage]{.NiceMessage()}},
+\code{\link[=.UtilMessage]{.UtilMessage()}},
 \code{\link{Rprofile-file}},
 \code{\link{attached_packages}}
 }

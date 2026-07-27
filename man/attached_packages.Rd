@@ -20,12 +20,12 @@
 Clears out attached packages and properly loads
 }
 \seealso{
-Other Rprofile: 
-\code{\link{.AddRprofileOptions}()},
-\code{\link{.AttachDevtools}()},
-\code{\link{.NiceMessage}()},
-\code{\link{.Search}()},
-\code{\link{.UtilMessage}()},
+Other Rprofile:
+\code{\link[=.AddRprofileOptions]{.AddRprofileOptions()}},
+\code{\link[=.AttachDevtools]{.AttachDevtools()}},
+\code{\link[=.NiceMessage]{.NiceMessage()}},
+\code{\link[=.Search]{.Search()}},
+\code{\link[=.UtilMessage]{.UtilMessage()}},
 \code{\link{Rprofile-file}}
 }
 \concept{Rprofile}
