@@ -7,6 +7,8 @@ Wrapper for
 
 ``` r
 .GithubRelease(publish = NULL, prerelease = NULL)
+
+.GitHubRelease(publish = NULL, prerelease = NULL)
 ```
 
 ## Arguments

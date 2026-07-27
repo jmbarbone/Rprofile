@@ -1,6 +1,6 @@
 # Rprofile: Functions to be loaded with Rprofile
 
-What the package does (one paragraph).
+Provides a set of non-intrusive development utilities.
 
 ## See also
 
@@ -16,3 +16,8 @@ Useful links:
 
 **Maintainer**: Jordan Mark Barbone <jmbarbone@gmail.com>
 ([ORCID](https://orcid.org/0000-0001-9788-3628)) \[copyright holder\]
+
+Authors:
+
+- Jordan Mark Barbone <jmbarbone@gmail.com>
+  ([ORCID](https://orcid.org/0000-0001-9788-3628)) \[copyright holder\]

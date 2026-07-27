@@ -9,12 +9,14 @@ function to assist during the development process.
 You can install the developmental version of Rprofile with:
 
 ``` r
+
 remotes::install_github("jmbarbone/Rprofile")
 ```
 
 ## Example
 
 ``` r
+
 library(Rprofile)
 .NiceMessage()
 #> You are ultimate!

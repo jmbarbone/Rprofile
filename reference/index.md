@@ -22,6 +22,9 @@
 - [`.AddRprofileOptions()`](https://jmbarbone.github.io/Rprofile/reference/dot-AddRprofileOptions.md)
   : Add options
 
+- [`.Air()`](https://jmbarbone.github.io/Rprofile/reference/dot-Air.md)
+  : Run air
+
 - [`.AttachDevtools()`](https://jmbarbone.github.io/Rprofile/reference/dot-AttachDevtools.md)
   : Attach devtools
 
@@ -38,6 +41,7 @@
   : Git prepare commit message
 
 - [`.GithubRelease()`](https://jmbarbone.github.io/Rprofile/reference/dot-GithubRelease.md)
+  [`.GitHubRelease()`](https://jmbarbone.github.io/Rprofile/reference/dot-GithubRelease.md)
   :
 
   Create a **GitHub** Release
@@ -82,6 +86,9 @@
 
 - [`.SpellCheckFile()`](https://jmbarbone.github.io/Rprofile/reference/dot-SpellCheckFile.md)
   : Spell check a file
+
+- [`.UseGithubAction()`](https://jmbarbone.github.io/Rprofile/reference/dot-UseGithubAction.md)
+  : Use GitHub Action
 
 - [`.UsePackageLibrary()`](https://jmbarbone.github.io/Rprofile/reference/dot-UsePackageLibrary.md)
   : Create a personal package library
