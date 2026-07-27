@@ -26,7 +26,9 @@
 #' @export
 .NiceMessage <- function(x = 1:2, space = TRUE) {
   on.exit(if (space) cat("\n"))
-  if (length(x) == 0L) return(invisible())
+  if (length(x) == 0L) {
+    return(invisible())
+  }
   x <- as.integer(x)
 
   switch(
