@@ -22,6 +22,7 @@
 * `.OpenFile()` added as an alias for `.FileOpen()`
 * `.RprofileJordan()` checks for additional library paths from envvars `R_LIBS_PAK` and `R_LIBS_SCRIBE`
 * `.GithubRelease()` now prompts for both `publish` and `pre-release` params when they are not set
+* `.GitHubRelease()` added as an alias for `.GithubRelease()`
 * `.NewsUrls()` paths corrected and no longer error in error
 * `{fuj}` is now imported
 * `.Pak()` added as a wrapper for `pak::pak()`
@@ -30,6 +31,7 @@
 * `.Search(pattern)` now allows for pattern matching [#38]
 * `{magrittr}` removed as an import 
 * `.GitBranchPrompt()` now uses a function and doesn't require manual runs to update branch [#43]
+* `.Air()` added to call `air format .`
 
 ## Fixes
 
