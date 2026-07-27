@@ -47,6 +47,6 @@ Suggests:
     withr (>= 3.0.2),
     xopen
 Remotes:
-    github::jmbarbone/fuj@*release,
-    github::jmbarbone/mark@*release
+    github::jmbarbone/fuj@v0.2.2.9012,
+    github::jmbarbone/mark@v0.8.3.9006
 Config/testthat/edition: 3
