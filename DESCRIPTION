@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cph", "cre"),
            email = "jmbarbone@gmail.com",
            comment = c(ORCID = "0000-0001-9788-3628"))
-Description: What the package does (one paragraph).
+Description: Provides a set of non-intrusive development utilities.
 License: MIT + file LICENSE
 URL: https://github.com/jmbarbone/Rprofile,
     https://jmbarbone.github.io/Rprofile/
