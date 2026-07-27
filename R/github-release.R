@@ -99,3 +99,7 @@
     forcedExitError = function(e) invisible(NULL)
   )
 }
+
+#' @rdname dot-GithubRelease
+#' @export
+.GitHubRelease <- .GithubRelease
