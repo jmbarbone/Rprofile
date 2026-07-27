@@ -4,46 +4,50 @@
 
 * `.ReadClip()` added to read clipboard contents [#31]
 * `.GithubRelease()` added to create a GitHub (pre)release [#29], [#41]
-* `.Rprofile()` gains a `path` argument (with defaults) for identifying an `.Rprofile` location [#23]
 * `.FindRprofile()` added to find your `.Rprofile` file; used within `.Rprofile()` [#23]
-* Adds `.LintFile()` for selecting individual files to `lint` (defaults to currently opened file) [#21]
-* Adds `.GitPrepareCommitMsg()` to copy one of two templates to `.git/hook/prepare-commit-msg` [#10]
-* Adds `.OpenFile()` to open a file path or an object inside a file [#6]
-* `.Rprofile(TRUE)` should work again with correction to internal `sf()`
-* `.GitBranchPrompt()` has been simplified
-* A new `..Rprofile` environment will be created on start-up as a copy of an internal package environment
-* `@jmbarbone`'s preferred settings are now included as `.RprofileJordan()`, now a single command I can run in my `.Rprofile`
-* `.CheckCranStatus()` has simplified output when `{cli}` is available; linked included to packages [#8]
-* packing `lint`ing now included
-* `.CheckCranStatus()` specifically sets temporary file for check status results
-* `.CheckCranStatus()` outputs corrected
+* `.LintFile()` added for selecting individual files to `lint` (defaults to currently opened file) [#21]
+* `.GitPrepareCommitMsg()` added to copy one of two templates to `.git/hook/prepare-commit-msg` [#10]
+* `.OpenFile()` added to open a file path or an object inside a file [#6]
 * `.GlobalHandle()` added to call `rlang::global_handle()`; added into `.RprofileJordan()`
-* `.FileOpen()` now normalizes a path for a file before attempting to open
 * `.OpenFile()` added as an alias for `.FileOpen()`
-* `.RprofileJordan()` checks for additional library paths from envvars `R_LIBS_PAK` and `R_LIBS_SCRIBE`
-* `.GithubRelease()` now prompts for both `publish` and `pre-release` params when they are not set
 * `.GitHubRelease()` added as an alias for `.GithubRelease()`
-* `.NewsUrls()` paths corrected and no longer error in error
-* `{fuj}` is now imported
 * `.Pak()` added as a wrapper for `pak::pak()`
-* `.UsePackageLibrary()` appends a new path to the library path based on the directory of the package
-* `.RemoveGlobalConflicts()` added to remove global conflicts
-* `.Search(pattern)` now allows for pattern matching [#38]
-* `{magrittr}` removed as an import 
-* `.GitBranchPrompt()` now uses a function and doesn't require manual runs to update branch [#43]
 * `.Air()` added to call `air format .`
+* `.UseGithubAction()` (alias `.UseGitHubAction()`) added to copy a GitHub Action workflow template to `.github/workflows/`
+* `.RemoveGlobalConflicts()` added to remove global conflicts
 
 ## Fixes
 
-* `.Rprofile()` now uses `fs::path_expand_r()` to resolve tilde expansions, e.g., with `"~/.Rprofile"` [#23]
 * Improves checking for `R_PROFILE` envvar
+* `.Rprofile(TRUE)` should work again with correction to internal `sf()`
+* `.CheckCranStatus()` has simplified output when `{cli}` is available; linked included to packages [#8]
+* `.CheckCranStatus()` specifically sets temporary file for check status results
+* `.CheckCranStatus()` outputs corrected
+* `.Rprofile()` now uses `fs::path_expand_r()` to resolve tilde expansions, e.g., with `"~/.Rprofile"` [#23]
 * `.CheckCranStatus()` now (again?) exits quietly when an email is not found
+* `.NewsUrls()` paths corrected and no longer errors
 
 ## Enhancements
 
+* `.GithubRelease()` now prompts for both `publish` and `pre-release` params when they are not set
+* `.RprofileJordan()` checks for additional library paths from envvars `R_LIBS_PAK` and `R_LIBS_SCRIBE`
+* `.UsePackageLibrary()` appends a new path to the library path based on the directory of the package
+* `.Search(pattern)` now allows for pattern matching [#38]
+* `.Rprofile()` gains a `path` argument (with defaults) for identifying an `.Rprofile` location [#23]
+* `.GitBranchPrompt()` now uses a function and doesn't require manual runs to update branch [#43]
+* `.FileOpen()` now normalizes a path for a file before attempting to open
+* `.GitBranchPrompt()` has been simplified
 * `.NewsUrls()` now has prettier print for differences; URLs detected are highlighted with `{crayon}` and only the changed lines (with line numbers) are printed
 * Improvements with package checking
 * Prompts via `utils::menu()` cleaned up
+
+## Internal
+
+* `@jmbarbone`'s preferred settings are now included as `.RprofileJordan()`, now a single command I can run in my `.Rprofile`
+* package `lint`ing now included
+* A new `..Rprofile` environment will be created on start-up as a copy of an internal package environment
+* `{fuj}` is now imported
+* `{magrittr}` removed as an import 
 
 # Rprofile 0.0.0.9000
 
