@@ -6,6 +6,8 @@ Use GitHub Action
 
 ``` r
 .UseGithubAction(x, repo = NULL, name = NULL, ref = NULL, ask = interactive())
+
+.UseGitHubAction(x, repo = NULL, name = NULL, ref = NULL, ask = interactive())
 ```
 
 ## Arguments

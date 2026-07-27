@@ -88,6 +88,7 @@
   : Spell check a file
 
 - [`.UseGithubAction()`](https://jmbarbone.github.io/Rprofile/reference/dot-UseGithubAction.md)
+  [`.UseGitHubAction()`](https://jmbarbone.github.io/Rprofile/reference/dot-UseGithubAction.md)
   : Use GitHub Action
 
 - [`.UsePackageLibrary()`](https://jmbarbone.github.io/Rprofile/reference/dot-UsePackageLibrary.md)

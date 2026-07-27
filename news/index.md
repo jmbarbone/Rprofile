@@ -37,8 +37,10 @@
 - [`.Air()`](https://jmbarbone.github.io/Rprofile/reference/dot-Air.md)
   added to call `air format .`
 - [`.UseGithubAction()`](https://jmbarbone.github.io/Rprofile/reference/dot-UseGithubAction.md)
-  (alias `.UseGitHubAction()`) added to copy a GitHub Action workflow
-  template to `.github/workflows/`
+  (alias
+  [`.UseGitHubAction()`](https://jmbarbone.github.io/Rprofile/reference/dot-UseGithubAction.md))
+  added to copy a GitHub Action workflow template to
+  `.github/workflows/`
 - [`.RemoveGlobalConflicts()`](https://jmbarbone.github.io/Rprofile/reference/dot-RemoveGlobalConflicts.md)
   added to remove global conflicts
 

@@ -19,3 +19,9 @@ Wrapper for calling `air`
   Additional arguments to pass to the command.
 
 ## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+.Air("format", paths = "R", check = TRUE, log_level = "trace")
+} # }
+```
