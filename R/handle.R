@@ -4,6 +4,5 @@
 #'
 #' @export
 .GlobalHandle <- function() {
-  fuj::require_namespace("rlang")
   rlang::global_handle()
 }
