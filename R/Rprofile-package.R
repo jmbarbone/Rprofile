@@ -35,6 +35,10 @@ lockEnvironment(rprofile)
     .Todos(.quiet = FALSE, .space = TRUE)
     .CheckCranStatus()
     .Search()
+
+    if (requireNamespace("shiny", quietly = TRUE)) {
+      shiny::devmode()
+    }
   }
 
   jordan <-
