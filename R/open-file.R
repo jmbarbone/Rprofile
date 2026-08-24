@@ -44,7 +44,6 @@
   on.exit(options(op), add = TRUE)
 
   tempfile <- tempfile(fileext = ".csv")
-  # on.exit(unlink(tempfile), add = TRUE)
   utils::write.csv(
     x,
     tempfile,

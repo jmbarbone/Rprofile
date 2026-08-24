@@ -14,7 +14,6 @@ reset_namespaces <- function(expr) {
         }
 
         for (ns in loadedNamespaces() %wo% loaded) {
-          # cat(sprintf("Unloading namespace: %s (%d)\n", ns, attempt))
           tryCatch(unloadNamespace(ns), error = \(e) NULL)
         }
       }
