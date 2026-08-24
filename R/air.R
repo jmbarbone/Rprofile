@@ -34,7 +34,7 @@
           list.files(path, include.dirs = FALSE, recursive = TRUE),
           readLines
         )
-        print(with_waldo::compare(old, new))
+        print(waldo::compare(old, new))
       })
     }
     opts$args[n] <- shQuote(opts$args[n], "sh")

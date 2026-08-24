@@ -92,9 +92,9 @@ print_cran_status <- function(x) {
     x[[mc["OK"]]] <- crayon_green(x[[m["OK"]]])
   }
 
-  if (namespace_available("cli")) {
+  if (available_namespace("cli")) {
     apply(x, 1L, function(row) {
-      reset_namepsaces(cli::cli_text(
+      reset_namespaces(cli::cli_text(
         sprintf(
           # nolint next: line_length_linter.
           "{.href [%s](https://cloud.r-project.org/web/packages/%s/index.html)} ",

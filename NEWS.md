@@ -40,6 +40,7 @@
 * `.NewsUrls()` now has prettier print for differences; URLs detected are highlighted with `{crayon}` and only the changed lines (with line numbers) are printed
 * Improvements with package checking
 * Prompts via `utils::menu()` cleaned up
+* Additional namespaces will be unloaded if they not already loaded
 
 ## Internal
 
