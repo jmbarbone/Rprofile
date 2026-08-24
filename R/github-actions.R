@@ -37,14 +37,11 @@
     reset_namespaces({
       info <- gh::gh(sprintf("GET https://api.github.com/repos/%s", repo))
       resp <- gh::gh(sprintf("/repos/%s/releases", repo))
-    })
 
-    if (length(resp) == 0L) {
-      return(info$default_branch)
-    }
+      if (length(resp) == 0L) {
+        return(info$default_branch)
+      }
 
-    require_fuj()
-    reset_namespaces({
       releases <- fuj::toss(
         fuj::vap_chr(resp, "tag_name"),
         fuj::vap_lgl(resp, "prerelease"),

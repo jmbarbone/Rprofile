@@ -5,12 +5,14 @@
 #' @export
 .SpellCheckFile <- function(path = NULL) {
   require_namespace("spelling")
-  if (is.null(path)) {
-    require_namespace("rstudioapi")
-    path <- reset_namespaces(rstudioapi::getSourceEditorContext()$path)
-  } else {
-    path <- normalizePath(path, mustWork = TRUE)
-  }
+  reset_namespaces({
+    if (is.null(path)) {
+      require_namespace("rstudioapi")
+      path <- rstudioapi::getSourceEditorContext()$path
+    } else {
+      path <- normalizePath(path, mustWork = TRUE)
+    }
 
-  reset_namespaces(spelling::spell_check_files(path))
+    spelling::spell_check_files(path)
+  })
 }

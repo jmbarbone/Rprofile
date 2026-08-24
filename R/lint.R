@@ -28,7 +28,7 @@
   reset_namespaces({
     if (is.null(path)) {
       require_namespace("rstudioapi")
-      path <- reset_namespaces(rstudioapi::getSourceEditorContext()$path)
+      path <- rstudioapi::getSourceEditorContext()$path
     }
 
     if (
