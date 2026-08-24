@@ -39,14 +39,15 @@
 }
 
 cat_praise <- function() {
-  fuj::require_namespace("praise")
-  cat(crayon_yellow(praise::praise()), "\n")
+  require_namespace("praise")
+  cat(crayon_yellow(reset_namespaces(praise::praise())), "\n")
 }
 
 cat_fortune <- function() {
-  fuj::require_namespace("fortunes")
+  require_namespace("fortunes")
   # setting width high as it is adjusted later
-  x <- paste(utils::capture.output(fortunes::fortune(width = 1000)))
+  x <- utils::capture.output(reset_namespaces(fortunes::fortune(width = 1000)))
+  x <- paste(x)
   x <- x[seq_along(x[-1])[-1]]
   x <- paste0(x, "\n")
   cat(crayon_yellow(x))

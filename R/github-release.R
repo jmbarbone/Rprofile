@@ -19,10 +19,10 @@
 #'   an [interactive()] session, otherwise defaults to `FALSE`
 #' @export
 .GithubRelease <- function(publish = NULL, prerelease = NULL) {
-  fuj::require_namespace("cli", "gh", "usethis")
+  require_namespace("cli", "gh", "usethis")
 
   force_exit <- function() {
-    stop(fuj::new_condition("...", "forced_exit", type = "error"))
+    stop(errorCondition("...", class = "forced_exit_error"))
   }
 
   if (is.null(prerelease)) {
@@ -44,10 +44,10 @@
   }
 
   if (isFALSE(prerelease)) {
-    fuj::require_namespace("usethis")
-    return(tryCatch(
+    require_namespace("usethis")
+    reset_namespaces(tryCatch(
       usethis::use_github_release(publish = publish),
-      forcedExitError = function(e) invisible(NULL)
+      forced_exit_error = function(e) invisible(NULL)
     ))
   }
 

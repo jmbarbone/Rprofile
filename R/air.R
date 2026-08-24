@@ -11,8 +11,8 @@
 #' .Air("format", paths = "R", check = TRUE, log_level = "trace")
 #' }
 .Air <- function(cmd = c("format", "language-server", "help"), ...) {
-  fuj::require_namespace("fs")
-  waldo <- requireNamespace("waldo", quietly = TRUE)
+  require_namespace("fs")
+  waldo <- available_namespace("waldo")
   cmd <- air_command(cmd)
   opts <- air_options(cmd, ...)
   air <- normalizePath(Sys.which("air"), "/", mustWork = TRUE)
@@ -26,15 +26,15 @@
     ) {
       path <- opts$args[n]
       old <- lapply(
-        fs::dir_ls(path, type = "file", recurse = TRUE),
+        list.files(path, include.dirs = FALSE, recursive = TRUE),
         readLines
       )
       on.exit({
         new <- lapply(
-          fs::dir_ls(path, type = "file", recurse = TRUE),
+          list.files(path, include.dirs = FALSE, recursive = TRUE),
           readLines
         )
-        print(waldo::compare(old, new))
+        print(with_waldo::compare(old, new))
       })
     }
     opts$args[n] <- shQuote(opts$args[n], "sh")
@@ -51,7 +51,7 @@
 
 
 air_command <- function(x = c("format", "language-server", "help")) {
-  fuj::match_arg(x)
+  match_arg(x)
 }
 
 air_options <- function(cmd, ...) {
@@ -78,11 +78,14 @@ air_options <- function(cmd, ...) {
 
   if (...length() > 0L) {
     if (!all(nzchar(...names()))) {
-      stop(fuj::input_error("All arguments must be named"))
+      stop(errorCondition(
+        "All arguments must be named",
+        class = "input_error"
+      ))
     }
 
     updates <- list(...)
-    updates <- updates[fuj::match_arg(
+    updates <- updates[match_arg(
       names(updates),
       names(opts),
       multiple = TRUE,
@@ -95,7 +98,7 @@ air_options <- function(cmd, ...) {
     globals = c(
       if (opts$version) "--version",
       "--log-level",
-      fuj::match_arg(
+      match_arg(
         opts$log_level,
         c("error", "warn", "info", "debug", "trace")
       ),

@@ -1,5 +1,4 @@
 #' @keywords internal
-#' @importFrom fuj %||% %out% %wo% %::%
 "_PACKAGE"
 
 # The following block is used by usethis to automatically manage
@@ -14,6 +13,9 @@ local(envir = rprofile, {
 })
 lockEnvironment(rprofile)
 
+# we will prioritize this library path for functions inside .Rprofile
+.Library.Rprofile <- Sys.getenv("R_LIBS_RPROFILE", "~/rprofile-library")
+
 #' Jordan's Rprofile options
 #'
 #' @export
@@ -21,7 +23,8 @@ lockEnvironment(rprofile)
   .libPaths(c(
     .libPaths(),
     Sys.getenv("R_LIBS_PAK", "~/R/pak-library"),
-    Sys.getenv("R_LIBS_SCRIBE", "~/R/scribe-library")
+    Sys.getenv("R_LIBS_SCRIBE", "~/R/scribe-library"),
+    .Library.Rprofile
   ))
 
   .AttachDevtools()
@@ -73,6 +76,28 @@ lockEnvironment(rprofile)
         )
       )
     }
+
+    conflictRules(
+      "fuj",
+      mask.ok = list(
+        testthat = "not"
+      )
+    )
+    conflictRules(
+      "cnd",
+      mask.ok = list(
+        fuj = c(
+          "value_error",
+          "class_error",
+          "type_error",
+          "input_error",
+          "use_error",
+          "duplicate_error",
+          "defunct_error",
+          "internal_error"
+        )
+      )
+    )
 
     options(opts)
   })

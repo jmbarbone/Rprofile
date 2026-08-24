@@ -19,8 +19,10 @@
   convert = c("auto", "none", "some", "data.frame", "tibble"),
   ...
 ) {
+  require_namespace("clipr")
+
   read_table <- function(...) {
-    fuj::require_namespace("mark")
+    require_namespace("mark")
     params <- list(...)
     default <- list(
       header = TRUE,
@@ -35,15 +37,14 @@
       fill = TRUE,
       strip.white = TRUE
     )
-    params <- mark::merge_list(default, params, keep = "y")
+    params <- reset_namespaces(mark::merge_list(default, params, keep = "y"))
     params$text <- text
     do.call(utils::read.table, params)
   }
 
-  fuj::require_namespace("clipr")
   switch(
     match.arg(convert),
-    none = clipr::read_clip(allow_non_interactive = TRUE),
+    none = reset_namespaces(clipr::read_clip(allow_non_interactive = TRUE)),
     some = scan(text = .ReadClip("none"), what = "character", quiet = TRUE),
     data.frame = read_table(.ReadClip("none"), ...),
     auto = {

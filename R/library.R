@@ -2,8 +2,9 @@
 #'
 #' @export
 .UsePackageLibrary <- function() {
-  fuj::require_namespace("here")
-  lib <- file.path("~", "R", paste0(basename(here::here()), "-library"))
+  require_namespace("here")
+  here <- reset_namespaces(here::here())
+  lib <- file.path("~", "R", paste0(basename(here), "-library"))
   lib <- normalizePath(lib, "/", FALSE)
   .libPaths(c(lib, .libPaths()))
 }

@@ -6,11 +6,7 @@
 #' @seealso [dang::checkCRANStatus()]
 #' @export
 .CheckCranStatus <- function(email = NULL) {
-  if (!requireNamespace("dang", quietly = TRUE)) {
-    cat("package {dang} is needed for .CheckCranStatus()\n")
-    return(invisible())
-  }
-
+  require_namespace("dang")
   if (is.null(email)) {
     email <- .try(get_description_emails())
     if (is_rprofile_error(email)) {
@@ -26,7 +22,7 @@
       cat("\n")
     }
     cat("checking for", crayon_blue(e))
-    res <- fuj::wuffle(.try(utils::capture.output(dang::checkCRANStatus(
+    res <- suppressWarnings(.try(utils::capture.output(dang::checkCRANStatus(
       email = e,
       cache = tempfile("dang_check_cran_status__", fileext = ".rds"),
       cache.life = 3600L
@@ -96,9 +92,9 @@ print_cran_status <- function(x) {
     x[[mc["OK"]]] <- crayon_green(x[[m["OK"]]])
   }
 
-  if (requireNamespace("cli", quietly = TRUE)) {
+  if (namespace_available("cli")) {
     apply(x, 1L, function(row) {
-      cli::cli_text(
+      reset_namepsaces(cli::cli_text(
         sprintf(
           # nolint next: line_length_linter.
           "{.href [%s](https://cloud.r-project.org/web/packages/%s/index.html)} ",
@@ -106,7 +102,7 @@ print_cran_status <- function(x) {
           row[1L]
         ),
         paste0(row[crayon_strip(row) != ""][-1L], collapse = " ")
-      )
+      ))
     })
     return(invisible(xx))
   }

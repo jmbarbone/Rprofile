@@ -4,13 +4,13 @@
 #'   the RStudio editor
 #' @export
 .SpellCheckFile <- function(path = NULL) {
-  fuj::require_namespace("spelling")
+  require_namespace("spelling")
   if (is.null(path)) {
-    fuj::require_namespace("rstudioapi")
-    path <- rstudioapi::getSourceEditorContext()$path
+    require_namespace("rstudioapi")
+    path <- reset_namespaces(rstudioapi::getSourceEditorContext()$path)
   } else {
     path <- normalizePath(path, mustWork = TRUE)
   }
 
-  spelling::spell_check_files(path)
+  reset_namespaces(spelling::spell_check_files(path))
 }

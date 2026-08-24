@@ -29,10 +29,10 @@
 #' @export
 #' @rdname Reload
 .Restart <- function() {
-  fuj::require_namespace("rstudioapi")
+  require_namespace("rstudioapi")
   .ResetOptions()
   .RemoveAll()
-  rstudioapi::restartSession()
+  reset_namespaces(rstudioapi::restartSession())
 }
 
 #' Reset options
