@@ -93,6 +93,7 @@
 - Improvements with package checking
 - Prompts via [`utils::menu()`](https://rdrr.io/r/utils/menu.html)
   cleaned up
+- Additional namespaces will be unloaded if they not already loaded
 
 ### Internal
 
