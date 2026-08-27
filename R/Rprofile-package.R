@@ -114,10 +114,32 @@ lockEnvironment(rprofile)
 }
 
 .onLoad <- function(libname, pkgname) {
-  r_libs_profile <- Sys.getenv("R_LIBS_PROFILE")
+  r_libs_profile <- Sys.getenv("R_LIBS_RPROFILE")
+  r_libs_profile <- normalizePath(r_libs_profile, "/", FALSE)
+  if (!nzchar(r_libs_profile)) {
+    cat(
+      "Warning: R_LIBS_RPROFILE is not set. Please set it to a valid path.\n",
+      "This may cause unexpected behavior.\n"
+    )
+    return()
+  }
+
   if (!isTRUE(dir.exists(r_libs_profile))) {
-    if (nzchar(r_libs_profile)) {
-      dir.create(r_libs_profile, recursive = TRUE, showWarnings = FALSE)
-    }
+    try(dir.create(r_libs_profile, recursive = TRUE, showWarnings = FALSE))
+  }
+
+  path <- getNamespaceInfo("Rprofile", "path")
+  path <- normalizePath(path, winslash = "/", mustWork = FALSE)
+  if (match(path, c(getwd(), r_libs_profile), 0L) == 0L) {
+    cat(
+      "Warning: R_LIBS_RPROFILE is set to a different path than the Rprofile package.\n",
+      "R_LIBS_RPROFILE: ",
+      r_libs_profile,
+      "\n",
+      "Rprofile path: ",
+      path,
+      "\n",
+      "This may cause unexpected behavior.\n"
+    )
   }
 }
