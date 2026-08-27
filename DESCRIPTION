@@ -1,6 +1,6 @@
 Package: Rprofile
 Title: Functions to be loaded with Rprofile
-Version: 0.0.0.9016
+Version: 0.0.0.9017
 Authors@R:
     person(given = "Jordan Mark",
            family = "Barbone",
@@ -19,8 +19,6 @@ Roxygen: list(markdown = TRUE)
 Depends:
     R (>= 3.6.0)
 Imports:
-    fuj (>= 0.2.1),
-    rlang,
     utils
 Suggests:
     cli,
@@ -30,14 +28,16 @@ Suggests:
     devtools,
     fortunes,
     fs,
+    fuj (>= 0.2.2.9015),
     gh,
     here (>= 1.0.1),
     lintr,
-    mark (>= 0.8.0),
+    mark (>= 0.8.3.9006),
     pak (>= 0.8.0),
     praise,
     prompt,
     readr,
+    rlang,
     rstudioapi,
     spelling,
     testthat (>= 3.0.0),
@@ -47,7 +47,7 @@ Suggests:
     withr (>= 3.0.2),
     xopen
 Remotes:
-    github::jmbarbone/fuj@v0.2.2.9012,
+    github::jmbarbone/fuj@v0.2.2.9015,
     github::jmbarbone/mark@v0.8.3.9006
 Config/testthat/edition: 3
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0

@@ -21,30 +21,36 @@
 .OpenFile.default <- function(x, force = FALSE, ...) {
   if (!force && isTRUE(.try(file.exists(x)))) {
     x <- normalizePath(x, "/")
-    fuj::require_namespace("xopen")
-    xopen::xopen(x)
+    require_namespace("xopen")
+    reset_namespaces(xopen::xopen(x))
     return(x)
   }
 
-  fuj::require_namespace("readr")
+  require_namespace("readr")
   op <- options(readr.show_progress = FALSE)
   on.exit(options(op), add = TRUE)
 
   x <- as.character(x)
   tempfile <- tempfile(fileext = ".txt")
-  readr::write_lines(x, tempfile)
+  reset_namespaces(readr::write_lines(x, tempfile))
   .OpenFile(tempfile)
 }
 
 #' @export
 #' @rdname OpenFile
 .OpenFile.data.frame <- function(x, ...) {
-  fuj::require_namespace("readr")
+  require_namespace("readr")
   op <- options(readr.show_progress = FALSE)
   on.exit(options(op), add = TRUE)
 
   tempfile <- tempfile(fileext = ".csv")
-  readr::write_csv(x, tempfile)
+  utils::write.csv(
+    x,
+    tempfile,
+    row.names = FALSE,
+    na = "",
+    fileEncoding = "UTF-8"
+  )
   .OpenFile(tempfile)
 }
 

@@ -19,44 +19,46 @@
   convert = c("auto", "none", "some", "data.frame", "tibble"),
   ...
 ) {
-  read_table <- function(...) {
-    fuj::require_namespace("mark")
-    params <- list(...)
-    default <- list(
-      header = TRUE,
-      sep = "\t",
-      row.names = NULL,
-      na.strings = c("", "NA", "N/A", "#N/A"),
-      check.names = FALSE,
-      stringsAsFactors = FALSE,
-      encoding = "UTF-8",
-      comment.char = "",
-      blank.lines.skip = TRUE,
-      fill = TRUE,
-      strip.white = TRUE
-    )
-    params <- mark::merge_list(default, params, keep = "y")
-    params$text <- text
-    do.call(utils::read.table, params)
-  }
-
-  fuj::require_namespace("clipr")
-  switch(
-    match.arg(convert),
-    none = clipr::read_clip(allow_non_interactive = TRUE),
-    some = scan(text = .ReadClip("none"), what = "character", quiet = TRUE),
-    data.frame = read_table(.ReadClip("none"), ...),
-    auto = {
-      text <- .ReadClip("none")
-      if (length(text) == 1L) {
-        utils::type.convert(
-          scan(text = text, what = "character", quiet = TRUE),
-          as.is = TRUE,
-          na.strings = c("", "NA")
-        )
-      } else {
-        read_table(text = text, ...)
-      }
+  require_namespace("clipr")
+  reset_namespaces({
+    read_table <- function(...) {
+      require_namespace("mark")
+      params <- list(...)
+      default <- list(
+        header = TRUE,
+        sep = "\t",
+        row.names = NULL,
+        na.strings = c("", "NA", "N/A", "#N/A"),
+        check.names = FALSE,
+        stringsAsFactors = FALSE,
+        encoding = "UTF-8",
+        comment.char = "",
+        blank.lines.skip = TRUE,
+        fill = TRUE,
+        strip.white = TRUE
+      )
+      params <- mark::merge_list(default, params, keep = "y")
+      params$text <- text
+      do.call(utils::read.table, params)
     }
-  )
+
+    switch(
+      match.arg(convert),
+      none = clipr::read_clip(allow_non_interactive = TRUE),
+      some = scan(text = .ReadClip("none"), what = "character", quiet = TRUE),
+      data.frame = read_table(.ReadClip("none"), ...),
+      auto = {
+        text <- .ReadClip("none")
+        if (length(text) == 1L) {
+          utils::type.convert(
+            scan(text = text, what = "character", quiet = TRUE),
+            as.is = TRUE,
+            na.strings = c("", "NA")
+          )
+        } else {
+          read_table(text = text, ...)
+        }
+      }
+    )
+  })
 }

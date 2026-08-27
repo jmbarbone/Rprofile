@@ -1,3 +1,12 @@
+rprofile <- new.env()
+local(envir = rprofile, {
+  options <- new.env()
+})
+lockEnvironment(rprofile)
+
+# we will prioritize this library path for functions inside .Rprofile
+.Library.Rprofile <- Sys.getenv("R_LIBS_RPROFILE", "~/rprofile-library")
+
 #' Get .Rprofile
 #'
 #' @returns
@@ -18,17 +27,15 @@ NULL
   overwrite = FALSE,
   path = .FindRprofile()
 ) {
-  fuj::require_namespace("fs")
   stopifnot(is.character(path), length(path) == 1)
-  old_path <- fs::path_expand_r(path)
-  old_path <- fs::path_norm(old_path)
+  old_path <- normalizePath(path, "/", mustWork = FALSE)
 
   if (update) {
-    on.exit(.try(fs::file_chmod(old_path, "777")), add = TRUE)
+    on.exit(.try(Sys.chmod(old_path)), add = TRUE)
     new_path <- sf("dot-Rprofile.R", check = TRUE)
-    fs::file_copy(new_path, old_path, overwrite = overwrite)
+    file.copy(new_path, old_path, overwrite = overwrite)
   } else {
-    if (!fs::file_exists(old_path)) {
+    if (!file.exists(old_path)) {
       stop(
         sprintf(".Rprofile not found: %s (%s)", old_path, path),
         call. = FALSE
@@ -36,7 +43,7 @@ NULL
     }
 
     cat("Opening", old_path, "\n")
-    utils::file.edit(old_path)
+    get("file.edit")(old_path)
     invisible(old_path)
   }
 }
@@ -70,3 +77,96 @@ NULL
   msg("using default ~/.Rprofile")
   "~/.Rprofile"
 }
+
+#' Jordan's Rprofile options
+#'
+#' @export
+.RprofileJordan <- function() {
+  .libPaths(c(
+    .libPaths(),
+    Sys.getenv("R_LIBS_PAK", "~/R/pak-library"),
+    Sys.getenv("R_LIBS_SCRIBE", "~/R/scribe-library"),
+    .Library.Rprofile
+  ))
+
+  .AttachDevtools()
+  .AddAttachedPackagesToDefaultPackages()
+  .GitBranchPrompt()
+  .GlobalHandle()
+
+  if (interactive()) {
+    .UtilMessage("source_rprofile")
+    .NiceMessage()
+    .Todos(.quiet = FALSE, .space = TRUE)
+    .CheckCranStatus()
+    .Search()
+  }
+
+  jordan <-
+    tolower(Sys.getenv("USER", Sys.getenv("USERNAME"))) %in%
+    c("jordan", "jbarbone", "jmbarbone", "jmbar")
+
+  # Loads devtools and usethis
+  local({
+    opts <- list(
+      tidyverse.quiet = TRUE,
+      testthat.progress.max_fails = 100
+    )
+
+    if (jordan) {
+      opts <- c(
+        opts,
+        list(
+          devtools.name = paste(person_jordan$given, person_jordan$family),
+          # TODO can mark.author accept a person() object?
+          mark.author = unclass(person_jordan)[[1L]],
+          usethis.description = list(
+            `Authors@R` = person_jordan,
+            License = "MIT + file LICENSE",
+            Language = "en-US"
+          )
+        )
+      )
+    }
+
+    conflictRules(
+      "fuj",
+      mask.ok = list(
+        testthat = "not",
+        Rprofile = c(
+          "%::%",
+          "%out%",
+          "%wo%",
+          "match_arg",
+          "require_namespace"
+        )
+      )
+    )
+    conflictRules(
+      "cnd",
+      mask.ok = list(
+        fuj = c(
+          "value_error",
+          "class_error",
+          "type_error",
+          "input_error",
+          "use_error",
+          "duplicate_error",
+          "defunct_error",
+          "internal_error"
+        )
+      )
+    )
+
+    options(opts)
+  })
+}
+
+
+person_jordan <- person(
+  "Jordan Mark",
+  "Barbone",
+  email = "jmbarbone@gmail.com",
+  role = c("aut", "cph", "cre"),
+  comment = c(ORCID = "0000-0001-9788-3628")
+)

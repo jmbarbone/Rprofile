@@ -1,13 +1,13 @@
 use_color <- function() {
-  requireNamespace("crayon", quietly = TRUE) &&
-    getOption("crayon.enabled", crayon::has_color())
+  available_namespace("crayon") &&
+    reset_namespaces(getOption("crayon.enabled", crayon::has_color()))
 }
 
 # add more when used
 crayon_ <- function(color) {
   function(x) {
     if (use_color()) {
-      utils::getFromNamespace(color, asNamespace("crayon"))(x)
+      reset_namespaces(utils::getFromNamespace(color, asNamespace("crayon"))(x))
     } else {
       x
     }
@@ -23,8 +23,8 @@ crayon_magenta <- crayon_("magenta")
 crayon_silver <- crayon_("silver")
 
 crayon_strip <- function(x) {
-  if (requireNamespace("crayon", quietly = TRUE)) {
-    crayon::strip_style(x)
+  if (available_namespace("crayon")) {
+    reset_namespaces(crayon::strip_style(x))
   } else {
     x
   }

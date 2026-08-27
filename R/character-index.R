@@ -13,16 +13,16 @@
 #'
 #' @export
 .CharacterIndex <- function(x = NULL) {
-  fuj::require_namespace("mark")
+  reset_namespaces({
+    x <- x %||% mark::read_clipboard()
 
-  x <- x %||% mark::read_clipboard()
+    lapply(x, function(x) {
+      if (length(x) == 0L) {
+        return(NA_integer_)
+      }
 
-  lapply(x, function(x) {
-    if (length(x) == 0L) {
-      return(NA_integer_)
-    }
-
-    nm <- mark::chr_split(x)
-    fuj::set_names(seq_along(nm), nm)
+      nm <- mark::chr_split(x)
+      fuj::set_names(seq_along(nm), nm)
+    })
   })
 }

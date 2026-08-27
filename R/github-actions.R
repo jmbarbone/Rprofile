@@ -20,11 +20,11 @@
   ask = interactive()
 ) {
   get_repo <- function(x) {
-    fuj::collapse(strsplit(x, "/")[[1L]][1:2], sep = "/")
+    paste0(strsplit(x, "/")[[1L]][1:2], collapse = "/")
   }
 
   get_name <- function(x) {
-    name <- fuj::collapse(strsplit(x, "/")[[1L]][-(1:2)], sep = "/")
+    name <- collapse(strsplit(x, "/")[[1L]][-(1:2)], sep = "/")
     sub("@.*$", "", name)
   }
 
@@ -33,24 +33,26 @@
       return(sub(".*@", "", x))
     }
 
-    fuj::require_namespace("gh")
-    info <- gh::gh(sprintf("GET https://api.github.com/repos/%s", repo))
-    resp <- gh::gh(sprintf("/repos/%s/releases", repo))
+    require_namespace("gh")
+    reset_namespaces({
+      info <- gh::gh(sprintf("GET https://api.github.com/repos/%s", repo))
+      resp <- gh::gh(sprintf("/repos/%s/releases", repo))
 
-    if (length(resp) == 0L) {
-      return(info$default_branch)
-    }
+      if (length(resp) == 0L) {
+        return(info$default_branch)
+      }
 
-    releases <- fuj::toss(
-      fuj::vap_chr(resp, "tag_name"),
-      fuj::vap_lgl(resp, "prerelease"),
-      na = "drop"
-    )
+      releases <- fuj::toss(
+        fuj::vap_chr(resp, "tag_name"),
+        fuj::vap_lgl(resp, "prerelease"),
+        na = "drop"
+      )
 
-    fuj::hold(
-      releases,
-      which.max(as.numeric_version(sub("v", "", releases, fixed = TRUE)))
-    )
+      fuj::hold(
+        releases,
+        which.max(as.numeric_version(sub("v", "", releases, fixed = TRUE)))
+      )
+    })
   }
 
   read_url <- function(repo, name, ref) {
@@ -87,15 +89,19 @@
     )
   }
   if (is.null(action)) {
-    stop(fuj::input_error(sprintf(
-      "Could not find GitHub Action '%s' in repository '%s' with ref '%s'",
-      name,
-      repo,
-      ref
-    )))
+    stop(errorCondition(
+      sprintf(
+        "Could not find GitHub Action '%s' in repository '%s' with ref '%s'",
+        name,
+        repo,
+        ref
+      ),
+      class = "input_error"
+    ))
   }
 
-  path <- fuj::fp(".github") / "workflows" / basename(nm)
+  path <- file.path(".github/workflows", basename(nm))
+  path <- normalizePath(path, mustWork = FALSE)
 
   if (ask && file.exists(path)) {
     save <- yes_no("Would you like to override ", path, "?")

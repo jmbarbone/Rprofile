@@ -1,8 +1,8 @@
 #' Global handle
 #'
-#' See [rlang::global_handle()]
+#' See `rlang::global_handle()`
 #'
 #' @export
 .GlobalHandle <- function() {
-  rlang::global_handle()
+  reset_namespaces(rlang::global_handle())
 }

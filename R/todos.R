@@ -44,16 +44,15 @@ do_todos <- function(
   ...,
   .quiet = FALSE
 ) {
-  if (!requireNamespace("mark", quietly = TRUE)) {
-    cat("package {mark} is needed for .Todos() and .Fixmes()\n")
-    return(invisible())
-  }
+  type <- match.arg(type)
+  require_namespace("mark")
 
-  type <- mark::match_param(type)
-  params <- list(...)
-  params$ext <- params$ext %||% c("R", "Rmd", "qmd", "md", "py")
-  fun <- switch(type, todo = mark::todos, fixme = mark::fixmes)
-  todo <- .try(do.call(fun, params))
+  reset_namespaces({
+    params <- list(...)
+    params$ext <- params$ext %||% c("R", "Rmd", "qmd", "md", "py")
+    fun <- switch(type, todo = mark::todos, fixme = mark::fixmes)
+    todo <- .try(do.call(fun, params))
+  })
 
   # fmt: skip
   if (
@@ -68,8 +67,8 @@ do_todos <- function(
 }
 
 do_todo_here <- function(type = c("todo", "fixme"), ..., .quiet = FALSE) {
-  fuj::require_namespace("rstudioapi")
+  require_namespace("rstudioapi")
   stopifnot(interactive(), "path" %out% ...names())
-  path <- rstudioapi::getSourceEditorContext()$path
+  path <- reset_namespaces(rstudioapi::getSourceEditorContext()$path)
   do_todos(type = type, path = path, ..., .quiet = .quiet)
 }
