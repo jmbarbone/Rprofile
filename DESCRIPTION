@@ -19,7 +19,6 @@ Roxygen: list(markdown = TRUE)
 Depends:
     R (>= 3.6.0)
 Imports:
-    rlang,
     utils
 Suggests:
     cli,
@@ -38,6 +37,7 @@ Suggests:
     praise,
     prompt,
     readr,
+    rlang,
     rstudioapi,
     spelling,
     testthat (>= 3.0.0),
@@ -50,4 +50,4 @@ Remotes:
     github::jmbarbone/fuj@v0.2.2.9015,
     github::jmbarbone/mark@v0.8.3.9006
 Config/testthat/edition: 3
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
