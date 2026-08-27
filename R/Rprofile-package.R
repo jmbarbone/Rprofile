@@ -107,7 +107,7 @@ lockEnvironment(rprofile)
   get("assign", baseenv())("..Rprofile", rprofile, envir = globalenv())
 }
 
-.onDetach <- function(libname, pkgname) {
+.onDetach <- function(libname) {
   if (exists("..Rprofile", envir = globalenv())) {
     rm("..Rprofile", envir = globalenv())
   }
@@ -117,7 +117,7 @@ lockEnvironment(rprofile)
   r_libs_profile <- Sys.getenv("R_LIBS_RPROFILE")
   r_libs_profile <- normalizePath(r_libs_profile, "/", FALSE)
   if (!nzchar(r_libs_profile)) {
-    cat(
+    packageStartupMessage(
       "Warning: R_LIBS_RPROFILE is not set. Please set it to a valid path.\n",
       "This may cause unexpected behavior.\n"
     )
@@ -131,8 +131,9 @@ lockEnvironment(rprofile)
   path <- getNamespaceInfo("Rprofile", "path")
   path <- normalizePath(path, winslash = "/", mustWork = FALSE)
   if (match(path, c(getwd(), r_libs_profile), 0L) == 0L) {
-    cat(
-      "Warning: R_LIBS_RPROFILE is set to a different path than the Rprofile package.\n",
+    packageStartupMessage(
+      "Warning: R_LIBS_RPROFILE is set to a different path than the Rprofile",
+      " package.\n",
       "R_LIBS_RPROFILE: ",
       r_libs_profile,
       "\n",
