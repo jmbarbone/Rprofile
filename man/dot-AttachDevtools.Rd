@@ -18,6 +18,7 @@ Other Rprofile:
 \code{\link[=.NiceMessage]{.NiceMessage()}},
 \code{\link[=.Search]{.Search()}},
 \code{\link[=.UtilMessage]{.UtilMessage()}},
+\code{\link{Rprofile-file}},
 \code{\link{attached_packages}}
 }
 \concept{Rprofile}

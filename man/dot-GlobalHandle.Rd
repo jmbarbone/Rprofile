@@ -7,5 +7,5 @@
 .GlobalHandle()
 }
 \description{
-See \code{\link[rlang:global_handle]{rlang::global_handle()}}
+See \code{rlang::global_handle()}
 }

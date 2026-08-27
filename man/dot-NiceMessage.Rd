@@ -21,6 +21,7 @@ Other Rprofile:
 \code{\link[=.AttachDevtools]{.AttachDevtools()}},
 \code{\link[=.Search]{.Search()}},
 \code{\link[=.UtilMessage]{.UtilMessage()}},
+\code{\link{Rprofile-file}},
 \code{\link{attached_packages}}
 }
 \concept{Rprofile}

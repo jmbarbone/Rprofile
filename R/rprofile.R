@@ -1,12 +1,3 @@
-#' @keywords internal
-"_PACKAGE"
-
-# The following block is used by usethis to automatically manage
-# roxygen namespace tags. Modify with care!
-## usethis namespace: start
-## usethis namespace: end
-NULL
-
 rprofile <- new.env()
 local(envir = rprofile, {
   options <- new.env()
@@ -22,6 +13,9 @@ lockEnvironment(rprofile)
 #' * `.Rprofile()` The `.Rprofile()` path, invisibly
 #' @family Rprofile
 #' @name Rprofile-file
+NULL
+
+#' @export
 #' @rdname Rprofile-file
 #' @param update If `TRUE` will copy the .Rprofile from the Rprofile package
 #'   (defaults to the value of `overwrite`)
@@ -33,23 +27,23 @@ lockEnvironment(rprofile)
   overwrite = FALSE,
   path = .FindRprofile()
 ) {
-  fuj::require_namespace("fs")
   stopifnot(is.character(path), length(path) == 1)
-  old_path <- fs::path_expand_r(path)
-  old_path <- fs::path_norm(old_path)
+  old_path <- normalizePath(path, "/", mustWork = FALSE)
+
   if (update) {
-    on.exit(.try(fs::file_chmod(old_path, "777")), add = TRUE)
+    on.exit(.try(Sys.chmod(old_path)), add = TRUE)
     new_path <- sf("dot-Rprofile.R", check = TRUE)
-    fs::file_copy(new_path, old_path, overwrite = overwrite)
+    file.copy(new_path, old_path, overwrite = overwrite)
   } else {
-    if (!fs::file_exists(old_path)) {
+    if (!file.exists(old_path)) {
       stop(
         sprintf(".Rprofile not found: %s (%s)", old_path, path),
         call. = FALSE
       )
     }
+
     cat("Opening", old_path, "\n")
-    utils::file.edit(old_path)
+    get("file.edit")(old_path)
     invisible(old_path)
   }
 }
@@ -66,16 +60,20 @@ lockEnvironment(rprofile)
   } else {
     match.fun("message")
   }
+
   path <- getOption("rprofile.rprofile")
+
   if (!is.null(path)) {
     msg("using .Rprofile from options")
     return(path)
   }
+
   path <- Sys.getenv("R_PROFILE", "")
   if (path != "") {
     msg("using .Rprofile from envvar R_PROFILE")
     return(path)
   }
+
   msg("using default ~/.Rprofile")
   "~/.Rprofile"
 }
@@ -119,21 +117,11 @@ lockEnvironment(rprofile)
       opts <- c(
         opts,
         list(
-          devtools.name = "Jordan Mark Barbone",
-          mark.author = list(
-            given = "Jordan Mark",
-            family = "Barbone",
-            role = c("aut", "cph", "cre"),
-            email = "jmbarbone@gmail.com",
-            comment = c(ORCID = "0000-0001-9788-3628")
-          ),
+          devtools.name = paste(person_jordan$given, person_jordan$family),
+          # TODO can mark.author accept a person() object?
+          mark.author = unclass(person_jordan)[[1L]],
           usethis.description = list(
-            `Authors@R` = 'person(
-                          "Jordan Mark", "Barbone",
-                          email = "jmbarbone@gmail.com",
-                          role = c("aut", "cph", "cre"),
-                          comment = c(ORCID = "0000-0001-9788-3628")
-                        )',
+            `Authors@R` = person_jordan,
             License = "MIT + file LICENSE",
             Language = "en-US"
           )
@@ -173,3 +161,12 @@ lockEnvironment(rprofile)
     options(opts)
   })
 }
+
+
+person_jordan <- person(
+  "Jordan Mark",
+  "Barbone",
+  email = "jmbarbone@gmail.com",
+  role = c("aut", "cph", "cre"),
+  comment = c(ORCID = "0000-0001-9788-3628")
+)
