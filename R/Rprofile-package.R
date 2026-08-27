@@ -102,3 +102,22 @@ lockEnvironment(rprofile)
     options(opts)
   })
 }
+
+.onAttach <- function(libname, pkgname) {
+  get("assign", baseenv())("..Rprofile", rprofile, envir = globalenv())
+}
+
+.onDetach <- function(libname, pkgname) {
+  if (exists("..Rprofile", envir = globalenv())) {
+    rm("..Rprofile", envir = globalenv())
+  }
+}
+
+.onLoad <- function(libname, pkgname) {
+  r_libs_profile <- Sys.getenv("R_LIBS_PROFILE")
+  if (!isTRUE(dir.exists(r_libs_profile))) {
+    if (nzchar(r_libs_profile)) {
+      dir.create(r_libs_profile, recursive = TRUE, showWarnings = FALSE)
+    }
+  }
+}
