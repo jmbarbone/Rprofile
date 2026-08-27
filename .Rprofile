@@ -1,3 +1,8 @@
+suppressPackageStartupMessages({
+  try(require(usethis))
+  try(require(devtools))
+})
+
 if (
   isTRUE(requireNamespace(
     "Rprofile",
