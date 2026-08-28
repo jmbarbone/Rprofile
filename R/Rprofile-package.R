@@ -130,7 +130,7 @@ lockEnvironment(rprofile)
 
   path <- getNamespaceInfo("Rprofile", "path")
   path <- normalizePath(path, winslash = "/", mustWork = FALSE)
-  if (match(path, c(getwd(), r_libs_profile), 0L) == 0L) {
+  if (dirname(path) != r_libs_profile && path != getwd()) {
     packageStartupMessage(
       "Warning: R_LIBS_RPROFILE is set to a different path than the Rprofile",
       " package.\n",

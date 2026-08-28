@@ -1,6 +1,6 @@
 Package: Rprofile
 Title: Functions to be loaded with Rprofile
-Version: 0.0.0.9017
+Version: 0.0.0.9018
 Authors@R:
     person(given = "Jordan Mark",
            family = "Barbone",
