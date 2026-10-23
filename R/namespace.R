@@ -1,3 +1,29 @@
+#' Unload namespaces
+#'
+#' @param x,... Namespaces
+#'
+#' @export
+.UnloadNamepsace <- function(x, ...) {
+  op <- options(useFancyQuotes = FALSE)
+  on.exit(options(op))
+  x <- unlist(c(x, ...))
+  for (i in x) {
+    cat("Unloading namespace '", i, "'\n", sep = "")
+    tryCatch(
+      unloadNamespace(i),
+      simpleError = function(e) {
+        if (grepl("is imported by", e$message, fixed = TRUE)) {
+          msg <- sub("^.* is imported by ", "", e$message)
+          m <- gregexpr("(?<=')[a-zA-z][a-zA-z0-9.]*(?=')", msg, perl = TRUE)
+          pkgs <- regmatches(msg, m)[[1L]]
+          return(.UnloadNamepsace(pkgs))
+        }
+        stop(e)
+      }
+    )
+  }
+}
+
 reset_namespaces <- function(expr) {
   # we specifically want to load in the namespaces from R_LIBS_RPROFILE
   set_equal <- function(x, y) !anyNA(match(x, y)) && !anyNA(match(y, x))
