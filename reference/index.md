@@ -31,6 +31,9 @@
 - [`.CharacterIndex()`](https://jmbarbone.github.io/Rprofile/reference/dot-CharacterIndex.md)
   : Character index
 
+- [`.Check()`](https://jmbarbone.github.io/Rprofile/reference/dot-Check.md)
+  : Check R package
+
 - [`.CheckCranStatus()`](https://jmbarbone.github.io/Rprofile/reference/dot-CheckCranStatus.md)
   : Check Cran Status
 
@@ -78,6 +81,9 @@
 - [`.ResetOptions()`](https://jmbarbone.github.io/Rprofile/reference/dot-ResetOptions.md)
   : Reset options
 
+- [`.RprofileInstall()`](https://jmbarbone.github.io/Rprofile/reference/dot-RprofileInstall.md)
+  : Install Rprofile
+
 - [`.RprofileJordan()`](https://jmbarbone.github.io/Rprofile/reference/dot-RprofileJordan.md)
   : Jordan's Rprofile options
 
@@ -86,6 +92,9 @@
 
 - [`.SpellCheckFile()`](https://jmbarbone.github.io/Rprofile/reference/dot-SpellCheckFile.md)
   : Spell check a file
+
+- [`.UnloadNamepsace()`](https://jmbarbone.github.io/Rprofile/reference/dot-UnloadNamepsace.md)
+  : Unload namespaces
 
 - [`.UseGithubAction()`](https://jmbarbone.github.io/Rprofile/reference/dot-UseGithubAction.md)
   [`.UseGitHubAction()`](https://jmbarbone.github.io/Rprofile/reference/dot-UseGithubAction.md)
