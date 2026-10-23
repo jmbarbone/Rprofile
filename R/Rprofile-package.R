@@ -144,3 +144,8 @@ lockEnvironment(rprofile)
     )
   }
 }
+
+.force_namespace_imports <- function() {
+  devtools::load_all
+  usethis::use_r
+}
