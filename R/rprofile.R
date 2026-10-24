@@ -124,7 +124,8 @@ NULL
             `Authors@R` = person_jordan,
             License = "MIT + file LICENSE",
             Language = "en-US"
-          )
+          ),
+          useFancyQuotes = FALSE
         )
       )
     }
