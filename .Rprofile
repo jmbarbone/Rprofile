@@ -1,3 +1,7 @@
+options(
+  useFancyQuotes = FALSE
+)
+
 local({
   r_libs_rprofile <- Sys.getenv("R_LIBS_RPROFILE")
   if (!nzchar(r_libs_rprofile)) {
